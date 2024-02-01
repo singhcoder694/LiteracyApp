@@ -1,13 +1,20 @@
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Navbar from "./Components/Navbar";
 import MatchNumbers from "./pages/MatchNumbers";
+import SmallestNumber from "./pages/SmallestNumber";
 
-export default function App() {
+const App = () => {
   return (
-    <div>
-      <Navbar/>
-      <MatchNumbers />
-      
-    </div>
+    <main>
+     
+      <Router>
+        
+        <Routes>
+        <Route path="/smallestnumber" element={<SmallestNumber />} />
+        </Routes>
+      </Router>
+    </main>
+  );
+};
 
-  )
-}
+export default App;

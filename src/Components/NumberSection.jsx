@@ -15,16 +15,18 @@ const NumberSection = ({ sectionLabel, buttonValues }) => {
   };
 
   return (
-    <div className="flex my-4 text-lg items-center">
-      <span className="font-semibold text-2xl">{sectionLabel} </span>
-      <div className="flex items-center text-5xl justify-around w-full">
+    <div className="flex mt-4 items-center mb-12">
+      <span className="font-normal text-xl w-16"> {sectionLabel} </span>
+      <div className="flex items-center text-xl justify-around w-10/12 bg-white  p-8 rounded-xl ml-3 ">
         {buttonValues.map((value, index) => (
           <button
             key={index}
-            className={`mx-4 w-24 h-24 ${
-              clickedIndex === index ? "bg-yellow-200 border border-yellow-500 border-2" : "bg-rose-300"
-            } rounded-full flex items-center justify-center`}
-            style={customFontStyle}
+            className={`mx-4 w-24 h-12 rounded-md flex items-center justify-center shadow-custom ${
+              clickedIndex === index
+                ? "bg-yellow-200 border border-yellow-500 border-2"
+                : "bg-smallest-ques-button-clr"
+            }`}
+            // style={customFontStyle}
             onClick={() => handleButtonClick(index)}
             disabled={clickedIndex === index}
           >
