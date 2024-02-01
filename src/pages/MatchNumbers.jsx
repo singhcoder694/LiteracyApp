@@ -1,9 +1,11 @@
-import React, {  useState } from 'react'
+import React, {  useState, useRef } from 'react'
 import bgimg from "../assets/bg-ques.svg";
 import "./Match.css"
+
 function MatchNumbers() {
     const [colorarr, setColorArr]=useState(["white","white","white","white"]);
     const [color, setColor]=useState("");
+    const [boxR, setBoxR] = useState([null,null,null,null]);
     const backColorArr = ["var(--Yellow-grad-up, #FFB507)", "#A5D720", "#FF6969", "#62D0FF"]
     const handleClick=(e)=>{
       const temp = (e.target.id);
