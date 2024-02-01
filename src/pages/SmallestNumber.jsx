@@ -15,12 +15,9 @@ export default function SmallestNumber() {
         backgroundPosition: "center",
       }}
     >
-      <div className="bg-white w-7/12 h-5/6 p-12 z-10 ml-36 flex mt-16 rounded-md shadow-custom flex-col">
-        <h3 className="text-xl font-mono mb-7">
-          Select the <span className="font-bold">Smallest</span> Number:
-        </h3>
-        <NumberSection sectionLabel="1)" buttonValues={buttonValues1} />
-        <NumberSection sectionLabel="2)" buttonValues={buttonValues2} />
+      <div className="bg-smallest-ques-gradient w-8/12 h-3/6 py-12 px-12 z-10 ml-36 flex mt-16 rounded-3xl flex-col" style={{ borderRadius: '30px' }}>
+        <NumberSection sectionLabel="Part A" buttonValues={buttonValues1} />
+        <NumberSection sectionLabel="Part B" buttonValues={buttonValues2} />
       </div>
     </div>
   );
