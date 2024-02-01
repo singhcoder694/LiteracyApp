@@ -11,6 +11,7 @@ const App = () => {
         
         <Routes>
         <Route path="/smallestnumber" element={<SmallestNumber />} />
+        <Route path="/matchnumbers" element={<MatchNumbers />} />
         </Routes>
       </Router>
     </main>
