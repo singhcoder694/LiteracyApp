@@ -4,8 +4,20 @@ import "./Match.css"
 function MatchNumbers() {
     const [colorarr, setColorArr]=useState(["white","white","white","white"]);
     const [color, setColor]=useState("");
+    const backColorArr = ["var(--Yellow-grad-up, #FFB507)", "#A5D720", "#FF6969", "#62D0FF"]
     const handleClick=(e)=>{
-        setColor(e.target.style.backgroundColor);
+      const temp = (e.target.id);
+      const ind = Number.parseInt(temp.slice(-1));
+      if(document.getElementById(`${"Qmatch" + ind}`).style.backgroundColor===""){
+        document.getElementById(`${"Qmatch" + ind}`).style.backgroundColor = backColorArr[ind-1];
+      }
+      else{
+        document.getElementById(`${"Qmatch" + ind}`).style.backgroundColor = "";
+        
+      }
+      setColor(backColorArr[ind-1]);
+
+    
     }
     const handleClick2= (e)=>{
         const temp=(e.target.id);
@@ -39,10 +51,10 @@ function MatchNumbers() {
         </h3>
         <div className='columns'>
             <div className='ques_cols'>
-                <p className='questions' id='Qmatch1' style={{backgroundColor:"var(--Yellow-grad-up, #FFB507)"}} onClick={handleClick}>23 + 34</p>
-                <p className='questions' id='Qmatch2' style={{backgroundColor:"#A5D720"}} onClick={handleClick}>2 + 54</p>
-                <p className='questions' id='Qmatch3' style={{backgroundColor:"#FF6969"}} onClick={handleClick}>9 + 89</p>
-                <p className='questions' id='Qmatch4' style={{backgroundColor:"#62D0FF"}} onClick={handleClick}>34 + 94</p>
+                <p className='questions' id='Qmatch1'  onClick={handleClick}>23 + 34</p>
+                <p className='questions' id='Qmatch2'  onClick={handleClick}>2 + 54</p>
+                <p className='questions' id='Qmatch3'  onClick={handleClick}>9 + 89</p>
+                <p className='questions' id='Qmatch4'  onClick={handleClick}>34 + 94</p>
             </div>
             <div className='ans_cols'>
                 <p className='answers' id='Amatch1' onClick={handleClick2} >56</p>
