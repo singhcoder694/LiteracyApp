@@ -23,11 +23,19 @@ module.exports = {
       },
 
       boxShadow: {
-        'custom': '0px 0px 10.7px 3px rgba(0, 0, 0, 0.25) inset',
+        'custom': '0px 4px 0px 0px #D6A83C',
       },
       gradients: {
         'custom-gradient-purple': 'linear-gradient(180deg, #6153CC 0%, #D0C6FF 100%)',
       },
+      colors: {
+        'smallest-ques-button-clr': '#FFC847',
+        'smallest-ques-gradient-start': '#FFB507',
+        'smallest-ques-gradient-end': '#FFE99E',
+      },
+      backgroundImage: theme => ({
+        'smallest-ques-gradient': 'linear-gradient(180deg, ' + theme('colors.smallest-ques-gradient-start') + ' 0%, ' + theme('colors.smallest-ques-gradient-end') + ' 99.4%)',
+      }),
     },
   },
   plugins: [],
