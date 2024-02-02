@@ -31,7 +31,12 @@ function MatchNumbers() {
   const [matched, setMatched] = useState([]);
   const [loaded, setLoaded] = useState(false);
   const [animationKey, setAnimationKey] = useState(0);
-  const [animationLoaded, setAnimationLoaded] = useState([false, false, false, false]);
+  const [animationLoaded, setAnimationLoaded] = useState([
+    false,
+    false,
+    false,
+    false,
+  ]);
 
   const backColorArr = [
     "var(--Yellow-grad-up, #FFB507)",
@@ -139,12 +144,12 @@ function MatchNumbers() {
     let newmatched = [...matched];
     newmatched[1] = ind;
     setMatched(newmatched);
-    setAnimationKey(prevKey => prevKey + 1);
-    setAnimationLoaded(prevState => {
+    setAnimationKey((prevKey) => prevKey + 1);
+    setAnimationLoaded((prevState) => {
       let newState = [...prevState];
       newState[ind - 1] = true;
       return newState;
-      });
+    });
     let a = colorarr;
     let i = 0;
     while (colorarr.includes(color)) {
@@ -159,7 +164,7 @@ function MatchNumbers() {
         a[i];
     }
   };
-  console.log(ansbox1, ansbox2, ansbox3, ansbox4,animationKey);
+  console.log(ansbox1, ansbox2, ansbox3, ansbox4, animationKey);
   return (
     <div
       className="container min-h-screen flex flex-col"
@@ -250,8 +255,7 @@ function MatchNumbers() {
         className="absolute z-10 pointer-events-none"
       >
         <motion.line
-           key={`line1-${animationKey}`} 
-           
+          key={`line1-${animationKey}`}
           x1={box1?.x + box1?.width}
           y1={box1?.y + box1?.height / 2}
           x2={ansbox1 == null ? box1?.x + box1?.width : ansbox1?.x}
@@ -267,7 +271,7 @@ function MatchNumbers() {
           transition={{ duration: 1 }}
         />
         <motion.line
-        key={`line3-${animationKey}`}
+          key={`line3-${animationKey}`}
           x1={box3?.x + box3?.width}
           y1={box3?.y + box3?.height / 2}
           x2={ansbox3 == null ? box3?.x + box3?.width : ansbox3?.x}
@@ -283,7 +287,7 @@ function MatchNumbers() {
           transition={{ duration: 1 }}
         />
         <motion.line
-        key={`line4-${animationKey}`}
+          key={`line4-${animationKey}`}
           x1={box4?.x + box4?.width}
           y1={box4?.y + box4?.height / 2}
           x2={ansbox4 == null ? box4?.x + box4?.width : ansbox4?.x}
@@ -296,10 +300,10 @@ function MatchNumbers() {
           strokeWidth="3"
           initial={{ pathLength: 0 }}
           animate={{ pathLength: 1 }}
-          transition={{ duration: 1}}
+          transition={{ duration: 1 }}
         />
         <motion.line
-        key={`line2-${animationKey}`}
+          key={`line2-${animationKey}`}
           x1={box2?.x + box2?.width}
           y1={box2?.y + box2?.height / 2}
           x2={ansbox2 == null ? box2?.x + box2?.width : ansbox2?.x}
@@ -312,7 +316,7 @@ function MatchNumbers() {
           strokeWidth="3"
           initial={{ pathLength: 0 }}
           animate={{ pathLength: 1 }}
-          transition={{ duration: 1}}
+          transition={{ duration: 1 }}
         />
       </svg>
     </div>
