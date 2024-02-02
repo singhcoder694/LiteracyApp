@@ -1,6 +1,5 @@
 import React from "react";
 import NumberSection from "../Components/NumberSection";
-import Background from "../Components/Background";
 
 export default function SmallestNumber() {
   const buttonValues1 = [22, 39, 48, 543];

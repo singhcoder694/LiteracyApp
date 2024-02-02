@@ -1,12 +1,10 @@
-
 import react from "react";
 import "./Background.css";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 import gudda from "../assets/images/Gudda.jpg";
-
 import React from "react";
 import SmallestNumber from "../pages/SmallestNumber";
-import MatchNumbers from "../pages/MatchNumbers";
+
 
 export default function Background() {
   return (
@@ -18,7 +16,7 @@ export default function Background() {
         </div>
       </div>
       <div className="component-conntainer">
-        <SmallestNumber/>
+        <SmallestNumber />
       </div>
       <div className="mascot-contaier">
         <p>Click on the button having the greatest value.</p>
@@ -28,12 +26,8 @@ export default function Background() {
         <div className="next-button">
           <IoIosArrowForward className="back-icon" />
           <button>Next</button>
-
-
         </div>
       </div>
     </div>
   );
 }
-
-

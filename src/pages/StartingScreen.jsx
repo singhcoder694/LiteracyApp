@@ -1,7 +1,7 @@
 import React from "react";
 import Spline from "@splinetool/react-spline";
 import { FaArrowRightLong } from "react-icons/fa6"; // Importing with react-icons
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 
 function Login() {
   const customGradientStyle = {
@@ -43,7 +43,7 @@ function Login() {
           </div>
           <button
             onClick={() => {
-              handleLogin('/login');
+              handleLogin("/login");
             }}
             className="bg-custom-purple py-2 rounded-md self-center w-full text-white"
           >

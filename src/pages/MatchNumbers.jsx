@@ -1,5 +1,4 @@
 import React, { useState, useRef, useEffect, useLayoutEffect } from "react";
-import bgimg from "../assets/bg-ques.svg";
 import "./Match.css";
 
 import { motion } from "framer-motion";
