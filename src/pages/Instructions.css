@@ -1,0 +1,75 @@
+.instructions-container {
+  display: flex;
+  flex-direction: row;
+  height: 100vh;
+}
+
+.instructions-colored-half-part {
+    width: 50%;
+    background: #ffc81b;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.instructions-white-half-part{
+    width: 50%;
+    background: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.instruction-heading{
+    font-size: 40px;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    color: red;
+}
+.instruction-content{
+    font-size: 13px;
+    font-weight: 500;
+    margin-bottom: 1rem;
+    display: flex;
+    flex-direction: column;
+    margin-inline: 15%;
+    justify-content: center;
+    align-items: center;
+}
+
+.instruction-content p{
+    margin-bottom: 3%;
+}
+
+.instruction-content p span{
+    font-weight: 600;
+}
+
+.instruction-button{
+    margin-top: 4%;
+}
+
+.instruction-button button{
+    padding: 10px 20px;
+    background: #ffc81b;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.instructions-colored-half-part p {
+    width: 50%;
+    font-size: 18px;
+    text-align: center;
+}
+
+.instructions-colored-half-part img {
+    height: 61%;
+    margin-top: 5%;
+}
