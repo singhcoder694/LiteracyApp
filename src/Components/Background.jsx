@@ -1,3 +1,4 @@
+
 import react from "react";
 import "./Background.css";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
@@ -27,8 +28,12 @@ export default function Background() {
         <div className="next-button">
           <IoIosArrowForward className="back-icon" />
           <button>Next</button>
+
+
         </div>
       </div>
     </div>
   );
 }
+
+

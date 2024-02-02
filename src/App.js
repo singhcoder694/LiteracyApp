@@ -1,20 +1,43 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Navbar from "./Components/Navbar";
-import MatchNumbers from "./pages/MatchNumbers";
-import SmallestNumber from "./pages/SmallestNumber";
-import Instructions from "./pages/Instructions";
-import Background from "./Components/Background";
 
+
+
+
+
+
+// App.js
+import React from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { NavigationProvider } from "./context/NavigationContext";
+import Background from "./Components/Background";
+import FillInTheBlanks from "./pages/FillInTheBlanks";
+import MatchTheColumn from "./pages/MatchTheColumn";
+import GreatestNumber from "./pages/GreatestNumber";
+import StartingScreen from './pages/StartingScreen'
+import Register from "./pages/Register";
+import Login from "./pages/Login";
+import SetAvatar from "./pages/SetAvatar";
+import Background from "./Components/Background";
 const App = () => {
   return (
-    <main>
+    <main className="main-bg">
       <Router>
-        <Routes>
-          <Route path="/" element={<Instructions />} />
-          <Route path="/smallestnumber" element={<SmallestNumber />} />
-          <Route path="/matchnumbers" element={<MatchNumbers />} />
+        <NavigationProvider>
+          <Routes>
+            <Route
+              path="/"
+              element={<Background />}
+            ></Route>
+            <Route path="/greatestnumber" element={<GreatestNumber />} />
+            <Route path="/matchthecolumn" element={<MatchTheColumn />} />
+            
+            <Route path="/fillintheblanks" element={<FillInTheBlanks />} />
+            <Route path = '/guest' element = {<StartingScreen/>}/>
+            <Route path = '/register' element = {<Register/>}/>
+            <Route path = '/login' element = {<Login/>}/>
+            <Route path = '/avatar' element = {<SetAvatar/>}/>
           <Route path="/background" element={<Background />} />
-        </Routes>
+          </Routes>
+        </NavigationProvider>
       </Router>
     </main>
   );
