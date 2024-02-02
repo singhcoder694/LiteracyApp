@@ -22,10 +22,17 @@ function MatchNumbers() {
   const [aboxArray, setAboxArray] = useState([null, null, null, null]);
 
   const [matched, setMatched] = useState([]);
-  const [quesSelected,setQuesSelected] = useState(false);
-  const [pairs,setPairs] = useState([[-1,-1],[-1,-1],[-1,-1],[-1,-1]]);
+  const [quesSelected, setQuesSelected] = useState(false);
+  const [ansSelected, setAnsSelected] = useState(false);
+  const [thinking, setThinking] = useState(false);
+  const [pairs, setPairs] = useState([
+    [1, -1],
+    [2, -1],
+    [3, -1],
+    [4, -1],
+  ]);
 
-  const [animationKey, setAnimationKey] = useState([0,0,0,0]);
+  const [animationKey, setAnimationKey] = useState([0, 0, 0, 0]);
   const [animationLoaded, setAnimationLoaded] = useState([
     false,
     false,
@@ -57,7 +64,7 @@ function MatchNumbers() {
   useLayoutEffect(() => {
     //console.log(qboxRefs.current);
 
-   // console.log(qboxRefs.current[0].current.getBoundingClientRect());
+    // console.log(qboxRefs.current[0].current.getBoundingClientRect());
     setBoxArray(
       qboxRefs.current.map((ref) => ref.current.getBoundingClientRect())
     );
@@ -87,55 +94,195 @@ function MatchNumbers() {
   const handleClick = (e) => {
     const temp = e.target.id;
     const ind = Number.parseInt(temp.slice(-1));
+    let f = 0;
+    pairs.map((pair, index) => {
+      if (pair[0] == ind && pair[1] != -1) {
+        f = 1;
+      }
+    });
+    if (f == 1) {
+      return;
+    }
     if (
-      document.getElementById(`${"Qmatch" + ind}`).style.backgroundColor === ""
+      quesSelected == false ||
+      (quesSelected == true && ansSelected == true)
     ) {
-      document.getElementById(`${"Qmatch" + ind}`).style.backgroundColor =
-        backColorArr[ind - 1];
+      if (quesSelected == true && ansSelected == true) {
+        setQuesSelected(false);
+        setAnsSelected(false);
+      }
+      e.target.style.backgroundColor = backColorArr[ind - 1];
+      setColor(backColorArr[ind - 1]);
+      setQuesSelected(true);
       let newmatched = [...matched];
       newmatched[0] = ind;
       newmatched[1] = null;
       setMatched(newmatched);
-      setAnimationKey((prevKey) => {
-        let newState = [...prevKey];
-        newState[ind - 1]++;
-        return newState;
-      });
-      
-    } else {
-      document.getElementById(`${"Qmatch" + ind}`).style.backgroundColor = "";
+    } else if (quesSelected == true && ansSelected == false) {
+      if (ind == matched[0]) {
+        e.target.style.backgroundColor = "";
+        setQuesSelected(false);
+        setAnsSelected(false);
+        let newmatched = [...matched];
+        newmatched[0] = null;
+        newmatched[1] = null;
+        setMatched(newmatched);
+        return;
+      }
+
+      for (let i = 0; i < 4; i++) {
+        if (i == ind - 1) {
+          document.getElementById(`${"Qmatch" + ind}`).style.backgroundColor =
+            backColorArr[ind - 1];
+          setColor(backColorArr[ind - 1]);
+          let newmatched = [...matched];
+          newmatched[0] = ind;
+          setMatched(newmatched);
+        } else {
+          if (pairs[i][1] == -1)
+            document.getElementById(
+              `${"Qmatch" + (i + 1)}`
+            ).style.backgroundColor = "";
+        }
+      }
     }
-    setColor(backColorArr[ind - 1]);
   };
   const handleClick2 = (e) => {
+    console.log(quesSelected, ansSelected, matched);
+    if (quesSelected == false) return;
     const temp = e.target.id;
-    e.target.style.backgroundColor = color;
     const ind = Number.parseInt(temp.slice(-1));
-    let newmatched = [...matched];
-    newmatched[1] = ind;
-    setMatched(newmatched);
-    setAnimationKey((prevKey) => {
-      let newState = [...prevKey];
-      newState[0]++;
-      return newState;
-    });
+    if (quesSelected == true && ansSelected == false) {
+      for (let i = 0; i < 4; i++) {
+        if (pairs[i][1] == ind) {
+          return;
+        }
+      }
 
-    let a = colorarr;
-    let i = 0;
-    while (colorarr.includes(color)) {
-      i = colorarr.indexOf(color);
-      a[i] = "white";
-      i++;
-    }
-    a[ind - 1] = color;
-    setColorArr(a);
-    for (let i = 0; i < 4; i++) {
-      document.getElementById(`${"Amatch" + (i + 1)}`).style.backgroundColor =
-        a[i];
+      document.getElementById(`${"Amatch" + ind}`).style.backgroundColor =
+        color;
+      let newmatched = [...matched];
+      newmatched[1] = ind;
+      setMatched(newmatched);
+      setAnsSelected(true);
+      setPairs((prev) => {
+        let newState = [...prev];
+        newState[matched[0] - 1][1] = ind;
+        setAnimationKey((prev) => {
+          let newState = [...prev];
+          newState[matched[0] - 1] = newState[matched[0] - 1] + 1;
+          return newState;
+        });
+        return newState;
+      });
+    } else if (quesSelected == true && ansSelected == true) {
+      if (matched[1] == ind) {
+        document.getElementById(`${"Amatch" + ind}`).style.backgroundColor = "";
+        document.getElementById(
+          `${"Qmatch" + matched[0]}`
+        ).style.backgroundColor = "";
+        let temp = matched[0];
+        let newmatched = [...matched];
+        newmatched[0] = null;
+        newmatched[1] = null;
+        setMatched(newmatched);
+
+        let newPairs = [...pairs];
+        newPairs[temp - 1][1] = -1;
+        setPairs(newPairs);
+        setAnsboxArray((prev) => {
+          let newState = [...prev];
+          newState[temp - 1] = null;
+          return newState;
+        });
+        setAnimationKey((prev) => {
+          let newState = [...prev];
+          newState[temp - 1] = newState[temp - 1] + 1;
+          return newState;
+        });
+        //setQuesSelected(false);
+        //setAnsSelected(false);
+        let f = 0;
+        pairs.map((pair, index) => {
+          if (pair[1] !== -1) {
+            f = 1;
+            let newmatched = [...matched];
+            newmatched[0] = pair[0];
+            newmatched[1] = pair[1];
+            setMatched(newmatched);
+            setColor(backColorArr[pair[0] - 1]);
+          }
+        });
+        if (f == 0) {
+          let newmatched = [...matched];
+          newmatched[0] = null;
+          newmatched[1] = null;
+          setMatched(newmatched);
+          setQuesSelected(false);
+          setAnsSelected(false);
+        }
+
+        return;
+      }
+      let f = 0;
+      for (let i = 0; i < 4; i++) {
+        if (pairs[i][1] == ind) {
+          document.getElementById(`${"Amatch" + ind}`).style.backgroundColor =
+            "";
+
+          document.getElementById(
+            `${"Qmatch" + (i + 1)}`
+          ).style.backgroundColor = "";
+
+          /* let newmatched = [...matched];
+          newmatched[0] = null;
+          newmatched[1] = null;
+          setMatched(newmatched);*/
+          const newPairs = [...pairs];
+          newPairs[i][1] = -1;
+          setPairs(newPairs);
+          setAnsboxArray((prev) => {
+            let newState = [...prev];
+            newState[i] = null;
+            return newState;
+          });
+          setAnimationKey((prev) => {
+            let newState = [...prev];
+            newState[i] = newState[i] + 1;
+            return newState;
+          });
+          // setQuesSelected(false);
+          //setAnsSelected(false);
+          return;
+        }
+      }
+      document.getElementById(
+        `${"Amatch" + matched[1]}`
+      ).style.backgroundColor = "";
+      document.getElementById(`${"Amatch" + ind}`).style.backgroundColor =
+        color;
+      let newmatched = [...matched];
+      newmatched[1] = ind;
+      setMatched(newmatched);
+      setPairs((prev) => {
+        let newState = [...prev];
+        newState[matched[0] - 1][1] = ind;
+        return newState;
+      });
+      setAnsboxArray((prev) => {
+        let newState = [...prev];
+        newState[matched[0] - 1] = aboxArray[ind - 1];
+        return newState;
+      });
+      setAnimationKey((prev) => {
+        let newState = [...prev];
+        newState[matched[0] - 1] = newState[matched[0] - 1] + 1;
+        return newState;
+      });
     }
   };
 
-  console.log(animationKey);
+  //console.log(matched);
 
   return (
     <div
@@ -226,34 +373,28 @@ function MatchNumbers() {
         height="100%"
         className="absolute z-10 pointer-events-none"
       >
-        {boxArray.map(
-          (box, index) => (
-    
-            (
-              animationKey[index] !== 0 &&
-              <motion.line
-                key={`line-${index}-${animationKey[index]}`}
-                x1={box?.x + box?.width}
-                y1={box?.y + box?.height / 2}
-                x2={
-                  ansboxArray[index] == null
-                    ? box?.x + box?.width
-                    : ansboxArray[index]?.x
-                }
-                y2={
-                  ansboxArray[index] == null
-                    ? box?.y + box?.height / 2
-                    : ansboxArray[index]?.y + ansboxArray[index]?.height / 2
-                }
-                stroke="black"
-                strokeWidth="3"
-                initial={{ pathLength: 0 }}
-                animate={{ pathLength: 1 }}
-                transition={{ duration: 1 }}
-              />
-            )
-          )
-        )}
+        {boxArray.map((box, index) => (
+          <motion.line
+            key={`line-${index}-${animationKey[index]}`}
+            x1={box?.x + box?.width}
+            y1={box?.y + box?.height / 2}
+            x2={
+              ansboxArray[index] == null
+                ? box?.x + box?.width
+                : ansboxArray[index]?.x
+            }
+            y2={
+              ansboxArray[index] == null
+                ? box?.y + box?.height / 2
+                : ansboxArray[index]?.y + ansboxArray[index]?.height / 2
+            }
+            stroke="black"
+            strokeWidth="3"
+            initial={{ pathLength: 0 }}
+            animate={{ pathLength: 1 }}
+            transition={{ duration: 1 }}
+          />
+        ))}
       </svg>
     </div>
   );
