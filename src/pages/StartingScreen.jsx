@@ -12,6 +12,12 @@ function Login() {
   const handleLogin = (path) => {
     navigate(path);
   };
+  const backgroundcolor = {
+    backgroundColor: "#F5F5F5",
+  };
+  const backgroundcolorbutton = {
+    backgroundColor: "#6153CC",
+  };
   return (
     <div className="flex flex-row h-screen font-sf-pro-rounded">
       <div className="flex flex-col gap-y-8  mr-72 ml-52   justify-center">
@@ -23,14 +29,16 @@ function Login() {
             type="text"
             placeholder="Place Your Name"
             className="bg-custom-grey rounded-md p-2 text-center"
+            style={backgroundcolor}
           />
           <h2>Class:</h2>
           <input
             type="text"
             placeholder="Place Your Name"
             className="bg-custom-grey rounded-md p-2 text-center"
+            style={backgroundcolor}
           />
-          <button className="bg-custom-purple py-2 rounded-md self-center w-full text-white">
+          <button className="bg-custom-purple py-2 rounded-md self-center w-full text-white" style={backgroundcolorbutton}>
             <div className="flex flex-row justify-center gap-2">
               <p>Let's Get Started!</p>
               <FaArrowRightLong className="text-2xl" />
@@ -46,6 +54,7 @@ function Login() {
               handleLogin('/login');
             }}
             className="bg-custom-purple py-2 rounded-md self-center w-full text-white"
+            style={backgroundcolorbutton}
           >
             <div className="flex flex-row justify-center gap-2">
               <p>Login with Roll No.</p>

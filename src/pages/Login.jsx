@@ -8,25 +8,36 @@ function Login() {
   const handleLogin = (path) => {
     navigate(path);
   };
+  const backgroundcolor = {
+    backgroundColor: "#F5F5F5",
+  };
+  const backgroundcolorbutton = {
+    backgroundColor: "#FFB507",
+  };
+  const textcolor = {
+    color: "#FFB507",
+  };
   return (
     <div className="flex flex-row h-screen font-sf-pro-rounded">
       <div className="flex flex-col gap-y-8  mr-72 ml-40 justify-center">
-        <h1 className="text-5xl text-custom-yellow">Welcome!</h1>
-        <p className="text-2xl text-custom-yellow">Login</p>
+        <h1 className="text-5xl text-custom-yellow" style={textcolor}>Welcome!</h1>
+        <p className="text-2xl text-custom-yellow"style={textcolor}>Login</p>
         <div className="flex flex-col gap-4 w-22vw">
           <h2>Name:</h2>
           <input
             type="text"
             placeholder="Place Your Name"
             className="bg-custom-grey rounded-md p-2 text-center"
+            style={backgroundcolor}
           />
           <h2>Roll No:</h2>
           <input
             type="text"
             placeholder="Place Your Roll No"
             className="bg-custom-grey rounded-md p-2 text-center"
+            style={backgroundcolor}
           />
-          <button className="bg-custom-yellow py-2 rounded-md self-center w-full text-black">
+          <button className="bg-custom-yellow py-2 rounded-md self-center w-full text-black " style={backgroundcolorbutton}>
             <div className="flex flex-row justify-center gap-2">
               <p>Let's Get Started!</p>
               <FaArrowRightLong className="text-2xl" />
@@ -42,7 +53,8 @@ function Login() {
             <p>Didn't have a Account?</p>
             <a
               onClick={() => handleLogin("/register")}
-              className="text-custom-yellow hover:text-yellow-300 cursor-pointer"
+              className="text-yellow-500 hover:text-yellow-300 cursor-pointer"
+              
             >
               Register Now
             </a>
