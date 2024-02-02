@@ -16,7 +16,7 @@ function Background() {
   };
 
   return (
-    <div className=''>
+    <div>
       <div className='flex flex-row justify-between gap-2 h-screen items-end'>
         <div className='flex flex-col gap-2 justify-center my-auto h-1/2 w-24 bg-orange-600 rounded-tr-3xl rounded-br-3xl'>
           {handlePrev && (
