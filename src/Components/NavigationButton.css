@@ -1,9 +1,13 @@
 .navigation_button {
   display: flex;
-  margin-top: 7vh;
+  margin-top: 5vh;
   justify-content: space-between;
 }
-
+@media screen and (min-height:750px){
+  .navigation_button {
+    margin-top: 8vh;
+  }
+}
 .navigation_button button {
   padding: 20px 33px;
   border-radius: 10px;

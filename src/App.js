@@ -14,13 +14,9 @@ import Register from "./pages/Register";
 import Login from "./pages/Login";
 import SetAvatarGuest from "./pages/SetAvatarGuest";
 import SetAvatarRegister from "./pages/SetAvatarRegister";
-import MatchNumbers from "./pages/MatchNumbers";
 import Instructions from "./pages/Instructions";
 import Dashboard from "./pages/Dashboard";
-
 import ShowAvatars from "./Components/dashboard/ShowAvatars";
-
-import SmallestNumber from "./pages/SmallestNumber";
 import AllAnswers from "./Components/dashboard/AllAnswers";
 
 const App = () => {
