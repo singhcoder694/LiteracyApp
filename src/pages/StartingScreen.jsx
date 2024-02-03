@@ -21,7 +21,8 @@ function Login() {
   };
   const [name, setName] = useState("");
   const [className, setClassName] = useState("");
-  const [formError, setFormError] = useState(null);
+  const [formError, setFormError] = useState(""
+  );
 
   const handleSubmission = async (e) => {
     console.log(name, className);
@@ -32,16 +33,18 @@ function Login() {
     }
 
     const { data, error } = await supabase
-      .from("Guest Login")
+      .from("GL")
       .insert([{ name , className}]);
     if (error) {
       console.log(error);
       setFormError("An error occured while submitting the form");
       return;
     }
-    if(data){
+    if(!error){
       console.log(data);
-      setFormError(null);
+      setFormError("");
+      console.log("Data Inserted");
+      navigate("/instructions");
     }
   };
 
