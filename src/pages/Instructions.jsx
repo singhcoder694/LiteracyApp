@@ -1,8 +1,15 @@
 import React from "react";
 import "./Instructions.css";
 import gudda from "../assets/images/Gudda.jpg";
+import { FaArrowRightLong } from "react-icons/fa6";
+import { useUser } from '../context/UserContext';
+import { useNavigate } from "react-router-dom";
 
 export default function Instructions() {
+  const { userName } = useUser();
+  const navigate = useNavigate();
+  const handleStart = () => {
+    navigate('/background')}
   return (
     <div className="instructions-container">
       <div className="instructions-white-half-part">
@@ -39,16 +46,22 @@ export default function Instructions() {
             </p>
           </div>
           <div className="instruction-button">
-            <button>Start Test -></button>
+            <button onClick={()=>handleStart()}>
+              <div className="flex flex-row gap-2">
+                <p>Start here</p>
+                <FaArrowRightLong className="self-center text-xl"/>
+              </div>
+            </button>
           </div>
         </div>
       </div>
       <div className="instructions-colored-half-part">
+        <p>Hello {userName}!</p>
         <p>
-          Hello (name)!
+          {" "}
+          Read the instructions carefully before attempting the test. All the
+          best!
         </p>
-        <p> Read the instructions carefully before attempting the
-          test. All the best!</p>
         <img src={gudda} alt="Gudda" className="instruction-gudda" />
       </div>
     </div>
