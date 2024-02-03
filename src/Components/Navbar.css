@@ -1,0 +1,22 @@
+.navbar-container{
+    height: 90px;
+    max-height: 120px;
+}
+.navbar-bar{
+    height: 90px;
+    width: 100vw;
+    max-height: 120px;
+}
+.bars{
+    position: relative;
+    top:-110px;
+    transform: scale(.6);
+    left: -195px;
+    display: flex;
+}
+.bars img{
+    margin-left:8vw;
+}
+.bars:nth-child(1){
+    margin-left: 0px;
+}

@@ -1,8 +1,10 @@
 .background-container {
   display: flex;
   flex-direction: row;
-  justify-content: space-evenly;
-  height: 100vh;
+  height: 50vh;
+  align-items: center;
+  width:100vw;
+  margin-top: 15vh;
 }
 
 .prev-button {
@@ -10,17 +12,14 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  position: absolute;
-  top: 50%;
-  left: 0;
-  transform: translateY(-50%);
-  width: 5%;
-  height: 50%;
+  position: relative;
   background-color: #f62d33;
   cursor: pointer;
   transition: background-color 0.3s;
   border-top-right-radius: 10px;
   border-bottom-right-radius: 10px;
+  height: 100%;
+  right:0px;
 }
 
 .prev-button button {
@@ -47,17 +46,13 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  position: absolute;
-  top: 50%;
-  right: 0;
-  transform: translateY(-50%);
-  width: 5%;
-  height: 50%;
-  background-color: #f62d33; /* Choose your desired color */
+  position: relative;
+  background-color: #f62d33;
   cursor: pointer;
   transition: background-color 0.3s;
-  border-top-left-radius: 10px;
-  border-bottom-left-radius: 10px;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+  height: 100%;
 }
 
 .next-button button {
@@ -69,22 +64,23 @@
   cursor: pointer;
 }
 
-.component-conntainer {
+.component-container {
   width: 62%;
 }
 .mascot-contaier {
-  width: 25%;
+  position: relative;
+  height: 100%;
   display: flex;
+  justify-content: center;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  margin-left: -3%;
 }
-
-.mascot-contaier img {
-  height: 40%;
+.instruction-gudda{
+    position: relative;
+    height:85%;
+    object-fit: contain;
 }
-
-.mascot-contaier p {
+.mascot-contaier p{
   text-align: center;
+  font-weight: 500;
 }
