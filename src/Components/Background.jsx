@@ -19,7 +19,7 @@ export default function Background() {
           <IoIosArrowBack className="back-icon" />
           <button>Prev</button>
         </div>
-        <FillInTheBlanks/>
+        <MatchNumbers/>
       {/* <SmallestNumber /> */}
       <div className="mascot-contaier">
         <p>Click on the button having the smallest value.</p>

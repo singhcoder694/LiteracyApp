@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect, useLayoutEffect } from "react";
 import "./Match.css";
 
-import { motion } from "framer-motion";
+import { motion, spring } from "framer-motion";
 
 function MatchNumbers() {
   const [colorarr, setColorArr] = useState([
@@ -30,6 +30,8 @@ function MatchNumbers() {
     [3, -1],
     [4, -1],
   ]);
+  const svgRef = useRef(null);
+  const [svgBox, setSvgBox] = useState(null);
 
   const [animationKey, setAnimationKey] = useState([0, 0, 0, 0]);
   const [animationLoaded, setAnimationLoaded] = useState([
@@ -70,7 +72,40 @@ function MatchNumbers() {
     setAboxArray(
       aboxRefs.current.map((ref) => ref.current.getBoundingClientRect())
     );
+
+    setSvgBox(svgRef.current.getBoundingClientRect());
+    
+
+
   }, []);
+
+  useEffect(() => {
+    if (svgBox) {
+      setBoxArray(
+        qboxRefs.current.map((ref) => {
+          const rect = ref.current.getBoundingClientRect();
+          return {
+            x: rect.left - svgBox.left,
+            y: rect.top - svgBox.top,
+            width: rect.width,
+            height: rect.height,
+          };
+        })
+      );
+      setAboxArray(
+        aboxRefs.current.map((ref) => {
+          const rect = ref.current.getBoundingClientRect();
+          return {
+            x: rect.left - svgBox.left,
+            y: rect.top - svgBox.top,
+            width: rect.width,
+            height: rect.height,
+          };
+        })
+      );
+    }
+  }, [svgBox]); // Make sure to recalculate when svgBox changes
+  
 
   const [ansboxArray, setAnsboxArray] = useState([null, null, null, null]);
 
@@ -281,7 +316,7 @@ function MatchNumbers() {
     }
   };
 
-  //console.log(matched);
+  
 
   return (
     <div className="smallest_number_container">
@@ -361,14 +396,19 @@ function MatchNumbers() {
         {/* </div> */}
       </div>
       <svg
-        width="100%"
-        height="100%"
+       width='100%'
+        height='100%'
         className="absolute z-10 pointer-events-none"
+        ref={svgRef}
+        viewBox= {`0 0 ${svgBox?.width} ${svgBox?.height}`}
+
+      
       >
+        
         {boxArray.map((box, index) => (
           <motion.line
             key={`line-${index}-${animationKey[index]}`}
-            x1={box?.x + box?.width}
+            x1={box?.x + box?.width }
             y1={box?.y + box?.height / 2}
             x2={
               ansboxArray[index] == null
@@ -384,7 +424,8 @@ function MatchNumbers() {
             strokeWidth="3"
             initial={{ pathLength: 0 }}
             animate={{ pathLength: 1 }}
-            transition={{ duration: 1 }}
+            transition={{ duration: 0.8, type: "tween" }}
+           
           />
         ))}
       </svg>
