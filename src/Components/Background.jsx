@@ -2,7 +2,7 @@ import react, { useState } from "react";
 import "./Background.css";
 import "./NavigationButton.css";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
-import gudda from "../assets/images/Gudda.jpg";
+import gudda from "../assets/images/gudda.png";
 import React from "react";
 import SmallestNumber from "../pages/SmallestNumber";
 import Navbar from "./Navbar";
@@ -65,7 +65,11 @@ export default function Background() {
             {questions[1]?<MatchNumbers />:null}
             {questions[2]?<FillInTheBlanks />:null}
         <div className="mascot-contaier">
-          <p>Click on the button having the smallest value.</p>
+          <p>
+          {questions[0]?"Click on the button having the smallest value.":null}
+            {questions[1]?"Click on the boxes on left to select it then click the box on the right to match it with the selected box.":null}
+            {questions[2]?"Enter the value on the right side fields after equals (=) sign.":null}
+          </p>
           <img src={gudda} alt="Gudda" className="instruction-gudda" />
         </div>
           <div className="next-button nav-button-icon" onClick={clicked_next}>
@@ -76,9 +80,9 @@ export default function Background() {
       <div className="navigation_button">
       <div style={{width:"8%"}}></div>
       <div className="options-button-container">
-        <button onClick={showFirst}>First</button>
-        <button onClick={showSecond}>Second</button>
-        <button onClick={showThird}>Third</button>
+        <button onClick={showFirst}>Smallest Number</button>
+        <button onClick={showSecond}>Match the Column</button>
+        <button onClick={showThird}>Fill In the Blanks</button>
       </div>
       <div className="submit-button-container">
         <button>Submit</button>
