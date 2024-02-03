@@ -57,7 +57,7 @@ export default function Instructions() {
         </div>
       </div>
       <div className="instructions-colored-half-part">
-        <p>Hello {userName}!</p>
+        <p>Hello <span style={{fontWeight:"600"}}>{userName}!</span></p>
         <p>
           {" "}
           Read the instructions carefully before attempting the test. All the

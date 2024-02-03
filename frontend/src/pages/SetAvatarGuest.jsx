@@ -7,6 +7,12 @@ import { AiOutlineArrowRight } from 'react-icons/ai';
 import { BiArrowBack } from 'react-icons/bi';
 import dashboardSticker from '../assets/dashboardSticker.png';
 import { useUser } from '../context/UserContext';
+import avatar1 from '../assets/avatars/Multiavatar-aditya.png';
+import avatar2 from '../assets/avatars/Multiavatar-anuk.png';
+import avatar3 from '../assets/avatars/Multiavatar-anushka.png';
+import avatar4 from '../assets/avatars/Multiavatar-dave.png';
+import Spline from '@splinetool/react-spline';
+
 
 export default function SetAvatar() {
 
@@ -17,7 +23,7 @@ export default function SetAvatar() {
 
   // const [avatars, setAvatars] = useState([]);
   const [selectedAvatar, setSelectedAvatar] = useState(undefined);
-  const avatars = [dashboardSticker,dashboardSticker,dashboardSticker,dashboardSticker]
+  const avatars = [avatar1, avatar2, avatar3, avatar4];
 
   const toastOptions = {
         position: "bottom-right",
@@ -119,7 +125,11 @@ export default function SetAvatar() {
       </AvatarContainer>
 
       <ChildContainer>
-        {/* ... (content for ChildContainer) */}
+        <div className="mascot-container">
+          <div className="mascot-img">
+          <Spline scale="0.5" scene="https://prod.spline.design/91ewobYvTm8z5Ve9/scene.splinecode" />
+          </div>
+        </div>
       </ChildContainer>
 
       
@@ -135,13 +145,35 @@ const Container = styled.div`
 `;
 
 const ChildContainer = styled.div`
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+height: 100vh;
+width: 50%; 
+background: linear-gradient(180deg, #6153CC 0%, #C1B4FF 100%);
+.mascot-container {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 100vh;
-  width: 50%; 
-  background: linear-gradient(to bottom, #6153CC, #C1B4FF);
+  width: 50%;
+  .mascot-dialog{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    h3 {
+      color: white;
+      font-size: 20px;
+      font-weight: 500;
+      text-align: center;
+    }
+    
+  }
+  .mascot-img {
+    width:35vw;
+    height: 90vh;}
+}
 `;
 
 const AvatarContainer = styled.div`
