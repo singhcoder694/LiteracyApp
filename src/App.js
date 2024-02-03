@@ -28,8 +28,8 @@ const App = () => {
           <Routes>
             
 
-            <Route path="/smallestnumbers" element={<Background />} />
-             <Route path='/' element={<StartingScreen />} />
+            <Route path="/questions" element={<Background />} />
+            <Route path='/' element={<StartingScreen />} />
             <Route path='/register' element={<Register />} />
             <Route path='/login' element={<Login />} />
             <Route path='/guestAvatar' element={<SetAvatarGuest />} />

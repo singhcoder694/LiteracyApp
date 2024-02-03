@@ -1,10 +1,12 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Box from "../Components/Box";
 import { useState } from "react";
 import {
   QuestionProvider,
   useQuestionContext,
 } from "../context/QuestionContext";
+import AOS from "aos";
+import "aos/dist/aos.css";
 export default function FillInTheBlanks() {
   const { questionStatus, updateQuestionStatus } = useQuestionContext();
   const Expressions = [
@@ -14,9 +16,15 @@ export default function FillInTheBlanks() {
     [3, "8+9", 17],
   ];
   const [inputValues, setInputValues] = useState([null, null, null, null]);
-
+  useEffect(()=>{
+    AOS.init({
+        duration:500
+    });
+},[]);
   const handleInputChange = (index) => (event) => {
-    if (!Number.isNaN(event.target.value)) console.log("Not a number");
+    if (isNaN(event.target.value)) {
+      return;
+    };
     const newInputValues = [...inputValues];
     newInputValues[index] = event.target.value;
     updateQuestionStatus(index + 7, true, newInputValues[index], "answer");
@@ -26,7 +34,7 @@ export default function FillInTheBlanks() {
   return (
     <>
       <QuestionProvider>
-        <div className="smallest_number_container">
+        <div className="smallest_number_container" data-aos="zoom-in">
           <div
             className=" flex  justify-around my-4 h-full"
             style={{ marginInline: "5%" }}
