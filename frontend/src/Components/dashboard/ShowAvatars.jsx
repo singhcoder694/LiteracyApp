@@ -132,14 +132,14 @@ export default function ShowAvatars() {
         </button>
       </div>
       <div className="w-full relative" style={{ 
-        background: 'linear-gradient(180deg, #6153CC 0%, #FFE99E 100%)',
+        background: 'transparent',
         backgroundSize: 'cover',
         backgroundPosition: 'right-top', // Adjust this value as needed
       }}>
         <div className="bg-white opacity-75 h-32 mt-15vh w-1/3 h-4/5 rounded-3xl mx-20 grid grid-cols-1 place-content-center gap-y-20">
           {renderAvatars()}
         </div>
-        <div className="absolute top-0 left-0 w-full h-full" style={{ backgroundImage: `url(${rocket})`, backgroundSize: 'cover',backgroundPosition:'center' }}></div>
+        {/* <div className="absolute top-0 left-0 w-full h-full" style={{ backgroundImage: `url(${rocket})`, backgroundSize: 'cover',backgroundPosition:'center' }}></div> */}
       </div>
     </div>
   );

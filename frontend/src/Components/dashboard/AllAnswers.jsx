@@ -4,12 +4,17 @@ import { FaArrowUp } from "react-icons/fa";
 import WrongAnswer from "../answers/WrongAnswer";
 import CorrectAnswer from "../answers/CorrectAnswer";
 
-export default function AllAnswers() {
+export default function AllAnswers({setAllAnswersVisible}) {
+
+  const handleBackToDashboard = () => {
+    setAllAnswersVisible(false);
+  }
+
   return (
     <Container>
       <div className="all-ans-container">
         <div className="back-btn">
-          <button>
+          <button onClick={handleBackToDashboard}>
             <div className="back-arrow">
               <FaArrowUp size={20} color="black" />
             </div>
