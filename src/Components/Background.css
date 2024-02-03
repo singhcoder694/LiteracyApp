@@ -17,10 +17,9 @@
   background-color: #f62d33;
   cursor: pointer;
   transition: background-color 0.3s;
-
   height: 100%;
-  width: 8%;
-  max-width: 80px;
+  width: 9%;
+  max-width: 90px;
 }
 
 .prev-button {
@@ -70,14 +69,16 @@
   position: relative;
   height: 100%;
   display: flex;
-  justify-content: center;
+  justify-content: flex-end;
   flex-direction: column;
   align-items: center;
+  width: 30%;
 }
 .instruction-gudda {
   position: relative;
-  height: 70%;
+  height: 65%;
   object-fit: contain;
+  width: auto;
 }
 .mascot-contaier p {
   text-align: center;
