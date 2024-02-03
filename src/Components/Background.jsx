@@ -76,9 +76,9 @@ export default function Background() {
       <div className="navigation_button">
       <div style={{width:"8%"}}></div>
       <div className="options-button-container">
-        <button onClick={showFirst}>First</button>
-        <button onClick={showSecond}>Second</button>
-        <button onClick={showThird}>Third</button>
+        <button onClick={showFirst}>Smallest Number</button>
+        <button onClick={showSecond}>Match the Column</button>
+        <button onClick={showThird}>Fill In the Blanks</button>
       </div>
       <div className="submit-button-container">
         <button>Submit</button>

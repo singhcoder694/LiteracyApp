@@ -31,15 +31,13 @@ export default function FillInTheBlanks() {
     <>
       <QuestionProvider>
       <div className="smallest_number_container">
-        {/* <div className="bg-white w-7/12 h-5/6 p-10 px-20 z-10   mt-16 rounded-md shadow-custom ">
-          <h2 className=" text-3xl font-semibold font-custom">Fill in the FillInTheBlanks:</h2> */}
-        <div className=" flex  justify-between mt-4">
+        <div className=" flex  justify-around my-4 h-full" style={{marginInline:"5%"}}>
           <div className="flex flex-col justify-around">
             {Expressions.map((expression) => {
               return (
                 <Box
                   children={
-                    <div className=" font-custom font-semibold text-2xl">
+                    <div className=" font-custom font-semibold text-lg">
                       {expression}
                     </div>
                   }
@@ -58,10 +56,11 @@ export default function FillInTheBlanks() {
                 <Box
                   children={
                     <input
-                      className=" w-full h-full rounded-lg bg-transparent font-custom font-semibold text-2xl text-center "
+                      className=" w-full h-full rounded-lg bg-transparent font-normal text-lg text-center "
                       style={{ border: "none" }}
                       value={inputValues[expression[0]]}
                       onChange={handleInputChange(expression[0])}
+                      placeholder="Enter Your Answer"
                     ></input>
                   }
                 />
