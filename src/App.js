@@ -16,6 +16,7 @@ import SetAvatarGuest from "./pages/SetAvatarGuest";
 import SetAvatarRegister from "./pages/SetAvatarRegister";
 import MatchNumbers from "./pages/MatchNumbers";
 import Instructions from "./pages/Instructions";
+import SmallestNumber from "./pages/SmallestNumber";
 
 const App = () => {
   return (
@@ -25,7 +26,7 @@ const App = () => {
           <Routes>
             
 
-            <Route path="/matchthecolumn" element={<MatchNumbers />} />
+            <Route path="/smallestnumbers" element={<Background />} />
              <Route path='/' element={<StartingScreen />} />
             <Route path='/register' element={<Register />} />
             <Route path='/login' element={<Login />} />
