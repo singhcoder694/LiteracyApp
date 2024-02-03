@@ -16,11 +16,8 @@ import SetAvatarGuest from "./pages/SetAvatarGuest";
 import SetAvatarRegister from "./pages/SetAvatarRegister";
 import MatchNumbers from "./pages/MatchNumbers";
 import Instructions from "./pages/Instructions";
-<<<<<<< HEAD
 import Dashboard from "./pages/Dashboard";
-=======
 import SmallestNumber from "./pages/SmallestNumber";
->>>>>>> 19dc1721132fce3242fbeff9b81e7cffadf06646
 
 const App = () => {
   return (
