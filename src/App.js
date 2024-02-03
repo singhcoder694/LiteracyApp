@@ -14,6 +14,7 @@ import Register from "./pages/Register";
 import Login from "./pages/Login";
 import SetAvatar from "./pages/SetAvatar";
 import MatchNumbers from "./pages/MatchNumbers";
+import Instructions from "./pages/Instructions";
 
 const App = () => {
   return (
@@ -21,17 +22,15 @@ const App = () => {
       <Router>
         <NavigationProvider>
           <Routes>
-            <Route
-              path="/"
-              element={<Background />}
-            ></Route>
+            
 
             <Route path="/matchthecolumn" element={<MatchNumbers />} />
-             <Route path='/guest' element={<StartingScreen />} />
+             <Route path='/' element={<StartingScreen />} />
             <Route path='/register' element={<Register />} />
             <Route path='/login' element={<Login />} />
             <Route path='/avatar' element={<SetAvatar />} />
             <Route path="/background" element={<Background />} />
+            <Route path ='/instructions' element={<Instructions />} />
           </Routes>
         </NavigationProvider>
       </Router>
