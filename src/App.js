@@ -16,6 +16,7 @@ import SetAvatarGuest from "./pages/SetAvatarGuest";
 import SetAvatarRegister from "./pages/SetAvatarRegister";
 import MatchNumbers from "./pages/MatchNumbers";
 import Instructions from "./pages/Instructions";
+import Dashboard from "./pages/Dashboard";
 import SmallestNumber from "./pages/SmallestNumber";
 
 const App = () => {
@@ -34,6 +35,7 @@ const App = () => {
             <Route path='/registerAvatar' element={<SetAvatarRegister />} />
             <Route path="/background" element={<Background />} />
             <Route path ='/instructions' element={<Instructions />} />
+            <Route path='/dashboard' element={<Dashboard />} />
           </Routes>
         </NavigationProvider>
       </Router>

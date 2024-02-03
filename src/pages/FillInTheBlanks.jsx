@@ -3,7 +3,7 @@ import Box from "../Components/Box";
 import { useState } from "react";
 import { QuestionProvider, useQuestionContext } from "../context/QuestionContext";
 export default function FillInTheBlanks() {
-  const { updateQuestionStatus } = useQuestionContext();
+  const { questionStatus ,updateQuestionStatus } = useQuestionContext();
   const Expressions = [
     [0, "2+3", 5],
     [1, "4+5", 9],
@@ -16,14 +16,7 @@ export default function FillInTheBlanks() {
     if (!Number.isNaN(event.target.value)) console.log("Not a number");
     const newInputValues = [...inputValues];
     newInputValues[index] = event.target.value;
-    for (let i=0;i<newInputValues.length;i++){
-      if (newInputValues[i]===null || newInputValues[i]===""){
-        updateQuestionStatus(i+6, false);
-      }
-      else{
-        updateQuestionStatus(i+6, true);
-      }
-    }
+    updateQuestionStatus(index+7, true, newInputValues[index], "answer");
     setInputValues(newInputValues);
   };
 
@@ -51,14 +44,14 @@ export default function FillInTheBlanks() {
             })}
           </div>
           <form className="flex flex-col justify-around ">
-            {Expressions.map((expression) => {
+            {Expressions.map((expression,index) => {
               return (
                 <Box
                   children={
                     <input
                       className=" w-full h-full rounded-lg bg-transparent font-normal text-lg text-center "
                       style={{ border: "none" }}
-                      value={inputValues[expression[0]]}
+                      value={questionStatus[index+7][1]}
                       onChange={handleInputChange(expression[0])}
                       placeholder="Enter Your Answer"
                     ></input>
