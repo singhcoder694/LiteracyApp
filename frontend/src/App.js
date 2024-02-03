@@ -11,10 +11,12 @@ import Instructions from "./pages/Instructions";
 import Dashboard from "./pages/Dashboard";
 import ShowAvatars from "./Components/dashboard/ShowAvatars";
 import AllAnswers from "./Components/dashboard/AllAnswers";
+import { QuestionProvider } from "./context/QuestionContext";
 
 const App = () => {
   return (
     <main className="main-bg">
+      <QuestionProvider >
       <Router>
         <NavigationProvider>
           <Routes>
@@ -32,6 +34,7 @@ const App = () => {
           </Routes>
         </NavigationProvider>
       </Router>
+      </QuestionProvider>
     </main>
   );
 };
