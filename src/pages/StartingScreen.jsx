@@ -2,15 +2,19 @@ import React from "react";
 import Spline from "@splinetool/react-spline";
 import { FaArrowRightLong } from "react-icons/fa6"; // Importing with react-icons
 import { useNavigate } from "react-router-dom";
-
 function Login() {
   const customGradientStyle = {
     backgroundImage: "linear-gradient(180deg, #6153CC 0%, #D0C6FF 100%)",
   };
   const navigate = useNavigate();
-
   const handleLogin = (path) => {
     navigate(path);
+  };
+  const backgroundcolor = {
+    backgroundColor: "#F5F5F5",
+  };
+  const backgroundcolorbutton = {
+    backgroundColor: "#6153CC",
   };
   return (
     <div className="flex flex-row h-screen font-sf-pro-rounded">
@@ -23,14 +27,19 @@ function Login() {
             type="text"
             placeholder="Place Your Name"
             className="bg-custom-grey rounded-md p-2 text-center"
+            style={backgroundcolor}
           />
           <h2>Class:</h2>
           <input
             type="text"
             placeholder="Place Your Name"
             className="bg-custom-grey rounded-md p-2 text-center"
+            style={backgroundcolor}
           />
-          <button className="bg-custom-purple py-2 rounded-md self-center w-full text-white">
+          <button
+            className="bg-custom-purple py-2 rounded-md self-center w-full text-white"
+            style={backgroundcolorbutton}
+          >
             <div className="flex flex-row justify-center gap-2">
               <p>Let's Get Started!</p>
               <FaArrowRightLong className="text-2xl" />
@@ -46,9 +55,11 @@ function Login() {
               handleLogin("/login");
             }}
             className="bg-custom-purple py-2 rounded-md self-center w-full text-white"
+            style={backgroundcolorbutton}
           >
             <div className="flex flex-row justify-center gap-2">
               <p>Login with Roll No.</p>
+
               <FaArrowRightLong className="text-2xl" />
             </div>
           </button>
@@ -68,5 +79,4 @@ function Login() {
     </div>
   );
 }
-
 export default Login;
