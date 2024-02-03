@@ -8,11 +8,13 @@ import { setAvatarRoute } from "../utils/APIRoutes";
 import { Buffer } from "buffer";
 import { AiOutlineArrowRight } from 'react-icons/ai';
 import { BiArrowBack } from 'react-icons/bi';
+import { useUser } from '../context/UserContext';
 
 export default function SetAvatar() {
 
   const api = "https://api.multiavatar.com/45678945";
   const navigate = useNavigate();
+  const {updateAvatar} = useUser()
 
   const [avatars, setAvatars] = useState([]);
   const [selectedAvatar, setSelectedAvatar] = useState(undefined);
@@ -38,6 +40,7 @@ export default function SetAvatar() {
         user.isAvatarImageSet = true;
         user.avatarImage = data.image;
         localStorage.setItem("chat-app-user", JSON.stringify(user));
+        updateAvatar(data.image);
         navigate("/");
       } else {
         toast.error("Error setting avatar. Please try again.", toastOptions);
