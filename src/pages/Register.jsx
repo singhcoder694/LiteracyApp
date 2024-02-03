@@ -9,8 +9,8 @@ function Register() {
   const navigate = useNavigate();
   
   const handleLogin = (path) => {
-    navigate(path);
-  };
+  navigate(path, { state: { currentPage: "register" } });
+};
   const gradientStyle = {
     background: "linear-gradient(180deg, #F03 0%, #FA9596 100%)",
     height: "100vh", // Adjust the height as needed
@@ -49,7 +49,7 @@ function Register() {
       console.log(data);
       setFormError(null);
       // updateUser(name);
-      navigate("/instructions");
+      navigate("/registerAvatar");
     }
     
   };
@@ -111,6 +111,16 @@ function Register() {
               style={textcolor}
             >
               Login
+            </a>
+          </div>
+          <div className="flex flex-row gap-1">
+            <p>Give test without login?</p>
+            <a
+              onClick={() => handleLogin("/guest")}
+              className="text-custom-red hover:text-red-400 cursor-pointer"
+              style={textcolor}
+            >
+              Guest
             </a>
           </div>
         </div>

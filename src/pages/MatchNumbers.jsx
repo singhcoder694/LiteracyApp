@@ -408,17 +408,20 @@ function MatchNumbers() {
         {boxArray.map((box, index) => (
           <motion.line
             key={`line-${index}-${animationKey[index]}`}
-            x1={box?.x + box?.width }
-            y1={box?.y + box?.height / 2}
-            x2={
+
+            x1={`${box?.x + box?.width}` }
+            y1={`${box?.y + box?.height / 2}`}
+            x2={`${
               ansboxArray[index] == null
                 ? box?.x + box?.width
                 : ansboxArray[index]?.x
+            }`
             }
-            y2={
+            y2={`${
               ansboxArray[index] == null
                 ? box?.y + box?.height / 2
                 : ansboxArray[index]?.y + ansboxArray[index]?.height / 2
+            }`
             }
             stroke="black"
             strokeWidth="3"

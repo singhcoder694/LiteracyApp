@@ -94,6 +94,15 @@ function Login() {
               Register Now
             </a>
           </div>
+          <div className="flex flex-row gap-1">
+            <p>Give test without login?</p>
+            <a
+              onClick={() => handleLogin("/guest")}
+              className="text-yellow-500 hover:text-yellow-300 cursor-pointer"
+            >
+              Guest
+            </a>
+          </div>
         </div>
       </div>
       <div style={customGradientStyle} className="w-full">
