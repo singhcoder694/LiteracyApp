@@ -304,6 +304,9 @@ function MatchNumbers() {
           setMatched(newmatched);
           setQuesSelected(false);
           setAnsSelected(false);
+          questionStatus[temp+2][0] = false;
+          questionStatus[temp+2][1] = null;
+          questionStatus[temp+2][2] = null;
         }
 
         return;
@@ -343,7 +346,8 @@ function MatchNumbers() {
           return;
         }
       }
-      document.getElementById(
+      if (matched[1]){
+        document.getElementById(
         `${"Amatch" + matched[1]}`
       ).style.backgroundColor = "";
       document.getElementById(`${"Amatch" + ind}`).style.backgroundColor =
@@ -368,7 +372,8 @@ function MatchNumbers() {
         let newState = [...prev];
         newState[matched[0] - 1] = newState[matched[0] - 1] + 1;
         return newState;
-      });
+      })
+    }
     }
     // if (matched[0] !== null && matched[1]!== null){
     //   console.log(questionStatus);
