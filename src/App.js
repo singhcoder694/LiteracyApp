@@ -9,10 +9,11 @@ import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { NavigationProvider } from "./context/NavigationContext";
 import Background from "./Components/Background";
-import StartingScreen from './pages/StartingScreen'
+import StartingScreen from './pages/GuestLogin'
 import Register from "./pages/Register";
 import Login from "./pages/Login";
-import SetAvatar from "./pages/SetAvatar";
+import SetAvatarGuest from "./pages/SetAvatarGuest";
+import SetAvatarRegister from "./pages/SetAvatarRegister";
 import MatchNumbers from "./pages/MatchNumbers";
 
 const App = () => {
@@ -30,7 +31,8 @@ const App = () => {
              <Route path='/guest' element={<StartingScreen />} />
             <Route path='/register' element={<Register />} />
             <Route path='/login' element={<Login />} />
-            <Route path='/avatar' element={<SetAvatar />} />
+            <Route path='/guestAvatar' element={<SetAvatarGuest />} />
+            <Route path='/registerAvatar' element={<SetAvatarRegister />} />
             <Route path="/background" element={<Background />} />
           </Routes>
         </NavigationProvider>

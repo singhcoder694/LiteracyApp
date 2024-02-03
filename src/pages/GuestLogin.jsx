@@ -1,18 +1,20 @@
-import React from "react";
+import React, { useState } from "react";
 import Spline from "@splinetool/react-spline";
 import { FaArrowRightLong } from "react-icons/fa6"; // Importing with react-icons
 import { useNavigate } from "react-router-dom";
 
 
 
-function Login() {
+function GuestLogin() {
+
+  const [currentPage, setCurrentPage] = useState("guest");
+
   const customGradientStyle = {
     backgroundImage: "linear-gradient(180deg, #6153CC 0%, #D0C6FF 100%)",
   };
   const navigate = useNavigate();
-  const handleLogin = (path) => {
-    navigate(path);
-  };
+
+
   const backgroundcolor = {
     backgroundColor: "#F5F5F5",
   };
@@ -20,6 +22,15 @@ function Login() {
     backgroundColor: "#6153CC",
   };
   
+  const handleGuest = (path) => {
+  navigate(path, { state: { currentPage: "guest" } });
+};
+
+  const handleRegister = (path) => {
+    setCurrentPage("register"); // Set currentPage to "register" when navigating to the register page
+    navigate(path);
+  };
+
   return (
     <div className="flex flex-row h-screen font-sf-pro-rounded">
       <div className="flex flex-col gap-y-8  mr-72 ml-52   justify-center">
@@ -43,6 +54,7 @@ function Login() {
           <button
             className="bg-custom-purple py-2 rounded-md self-center w-full text-white"
             style={backgroundcolorbutton}
+            onClick={() => handleGuest("/guestAvatar")}
           >
             <div className="flex flex-row justify-center gap-2">
               <p>Let's Get Started!</p>
@@ -55,21 +67,18 @@ function Login() {
             <hr className="w-1/2 self-center"></hr>
           </div>
           <button
-            onClick={() => {
-              handleLogin("/login");
-            }}
+            onClick={() => handleGuest("/login")}
             className="bg-custom-purple py-2 rounded-md self-center w-full text-white"
             style={backgroundcolorbutton}
           >
             <div className="flex flex-row justify-center gap-2">
               <p>Login with Roll No.</p>
-
               <FaArrowRightLong className="text-2xl" />
             </div>
           </button>
           <div className="flex flex-row gap-1">
-            <p>Didn't have a Account?</p>
-            <a className="text-blue-600 hover:text-sky-400 cursor-pointer">
+            <p>Didn't have an Account?</p>
+            <a onClick={() => handleRegister("/register")} className="text-blue-600 hover:text-sky-400 cursor-pointer">
               Register Now
             </a>
           </div>
@@ -83,4 +92,4 @@ function Login() {
     </div>
   );
 }
-export default Login;
+export default GuestLogin;

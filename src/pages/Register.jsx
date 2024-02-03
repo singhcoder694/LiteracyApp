@@ -5,8 +5,8 @@ import Spline from "@splinetool/react-spline";
 function Register() {
   const navigate = useNavigate();
   const handleLogin = (path) => {
-    navigate(path);
-  };
+  navigate(path, { state: { currentPage: "register" } });
+};
   const gradientStyle = {
     background: 'linear-gradient(180deg, #F03 0%, #FA9596 100%)',
     height: '100vh', // Adjust the height as needed
@@ -55,6 +55,7 @@ function Register() {
           <button
             className="bg-custom-red py-2 rounded-md self-center w-full text-white"
             style={backgroundcolorbutton}
+            onClick={() => navigate("/registerAvatar")}
           >
             <div className="flex flex-row justify-center gap-2">
               <p>Let's Get Started!</p>
@@ -74,6 +75,16 @@ function Register() {
               style={textcolor}
             >
               Login
+            </a>
+          </div>
+          <div className="flex flex-row gap-1">
+            <p>Give test without login?</p>
+            <a
+              onClick={() => handleLogin("/guest")}
+              className="text-custom-red hover:text-red-400 cursor-pointer"
+              style={textcolor}
+            >
+              Guest
             </a>
           </div>
         </div>
