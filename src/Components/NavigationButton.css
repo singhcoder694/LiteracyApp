@@ -1,0 +1,12 @@
+.navigation_button{
+    display: flex;
+    margin:20px auto;
+    justify-content: center;
+}
+.navigation_button button{
+    padding:15px 30px;
+    border-radius: 10px;
+    margin:10px 20px;
+    font-family: "SF Pro Rounded";
+    border:1px solid #EDEDF6;
+}

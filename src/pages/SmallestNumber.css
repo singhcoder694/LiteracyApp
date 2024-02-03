@@ -1,0 +1,10 @@
+.smallest_number_container{
+    position: relative;
+    background-color: #FFC81B;
+    border-radius: 15px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin:0px 2% 0px 8%;
+}

@@ -1,0 +1,40 @@
+@font-face {
+    font-family: 'SF Pro Rounded';
+    src: url('../assets/Fonts/FontsFree-Net-SF-Pro-Rounded-Regular.ttf') format('woff2'),
+    /* Add additional font formats if needed, like .ttf or .otf */
+  }
+.number_section{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin: 10px 5px;
+    padding: 10px 30px;
+    box-sizing: border-box;
+    border-radius: 15px;
+}
+.number_section_parts{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin: 10px 20px;
+    box-sizing: border-box;
+    border-radius: 10px;
+    box-shadow: 0 0 15px 0 rgba(0,0,0,0.2);
+    transition: all 0.3s ease;
+    background-color: white;
+}
+.option_css{
+    padding:10px 35px;
+    border-radius: 10px;
+    background-color: #FFC81B;
+    margin:20px 30px;
+    box-shadow: 0 3px #CEAD00;
+    font-family: "SF Pro Rounded";
+}
+.parts{
+    width:50px;
+    font-weight: 600;
+    font-family: "SF Pro Rounded";
+}

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-
+import "./NumberSection.css";
 const NumberSection = ({ sectionLabel, buttonValues }) => {
   const [clickedIndex, setClickedIndex] = useState(null);
 
@@ -15,13 +15,13 @@ const NumberSection = ({ sectionLabel, buttonValues }) => {
   };
 
   return (
-    <div className="flex mt-4 items-center mb-12">
-      <span className="font-normal text-xl w-16"> {sectionLabel} </span>
-      <div className="flex items-center text-xl justify-around w-10/12 bg-white  p-8 rounded-xl ml-3 ">
+    <div className="number_section">
+      <span className="parts"> {sectionLabel} </span>
+      <div className="number_section_parts">
         {buttonValues.map((value, index) => (
           <button
             key={index}
-            className={`mx-4 w-24 h-12 rounded-md flex items-center justify-center shadow-custom ${
+            className={` option_css ${
               clickedIndex === index
                 ? "bg-yellow-200 border border-yellow-500 border-2"
                 : "bg-smallest-ques-button-clr"
