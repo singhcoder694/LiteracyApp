@@ -7,10 +7,10 @@ import supabase from "../config/supabseClient";
 import { useUser } from "../context/UserContext";
 function Register() {
   const navigate = useNavigate();
-  
+
   const handleLogin = (path) => {
-  navigate(path, { state: { currentPage: "register" } });
-};
+    navigate(path, { state: { currentPage: "register" } });
+  };
   const gradientStyle = {
     background: "linear-gradient(180deg, #F03 0%, #FA9596 100%)",
     height: "100vh", // Adjust the height as needed
@@ -26,20 +26,21 @@ function Register() {
   };
   const { updateUser } = useUser();
   const [name, setName] = useState("");
-  const [className, setClassName] = useState("");
+
   const [age, setAge] = useState("");
+  const [ageError, setAgeError] = useState("");
   const [formError, setFormError] = useState(null);
-  const handleSubmission =  (e) => {
-    
+  const [classValue, setClassValue] = useState("");
+  const [classError, setClassError] = useState("");
+
+  const handleSubmission = (e) => {
     e.preventDefault();
-   
-    if (!name || !className || !age) {
+
+    if (!name || !classValue || !age) {
       setFormError("Please fill out all the fields");
       return;
     }
-    const { data, error } =  supabase
-      .from("Register")
-      .insert([{ name, className, age }]);
+    const { data, error } = supabase.from("Register").insert([{ name }]);
     if (error) {
       console.log(error);
       setFormError("An error occured while submitting the form");
@@ -51,7 +52,35 @@ function Register() {
       // updateUser(name);
       navigate("/registerAvatar");
     }
-    
+  };
+
+  const handleClassChange = (e) => {
+    if (isNaN(e.target.value)) {
+      e.target.value = "";
+      setClassError("Class should be between 1 and 10");
+    }
+    if (e.target.value >= 1 && e.target.value <= 10) {
+      setClassValue(e.target.value);
+      setClassError("");
+    } else {
+      e.target.value = e.target.value.slice(0, 1);
+      setClassError("Class should be between 1 and 10");
+      setClassValue("")
+    }
+  };
+
+  const ageChange = (e) => {
+    if (isNaN(e.target.value)) {
+      setAgeError("Age should be a number");
+      return;
+    } else if (e.target.value >= 1 && e.target.value <= 20) {
+      setAge(e.target.value);
+      setAgeError("");
+    } else {
+      setAgeError("Are you 'kid-ing' me? Age should be between 1 and 20");
+      setAge("");
+      return;
+    }
   };
 
   return (
@@ -63,7 +92,7 @@ function Register() {
         <p className="text-2xl text-custom-red" style={textcolor}>
           Register
         </p>
-        <div className="flex flex-col gap-4 w-22vw">
+        <div className="flex flex-col gap-2 w-22vw">
           <h2>Name:</h2>
           <input
             type="text"
@@ -75,13 +104,16 @@ function Register() {
           />
           <h2>Class:</h2>
           <input
-            type="text"
-            placeholder="Place Enter Your Class"
+            type="text" // Set the type to text
+            placeholder="Enter your Class"
             className="bg-custom-grey rounded-md p-2 text-center"
             style={backgroundcolor}
-            value={className}
-            onChange={(e) => setClassName(e.target.value)}
+            onChange={handleClassChange}
+            inputMode="numeric" // Specify the input mode
+            pattern="[0-9]*" // Allow only numeric input
+            value={classValue}
           />
+          <p className="text-red-500">{classError}</p>
           <h2>Age:</h2>
           <input
             type="text"
@@ -89,8 +121,11 @@ function Register() {
             className="bg-custom-grey rounded-md p-2 text-center"
             style={backgroundcolor}
             value={age}
-            onChange={(e) => setAge(e.target.value)}
+            onChange={ageChange}
           />
+          <p className="text-red-600">{ageError}</p>
+
+          <div className="flex flex-col gap-4">
           <button
             className="bg-custom-red py-2 rounded-md self-center w-full text-white"
             style={backgroundcolorbutton}
@@ -123,6 +158,7 @@ function Register() {
               Guest
             </a>
           </div>
+        </div>
         </div>
       </div>
       <div style={gradientStyle} className="w-full">

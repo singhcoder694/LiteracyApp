@@ -1,10 +1,3 @@
-
-
-
-
-
-
-// App.js
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { NavigationProvider } from "./context/NavigationContext";
@@ -25,8 +18,6 @@ const App = () => {
       <Router>
         <NavigationProvider>
           <Routes>
-            
-
             <Route path="/questions" element={<Background />} />
             <Route path='/' element={<StartingScreen />} />
             <Route path='/register' element={<Register />} />
@@ -34,9 +25,9 @@ const App = () => {
             <Route path='/guestAvatar' element={<SetAvatarGuest />} />
             <Route path='/registerAvatar' element={<SetAvatarRegister />} />
             <Route path="/background" element={<Background />} />
-            <Route path ='/instructions' element={<Instructions />} />
+            <Route path='/instructions' element={<Instructions />} />
             <Route path='/dashboard' element={<Dashboard />} />
-            <Route path = '/showavatars' element={<ShowAvatars />} />
+            <Route path='/showavatars' element={<ShowAvatars />} />
             <Route path='/allAnswers' element={<AllAnswers />} />
           </Routes>
         </NavigationProvider>

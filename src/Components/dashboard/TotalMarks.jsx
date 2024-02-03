@@ -3,18 +3,37 @@ import styled from 'styled-components';
 import dashboardSticker from '../../assets/dashboardSticker.png';
 import showMarks from '../../assets/showMarks.png';
 import { useNavigate } from 'react-router-dom';
+import { useUser } from '../../context/UserContext';
 
 export default function TotalMarks() {
     const navigate = useNavigate();
     const handleShowAvatars = () => {
         navigate('/showavatars');
     }
+    const { updateAvatar } = useUser();
   return (
     <Container>
         <div className='dashboard-container'>
             <div className="options-container">
                 <div className="marks-container">
+                    <div className='details-marks-container'>
+                        <div className='profile-container'>
+                        <div>
+                        <img src={updateAvatar} alt="" />
+                        </div>
+                            
+                            <div className='student-credentials'>
+                            <h1>Hi Name</h1>
+                            <h3>Roll no. - 123456</h3>
+                            </div>
+                        </div>
+                    </div>
+                    <div className='total-marks'>
+                            <h3>Your Total Marks</h3>
+                            <h1>10/10</h1>
+                    </div>
                     <img src={showMarks} alt="show marks" />
+
                 </div>
                 <div className="options">
                     <div className="retry">
@@ -76,10 +95,36 @@ const Container = styled.div`
                 width: 100%;
                 align-items: flex-start;
                 position: relative;
+                .details-marks-container {
+                    position: absolute;   
+                    top: 5%;
+                    left: 5%;
+                    display: flex;
+                    flex-direction: column;
+                    gap: 2%;
+                    z-index: 3;
+                    .profile-container {
+                        display: flex;
+                        flex-direction: row;
+                        gap: 5rem;
+                        .student-credentials {
+                            display: flex;
+                            flex-direction: column;
+                            justify-content: flex-start;
+                            align-items: flex-start;
+                            line-height: 1; 
+                            h1 {
+                                font-size: 2rem;
+                                font-weight: 600;
+                            }
+                        }
+                    }
+                }
                 img {
                     position: absolute;
                     height: 100%;
                     border-radius: 10px;
+                    z-index: 2;
                 }
             }
             .options {

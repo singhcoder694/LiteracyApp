@@ -25,8 +25,10 @@ function Login() {
     color: "#FFB507",
   };
   const [name, setName] = useState("");
-  const [rollNo, setRollNo] = useState("");
+  
   const [formError, setFormError] = useState(null);
+  const [rollNo, setrollNo] = useState(""); // State to hold the input value
+  const [RollNoError, setRollNoError] = useState(""); // State to hold validation error message
 
   const handleSubmission = async (e) => {
     console.log(name, rollNo);
@@ -51,7 +53,16 @@ function Login() {
 
   }
 
-  
+  const handleRollNoChange = (e) => {
+    if (isNaN(e.target.value)) {
+      setRollNoError("Enter Numbers Only"); 
+      return;
+    }
+    else{
+      setrollNo(e.target.value);
+      setRollNoError("");
+    }
+  }; 
   return (
     <div className="flex flex-row h-screen font-sf-pro-rounded">
       <div className="flex flex-col gap-y-8  mr-72 ml-40 justify-center">
@@ -61,7 +72,7 @@ function Login() {
           <h2>Name:</h2>
           <input
             type="text"
-            placeholder="Place Your Name"
+            placeholder="Enter Your Name"
             className="bg-custom-grey rounded-md p-2 text-center"
             style={backgroundcolor}
             value={name}
@@ -70,19 +81,20 @@ function Login() {
           <h2>Roll No:</h2>
           <input
             type="text"
-            placeholder="Place Your Roll No"
+            placeholder="Enter your Roll No"
             className="bg-custom-grey rounded-md p-2 text-center"
             style={backgroundcolor}
             value={rollNo}
-            onChange={(e) => setRollNo(e.target.value)}
+            onChange={handleRollNoChange}
           />
+           <p className="text-red-500">{RollNoError}</p>
           <button className="bg-custom-yellow py-2 rounded-md self-center w-full text-black " style={backgroundcolorbutton} onClick={handleSubmission}>
             <div className="flex flex-row justify-center gap-2">
               <p>Let's Get Started!</p>
               <FaArrowRightLong className="text-2xl" />
             </div>
           </button>
-          {formError && <p>{formError}</p>}
+          {formError && <p className="text-red-500" > {formError}</p>}
           
           
           <div className="flex flex-row gap-1">
