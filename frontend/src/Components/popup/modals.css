@@ -1,0 +1,99 @@
+.modal_background{
+    position: fixed;
+    top:0px;
+    left:0px;
+    right:0px;
+    bottom: 0px;
+    z-index: 1;
+    backdrop-filter: blur(10px);
+}
+.modal{
+    position: fixed;
+    top:50%;
+    left:50%;
+    transform: translate(-50%,-50%);
+    background-color: #FFFFFF;
+    padding:1rem 2rem;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    border:5px solid #F62D33;
+}
+.evt_modal{
+    position: fixed;
+    top:50%;
+    left:50%;
+    transform: translate(-50%,-50%);
+    background-color: #20232F;
+    padding:1rem 2rem;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    border:1px solid white;
+    width:fit-content;
+}
+.modal .head{
+    text-align: center;
+    font-size:1.5rem;
+    font-family: "SF Pro Rounded";
+    color:black;
+    margin:10px auto 30px auto;
+}
+.modal .back_to_test{
+    padding:0.4rem 1.5rem;
+    color:black;
+    background-color: #FFC81B;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1.2rem;
+    font-family: "SF Pro Rounded";
+    font-weight: 600;
+    transition: all 0.3s ease-in-out;
+}
+.modal button{
+    border:none;
+}
+.modal .submit_test button{
+    padding:0.4rem 2.5rem;
+    border:3px solid #F62D33;
+    font-family: "SF Pro Rounded";
+    transition:all 0.3s ease-in-out;
+}
+.modal .submit_test{
+    transition:all 0.3s ease-in-out;
+}
+.modal button:hover{
+    transform: scale(1.1);
+}
+.answer{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+.evt_answer{
+    display: flex;
+    flex-direction: column;
+}
+.equal_sign{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color:white;
+    margin:20px 40px;
+    font-size: 2rem;
+}
+.error{
+    font-size: 1.5rem;
+    color:white;
+    line-height: 2rem;
+}
+.answer_box{
+    text-align: center;
+}
+.button_container{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    height: fit-content;
+}
