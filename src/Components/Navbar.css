@@ -16,7 +16,9 @@
 }
 .bars img{
     margin-left:8vw;
+    transition:all ease-in-out .5s;
 }
 .bars:nth-child(1){
     margin-left: 0px;
+    transition:all ease-in-out .5s;
 }

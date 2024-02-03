@@ -1,8 +1,9 @@
 import React from "react";
 import Box from "../Components/Box";
 import { useState } from "react";
-
+import { QuestionProvider, useQuestionContext } from "../context/QuestionContext";
 export default function FillInTheBlanks() {
+  const { updateQuestionStatus } = useQuestionContext();
   const Expressions = [
     [0, "2+3", 5],
     [1, "4+5", 9],
@@ -15,11 +16,20 @@ export default function FillInTheBlanks() {
     if (!Number.isNaN(event.target.value)) console.log("Not a number");
     const newInputValues = [...inputValues];
     newInputValues[index] = event.target.value;
+    for (let i=0;i<newInputValues.length;i++){
+      if (newInputValues[i]===null || newInputValues[i]===""){
+        updateQuestionStatus(i+6, false);
+      }
+      else{
+        updateQuestionStatus(i+6, true);
+      }
+    }
     setInputValues(newInputValues);
   };
 
   return (
     <>
+      <QuestionProvider>
       <div className="smallest_number_container">
         {/* <div className="bg-white w-7/12 h-5/6 p-10 px-20 z-10   mt-16 rounded-md shadow-custom ">
           <h2 className=" text-3xl font-semibold font-custom">Fill in the FillInTheBlanks:</h2> */}
@@ -61,6 +71,7 @@ export default function FillInTheBlanks() {
         </div>
         {/* </div> */}
       </div>
+      </QuestionProvider>
     </>
   );
 }
