@@ -46,9 +46,7 @@ function Register() {
       const response = await axios.post("https://literacyapp-backend.onrender.com/register", {
         name,
       });
-      console.log(response);
       updateRollNo(response.data.rollNo);
-      console.log(response.data.rollNo);
       navigate("/registerAvatar");
       updateUser(name);
     } catch (error) {

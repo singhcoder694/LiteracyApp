@@ -29,7 +29,6 @@ export default function TotalMarks({  setAllAnswersVisible  }) {
 
   useEffect(() => {
     let cnt = 0;
-    console.log(questionStatus);
     for (let i = 0; i < 2; i++) {
       if (questionStatus[i + 1][1] === questionStatus[i + 1][2]) {
         cnt++;
@@ -56,7 +55,6 @@ export default function TotalMarks({  setAllAnswersVisible  }) {
         rollNo: rollNo,
         marks: marks,
       });
-      console.log(data);
     } catch (err) {
       console.log(err);
     }
