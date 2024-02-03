@@ -1,12 +1,27 @@
-.navigation_button{
+.navigation_button {
     display: flex;
-    margin:20px auto;
-    justify-content: center;
+    margin-top: 7vh;
+    justify-content: space-between;
 }
+
+
 .navigation_button button{
     padding:15px 30px;
     border-radius: 10px;
     margin:10px 20px;
     font-family: "SF Pro Rounded";
     border:1px solid #EDEDF6;
+}
+
+.options-button-container{
+    width: 60%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.submit-button-container{
+    width: 20%;
+    display: flex;
+    justify-content: flex-end;
 }
