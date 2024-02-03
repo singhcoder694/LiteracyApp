@@ -2,6 +2,9 @@ import React from "react";
 import Spline from "@splinetool/react-spline";
 import { FaArrowRightLong } from "react-icons/fa6"; // Importing with react-icons
 import { useNavigate } from "react-router-dom";
+
+
+
 function Login() {
   const customGradientStyle = {
     backgroundImage: "linear-gradient(180deg, #6153CC 0%, #D0C6FF 100%)",
@@ -16,6 +19,7 @@ function Login() {
   const backgroundcolorbutton = {
     backgroundColor: "#6153CC",
   };
+  
   return (
     <div className="flex flex-row h-screen font-sf-pro-rounded">
       <div className="flex flex-col gap-y-8  mr-72 ml-52   justify-center">
