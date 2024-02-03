@@ -12,6 +12,7 @@
     padding: 10px 30px;
     box-sizing: border-box;
     border-radius: 15px;
+    
 }
 .number_section_parts{
     display: flex;
@@ -24,12 +25,13 @@
     box-shadow: 0 0 15px 0 rgba(0,0,0,0.2);
     transition: all 0.3s ease;
     background-color: white;
+    width: 90%;
 }
 .option_css{
-    padding:10px 35px;
+    padding: 2% 5%;
     border-radius: 10px;
     background-color: #FFC81B;
-    margin:20px 30px;
+    margin: 8% 5%;
     box-shadow: 0 3px #CEAD00;
     font-family: "SF Pro Rounded";
 }
@@ -37,4 +39,10 @@
     width:50px;
     font-weight: 600;
     font-family: "SF Pro Rounded";
+}
+
+@media screen and (min-width:1250px) {
+    .option_css{
+        margin: 4% 5%;
+    }
 }

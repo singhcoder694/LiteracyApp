@@ -284,81 +284,81 @@ function MatchNumbers() {
   //console.log(matched);
 
   return (
-    <div className="container min-h-screen flex flex-col">
-      <div className="bg-white w-7/12 h-5/6 p-12 z-10 ml-36 flex mt-16 rounded-md shadow-custom flex-col">
+    <div className="smallest_number_container">
+      {/* <div className="bg-white w-7/12 h-5/6 p-12 z-10 ml-36 flex mt-16 rounded-md shadow-custom flex-col">
         <h3 className="text-xl font-mono mb-7">
           <span className="font-bold">Match</span> the following questions:
-        </h3>
-        <div className="columns">
-          <div className="ques_cols">
-            <p
-              className="questions"
-              id="Qmatch1"
-              ref={getQBoxRef(0)}
-              onClick={handleClick}
-            >
-              23 + 34
-            </p>
-            <p
-              className="questions"
-              id="Qmatch2"
-              ref={getQBoxRef(1)}
-              onClick={handleClick}
-            >
-              2 + 54
-            </p>
-            <p
-              className="questions"
-              id="Qmatch3"
-              ref={getQBoxRef(2)}
-              onClick={handleClick}
-            >
-              9 + 89
-            </p>
-            <p
-              className="questions"
-              id="Qmatch4"
-              ref={getQBoxRef(3)}
-              onClick={handleClick}
-            >
-              34 + 94
-            </p>
-          </div>
-          <div className="ans_cols">
-            <p
-              className="answers"
-              id="Amatch1"
-              ref={getABoxRef(0)}
-              onClick={handleClick2}
-            >
-              56
-            </p>
-            <p
-              className="answers"
-              id="Amatch2"
-              ref={getABoxRef(1)}
-              onClick={handleClick2}
-            >
-              128
-            </p>
-            <p
-              className="answers"
-              id="Amatch3"
-              ref={getABoxRef(2)}
-              onClick={handleClick2}
-            >
-              57
-            </p>
-            <p
-              className="answers"
-              id="Amatch4"
-              ref={getABoxRef(3)}
-              onClick={handleClick2}
-            >
-              98
-            </p>
-          </div>
+        </h3> */}
+      <div className="columns">
+        <div className="ques_cols">
+          <p
+            className="questions"
+            id="Qmatch1"
+            ref={getQBoxRef(0)}
+            onClick={handleClick}
+          >
+            23 + 34
+          </p>
+          <p
+            className="questions"
+            id="Qmatch2"
+            ref={getQBoxRef(1)}
+            onClick={handleClick}
+          >
+            2 + 54
+          </p>
+          <p
+            className="questions"
+            id="Qmatch3"
+            ref={getQBoxRef(2)}
+            onClick={handleClick}
+          >
+            9 + 89
+          </p>
+          <p
+            className="questions"
+            id="Qmatch4"
+            ref={getQBoxRef(3)}
+            onClick={handleClick}
+          >
+            34 + 94
+          </p>
         </div>
+        <div className="ans_cols">
+          <p
+            className="answers"
+            id="Amatch1"
+            ref={getABoxRef(0)}
+            onClick={handleClick2}
+          >
+            56
+          </p>
+          <p
+            className="answers"
+            id="Amatch2"
+            ref={getABoxRef(1)}
+            onClick={handleClick2}
+          >
+            128
+          </p>
+          <p
+            className="answers"
+            id="Amatch3"
+            ref={getABoxRef(2)}
+            onClick={handleClick2}
+          >
+            57
+          </p>
+          <p
+            className="answers"
+            id="Amatch4"
+            ref={getABoxRef(3)}
+            onClick={handleClick2}
+          >
+            98
+          </p>
+        </div>
+        {/* </div> */}
       </div>
       <svg
         width="100%"
