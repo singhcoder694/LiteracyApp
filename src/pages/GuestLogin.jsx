@@ -34,7 +34,7 @@ function GuestLogin() {
       setClassError("Class is required"); 
     }
     if (isNaN(e.target.value)) {
-      e.target.value = "";
+      setClassValue("")
       setClassError("Class should be between 1 and 10"); 
     }
     if (e.target.value >= 1 && e.target.value <= 10) {
