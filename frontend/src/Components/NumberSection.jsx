@@ -22,7 +22,6 @@ const NumberSection = ({ sectionLabel, buttonValues1, buttonValues2 }) => {
       updateQuestionStatus(2, true, arr2[index], arr2[3]);
     }
   };
-  console.log(questionStatus[1][0], questionStatus[1][1]);
   return (
     <>
     <div className="number_section">

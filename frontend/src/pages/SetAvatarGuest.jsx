@@ -270,5 +270,11 @@ const AvatarContainer = styled.div`
             cursor: pointer;
             transition: 0.3s ease-in-out;
     }
+    .submit-btn:hover{
+      transform: scale(1.04);
+    }
+    .submit-btn:active{
+      transform: scale(0.98);
+    }
   }
 `;

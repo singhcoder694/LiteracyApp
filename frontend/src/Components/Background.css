@@ -93,3 +93,12 @@
   margin-inline: 13%;
   margin-bottom: 5%;
 }
+.options-button-container button{
+  transition: transform 0.3s;
+}
+.options-button-container button:hover{
+  transform: scale(1.05);
+}
+.options-button-container button:active{
+  transform: scale(1);
+}
