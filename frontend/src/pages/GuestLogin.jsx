@@ -1,13 +1,27 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Spline from "@splinetool/react-spline";
 import { FaArrowRightLong } from "react-icons/fa6"; // Importing with react-icons
 import { useNavigate } from "react-router-dom";
+import FirstPageLoader from "./Loader/FirstPageLoader";
 
 function GuestLogin() {
+  const [isLoading , setIsLoading] = useState(true);
   const [currentPage, setCurrentPage] = useState("guest");
   const [classValue, setClassValue] = useState(""); // State to hold the input value
   const [classError, setClassError] = useState(""); // State to hold validation error message
+  const [splineUrl, setSplineUrl] = useState(undefined);
 
+  useEffect(() => {
+    const fetchSpline = async () => {
+      const splineUrl = "https://prod.spline.design/qzSyKoTbtbS8nUnH/scene.splinecode";
+      setTimeout(() => {
+        setSplineUrl(splineUrl);
+        setIsLoading(false);
+      }, 5000); 
+    };
+
+    fetchSpline();
+  }, []);
   const customGradientStyle = {
     backgroundImage: "linear-gradient(180deg, #6153CC 0%, #D0C6FF 100%)",
   };
@@ -109,9 +123,10 @@ function GuestLogin() {
       </div>
       <div style={customGradientStyle} className="w-full">
         <div className="w-1/2 absolute left-0 ml-40% h-full">
-          <Spline scene="https://prod.spline.design/qzSyKoTbtbS8nUnH/scene.splinecode" />
+        {splineUrl && <Spline scene={splineUrl} />}
         </div>
       </div>
+      { isLoading ? <FirstPageLoader /> : null }
     </div>
   );
 }
