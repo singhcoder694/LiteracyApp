@@ -52,7 +52,6 @@ export default function SetAvatar() {
         avatar: avatars[selectedAvatar],
         rollNo: rollNo
       });
-      console.log(data);
     }catch(error){
       console.log(error);
     }
@@ -235,6 +234,10 @@ const AvatarContainer = styled.div`
     h3 {
       font-size: 40px;
       font-weight: 500;
+      transition: 0.3s ease-in-out;
+    }
+    h3:hover{
+      transform: scale(1.1);
     }
   }
   .title-container {

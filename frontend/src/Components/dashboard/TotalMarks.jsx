@@ -5,14 +5,17 @@ import { useNavigate } from "react-router-dom";
 import { useUser } from "../../context/UserContext";
 import { useQuestionContext } from "../../context/QuestionContext";
 import React, { useEffect, useState } from "react";
+import av from '../../assets/avatars/Multiavatar-aditya.png';
 import axios from "axios";
-export default function TotalMarks({  setAllAnswersVisible  }) {
+
+export default function TotalMarks({setAllAnswersVisible, setShowAvatarsVisible}) {
   const navigate = useNavigate();
   const handleShowAvatars = () => {
-    navigate('/showavatars');
-}
+    setShowAvatarsVisible(true);
+  }
   const [marks, setMarks]=useState(null);
-  const { userName, avatar, rollNo, isGuest } = useUser();
+  const [avatars, setAvatars] = useState("");
+  const { userName,avatar ,rollNo, isGuest } = useUser();
   const { questionStatus } = useQuestionContext();
   const handleRetry = () => {
     navigate("/questions");
@@ -28,7 +31,6 @@ export default function TotalMarks({  setAllAnswersVisible  }) {
 
   useEffect(() => {
     let cnt = 0;
-    console.log(questionStatus);
     for (let i = 0; i < 2; i++) {
       if (questionStatus[i + 1][1] === questionStatus[i + 1][2]) {
         cnt++;
@@ -55,7 +57,6 @@ export default function TotalMarks({  setAllAnswersVisible  }) {
         rollNo: rollNo,
         marks: marks,
       });
-      console.log(data);
     } catch (err) {
       console.log(err);
     }
@@ -63,6 +64,33 @@ export default function TotalMarks({  setAllAnswersVisible  }) {
   if(marks!==null && rollNo){
     sendDataToBackend();
   }
+
+  // useEffect(async() => {
+  //   try{
+  //   const response = await axios.get(`https://literacyapp-backend.onrender.com/data/${rollNo}`);
+  //   console.log(response.data);
+  //   setAvatars(response.data.avatar);
+  //   }catch(err){
+  //     console.log(err);
+  //   } 
+  // }
+  // , [rollNo]);
+  // console.log(avatar,'hello');
+// const getAvatars = async () => {
+//   try{
+//       const response = await axios.get(`https://literacyapp-backend.onrender.com/data/${rollNo}`);
+//       console.log(response.data);
+//       setAvatars(response.data.avatar);
+//       }catch(err){
+//         console.log(err);
+//       } 
+// }
+// getAvatars();
+// console.log(avatars);
+     
+
+  
+     
 
   return (
     <Container>
@@ -72,7 +100,7 @@ export default function TotalMarks({  setAllAnswersVisible  }) {
             <div className="details-marks-container">
               <div className="profile-container">
                 <div>
-                  <img src={avatar} alt="" />
+                  <img src={av} alt="" />
                 </div>
                 <div className="student-credentials">
                   <div style={{ display: "flex", flexDirection: "row" }}>
@@ -108,7 +136,7 @@ export default function TotalMarks({  setAllAnswersVisible  }) {
           <h3>You unlocked a legendary sticker.</h3>
           <div className="unlocked-sticker">
             <img src={dashboardSticker} alt="sticker" />
-            <p>sticker name</p>
+            <p>Awesome Possum</p>
           </div>
           <h4 style={{ marginInline: "6%" }}>
             Score full marks to get a legendary sticker.

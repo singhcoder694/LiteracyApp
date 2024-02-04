@@ -40,8 +40,8 @@ export default function Background() {
       setQuestions(arr);
     }
   }
-  const handleSubmit = () => {
-    navigate('/dashboard');
+  const handleInstBack=()=>{
+    navigate('/instructions');
   }
   useEffect(()=>{
     if (questions[0]){
@@ -89,7 +89,7 @@ export default function Background() {
         <div className="background-container">
           <div className="prev-button nav-button-icon" onClick={clicked_prev}>
             <IoIosArrowBack className="back-icon" />
-            {count>0?<button >Prev</button>:<button >Back</button>}
+            {count>0?<button >Prev</button>:<button onClick={()=>handleInstBack()}>Back</button>}
           </div>
             {questions[0]?<SmallestNumber />:null}
             {questions[1]?<MatchNumbers />:null}
@@ -104,7 +104,7 @@ export default function Background() {
         </div>
           <div className="next-button nav-button-icon" onClick={clicked_next}>
             <IoIosArrowForward className="back-icon" />
-            {count<2?<button >Next</button>:<button onClick={()=>handleSubmit()}>Submit</button>}
+            {count<2?<button >Next</button>:<button onClick={handleClick}>Submit</button>}
           </div>
       </div>
       <div className="navigation_button">
