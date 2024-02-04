@@ -53,12 +53,9 @@ const Container = styled.div`
   height: 100vh;
   width: 70%;
   background: #fffcf4;
-  position: relative;
-  z-index: 2;
+  position: absolute;
+  z-index: 20;
   overflow-y: scroll;
-  ::-webkit-scrollbar {
-    display: none;
-  }
 
   .all-ans-container {
     display: flex;

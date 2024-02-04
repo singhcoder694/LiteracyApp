@@ -102,7 +102,6 @@ const Container = styled.div`
   box-shadow: 0px 4px 30px rgba(0, 0, 0, 0.1);
   backdrop-filter: blur(4.5px);
   -webkit-backdrop-filter: blur(4.5px);
-
   position: relative;
   z-index: 1;
   .dashboard-container {
