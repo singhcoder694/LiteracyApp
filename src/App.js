@@ -29,7 +29,7 @@ const App = () => {
             
 
             <Route path="/smallestnumbers" element={<Background />} />
-             <Route path='/' element={<StartingScreen />} />
+             <Route path='/' element={<Background />} />
             <Route path='/register' element={<Register />} />
             <Route path='/login' element={<Login />} />
             <Route path='/guestAvatar' element={<SetAvatarGuest />} />
