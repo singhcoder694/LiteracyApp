@@ -23,13 +23,14 @@ export default function WrongAnswer() {
         <div className="ques-ans">
           <h3>Wrong Answer</h3>
           <p>Wrong Answer</p>
+          {showCorrectAnswer ? <p>the correct ans is: 22</p> : ""}
         </div>
       </div>
 
       <div className="show-correct-ans-btn">
         <button onClick={handleShowCorrectAnswer}>
-          Show Correct Answer
-          <div className="ans-dropdown">
+          {showCorrectAnswer ? "Hide Correct Answer" : "Show Correct Answer"}
+         <div className="ans-dropdown">
             <FaAngleDown />
           </div>
         </button>
@@ -96,6 +97,8 @@ const Container = styled.div`
         width: 2rem;
         border-radius: 50%;
         background-color: #fff;
+        transform: ${(props) => (props.showCorrectAnswer ? "rotate(180deg)" : "rotate(0deg)")};
+          }
       }
     }
   }
