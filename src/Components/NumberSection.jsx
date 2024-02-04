@@ -29,7 +29,7 @@ const NumberSection = ({ sectionLabel, buttonValues1, buttonValues2 }) => {
   return (
     <>
     <div className="number_section">
-      <span className="parts"> Part A </span>
+      <span className="parts"> Q1 </span>
       <div className="number_section_parts">
         {arr.map((value, index) => (
           <button
@@ -49,7 +49,7 @@ const NumberSection = ({ sectionLabel, buttonValues1, buttonValues2 }) => {
       </div>
     </div>
     <div className="number_section">
-    <span className="parts"> Part B </span>
+    <span className="parts"> Q2 </span>
     <div className="number_section_parts">
       {arr2.map((value, index) => (
         <button

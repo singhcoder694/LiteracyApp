@@ -71,12 +71,16 @@ export default function Background() {
     <>
       <QuestionProvider>
         <Navbar />
+        <div className="questions_header">
+          {questions[0]?<p><span style={{fontWeight:"500"}}>Section I :</span> Select the <span style={{fontWeight:"500"}}>Smallest</span> Number</p>:null}
+          {questions[1]?<p><span style={{fontWeight:"500"}}>Section II :</span><span style={{fontWeight:"500"}}> Match</span> the following</p>:null}
+          {questions[2]?<p><span style={{fontWeight:"500"}}>Section III :</span><span style={{fontWeight:"500"}}> Fill</span> in the blanks</p>:null}
+        </div>
         <div className="background-container">
           <div className="prev-button nav-button-icon" onClick={clicked_prev}>
             <IoIosArrowBack className="back-icon" />
             {count>0?<button >Prev</button>:<button >Back</button>}
           </div>
-          
             {questions[0]?<SmallestNumber />:null}
             {questions[1]?<MatchNumbers />:null}
             {questions[2]?<FillInTheBlanks />:null}
