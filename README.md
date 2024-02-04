@@ -4,10 +4,9 @@
 - Our Mascot to Say Hello to Students
 <img width="736" alt="Screenshot 2024-02-04 230321" src="https://github.com/singhcoder694/LiteracyApp/assets/114601400/4e95bd6b-0adb-47eb-8e65-31a068d01cd5"><br>
 - <strong>Guest, Login and Register</strong> pages Respectively for every kind of student using this website<br>
-
-<img width="500" alt="Screenshot 2024-02-04 230401" src="https://github.com/singhcoder694/LiteracyApp/assets/114601400/0e0a9fc7-7ed7-40c5-b033-fd4ed620e222">
-<img width="400" height="280" alt="Screenshot 2024-02-04 230414" src="https://github.com/singhcoder694/LiteracyApp/assets/114601400/c66dbe1f-ebca-4c99-a149-b7be4de61913">
-<img width="605" alt="Screenshot 2024-02-04 230426" src="https://github.com/singhcoder694/LiteracyApp/assets/114601400/ac4e56e9-4808-450d-96e9-9de3aa0c2cbf"><br>
+<img width="736" alt="Screenshot 2024-02-04 230401" src="https://github.com/singhcoder694/LiteracyApp/assets/114601400/0e0a9fc7-7ed7-40c5-b033-fd4ed620e222"><br>
+<img width="736" alt="Screenshot 2024-02-04 230414" src="https://github.com/singhcoder694/LiteracyApp/assets/114601400/c66dbe1f-ebca-4c99-a149-b7be4de61913"><br>
+<img width="736" alt="Screenshot 2024-02-04 230426" src="https://github.com/singhcoder694/LiteracyApp/assets/114601400/ac4e56e9-4808-450d-96e9-9de3aa0c2cbf"><br>
 
 - Student can select Avatar's for more Interactive and Fun learning<br>
 <img width="637" alt="image" src="https://github.com/singhcoder694/LiteracyApp/assets/114601400/9c71c445-8ea2-4685-8051-5a0ee96e4bee"><br>
