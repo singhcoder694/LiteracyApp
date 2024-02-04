@@ -33,7 +33,7 @@ const NumberSection = ({ sectionLabel, buttonValues1, buttonValues2 }) => {
             key={index}
             className={` option_css ${
               (questionStatus[1][0]===true && questionStatus[1][1]===arr[index])
-                ? "bg-yellow-500 border border-yellow-100 border-2"
+                ? "bg-amber-600 border border-amber-700 border-2"
                 : "bg-smallest-ques-button-clr"
             }`}
             // style={customFontStyle}
@@ -53,7 +53,7 @@ const NumberSection = ({ sectionLabel, buttonValues1, buttonValues2 }) => {
           key={index}
           className={` option_css ${
            (questionStatus[2][0]===true && questionStatus[2][1]===arr2[index])
-              ? "bg-yellow-500 border border-yellow-100 border-2"
+              ? "bg-amber-600 border border-amber-700 border-2"
               : "bg-smallest-ques-button-clr"
           }`}
           // style={customFontStyle}
