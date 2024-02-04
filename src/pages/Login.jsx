@@ -4,9 +4,11 @@ import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import supabase from "../config/supabseClient";
 import Spline from "@splinetool/react-spline";
+import { useUser } from "../context/UserContext";
 
 function Login() {
   const navigate = useNavigate();
+  const { updateUser,updateRollNo } = useUser();
 
 
   const handleLogin = (path) => {
@@ -46,9 +48,12 @@ function Login() {
       setFormError("An error occured while submitting the form");
       return;
     }
-    if (data) {
+    if (!error) {
       console.log(data);
       setFormError("");
+      updateUser(name);
+      updateRollNo(rollNo);
+      navigate("/instructions");
     }
 
   }

@@ -4,7 +4,7 @@
   height: 55vh;
   align-items: center;
   width: 100vw;
-  margin-top: 10vh;
+  margin-top: 0;
   justify-content: space-between;
 }
 
@@ -21,7 +21,14 @@
   width: 9%;
   max-width: 90px;
 }
-
+.questions_header {
+  margin:3vh 4vw;
+}
+.questions_header p{
+  display: inline;
+  margin:3vh 8vw;
+  font-size: clamp(1.2rem, 1vw, 2.5rem);
+}
 .prev-button {
   right: 0px;
   border-top-right-radius: 10px;
