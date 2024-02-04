@@ -2,10 +2,12 @@ const express = require('express');
 const supabase = require('./supabaseClient');
 const app = express();
 require('dotenv').config();
+const cors = require('cors');
 
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use(cors());
 
 
 app.post('/login', async (req,res) => {
