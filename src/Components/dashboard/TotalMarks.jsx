@@ -2,8 +2,13 @@ import React from 'react'
 import styled from 'styled-components';
 import dashboardSticker from '../../assets/dashboardSticker.png';
 import showMarks from '../../assets/showMarks.png';
+import { useNavigate } from 'react-router-dom';
 
 export default function TotalMarks() {
+    const navigate = useNavigate();
+    const handleShowAvatars = () => {
+        navigate('/showavatars');
+    }
   return (
     <Container>
         <div className='dashboard-container'>
@@ -20,7 +25,7 @@ export default function TotalMarks() {
                     </div>
                 </div>
                 <div className="show-all-ans">
-                    <button>Show All Answers</button>
+                    <button >Show All Answers</button>
                 </div>
             </div>
             <div className="show-stickers-container">
@@ -31,7 +36,7 @@ export default function TotalMarks() {
                 </div>
                 <h4>Score full marks to get a legendary sticker.</h4>
                 <div className="show-all-stickers">
-                    <button>Show All Stickers</button>
+                    <button onClick={()=>handleShowAvatars()}>Show All Stickers</button>
                 </div>
             </div>
         </div>
