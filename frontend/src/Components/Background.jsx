@@ -1,4 +1,5 @@
 import react, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import "./Background.css";
 import "./NavigationButton.css";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
@@ -69,7 +70,6 @@ export default function Background() {
   
   return (
     <>
-      <QuestionProvider>
         <Navbar />
         <div className="questions_header">
           {questions[0]?<p><span style={{fontWeight:"500"}}>Section I :</span> Select the <span style={{fontWeight:"500"}}>Smallest</span> Number</p>:null}
@@ -105,11 +105,10 @@ export default function Background() {
         <button onClick={showThird} id="third_que">Fill In the Blanks</button>
       </div>
       <div className="submit-button-container">
-        <button>Submit</button>
+        <Link to="/dashboard"><button>Submit</button></Link>
       </div>
       <div style={{width:"8%"}}></div>
     </div>
-    </QuestionProvider>
     </>
     
   );

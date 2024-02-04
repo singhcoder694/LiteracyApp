@@ -4,8 +4,8 @@ import dashboardSticker from '../../assets/dashboardSticker.png';
 import showMarks from '../../assets/showMarks.png';
 import { useNavigate } from 'react-router-dom';
 import { useUser } from '../../context/UserContext';
-
-import React from "react";
+import { useQuestionContext } from '../../context/QuestionContext';
+import React, { useEffect, useState } from "react";
 
 
 export default function TotalMarks() {
@@ -13,9 +13,29 @@ export default function TotalMarks() {
   const handleShowAvatars = () => {
     navigate('/showavatars');
   }
-
+  const [marks, setMarks]=useState(0);
   const { userName, avatar } = useUser();
-
+  const { questionStatus } = useQuestionContext();
+  useEffect(()=>{
+    let cnt=0;
+    console.log(questionStatus);
+    for (let i=0;i<2;i++){
+      if (questionStatus[i+1][1] === questionStatus[i+1][2]){
+        cnt++;
+      }
+    }
+    for (let i=2;i<6;i++){
+      if (questionStatus[i+1][1] === questionStatus[i+1][3]){
+        cnt++;
+      }
+    }
+    for (let i=6;i<10;i++){
+      if (Number.parseInt(questionStatus[i+1][1]) === questionStatus[i+1][2]){
+        cnt++;
+      }
+    }
+    setMarks(cnt);
+  },[questionStatus])
   return (
     <Container>
       <div className='dashboard-container'>
@@ -34,7 +54,7 @@ export default function TotalMarks() {
             </div>
             <div className='total-marks'>
               <h3>Your Total Marks</h3>
-              <h1>10/10</h1>
+              <h1>{marks}/10</h1>
             </div>
             <img src={showMarks} alt="show marks" />
           </div>

@@ -10,10 +10,10 @@ import "aos/dist/aos.css";
 export default function FillInTheBlanks() {
   const { questionStatus, updateQuestionStatus } = useQuestionContext();
   const Expressions = [
-    [0, "2+3", 5],
-    [1, "4+5", 9],
-    [2, "6+7", 13],
-    [3, "8+9", 17],
+    [0, "92+3", 95],
+    [1, "79+54", 133],
+    [2, "66+75", 141],
+    [3, "18+41",  59],
   ];
   const [inputValues, setInputValues] = useState([null, null, null, null]);
   useEffect(()=>{
@@ -27,7 +27,7 @@ export default function FillInTheBlanks() {
     };
     const newInputValues = [...inputValues];
     newInputValues[index] = event.target.value;
-    updateQuestionStatus(index + 7, true, newInputValues[index], "answer");
+    updateQuestionStatus(index + 7, true,newInputValues[index]);
     setInputValues(newInputValues);
   };
 
@@ -45,7 +45,7 @@ export default function FillInTheBlanks() {
                   <Box
                     children={
                       <div className=" font-custom font-semibold text-lg">
-                        {expression}
+                        {expression[1]}
                       </div>
                     }
                   />

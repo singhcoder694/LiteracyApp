@@ -280,6 +280,7 @@ function MatchNumbers() {
         questionStatus[temp+2][0] = false;
         questionStatus[temp+2][1] = null;
         questionStatus[temp+2][2] = null;
+        questionStatus[temp+2][3] = questionStatus[temp+2][3] ;
         updateQuestionStatus(temp+2, false, null, null);
         console.log(questionStatus,temp)
         setAnsboxArray((prev) => {

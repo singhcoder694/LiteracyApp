@@ -4,8 +4,8 @@ import "./SmallestNumber.css";
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 export default function SmallestNumber() {
-  const buttonValues1 = ['a',11,24,234,20];
-  const buttonValues2 = ['b',13,56,24,25];
+  const buttonValues1 = ['a',39,24,78,90];
+  const buttonValues2 = ['b',13,56,87,44];
   useEffect(()=>{
     AOS.init({
         duration:500

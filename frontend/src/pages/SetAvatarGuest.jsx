@@ -75,7 +75,7 @@ export default function SetAvatar() {
   return (
     <Container>
       <AvatarContainer>
-        <div className="back-btn-left" onClick={() => navigate("/guest")}>
+        <div className="back-btn-left" onClick={() => navigate("/")}>
           <div className="circular-back-button">
             <BiArrowBack />
           </div>

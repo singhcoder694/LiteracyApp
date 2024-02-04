@@ -5,10 +5,6 @@ const NumberSection = ({ sectionLabel, buttonValues1, buttonValues2 }) => {
   const [clickedIndex, setClickedIndex] = useState(null);
   const [clickedIndex2, setClickedIndex2] = useState(null);
 
-  // const customFontStyle = {
-  //   fontFamily: "Kranky, serif",
-  // };
-
   const arr=buttonValues1.slice(1);
   const arr2=buttonValues2.slice(1);
   const { questionStatus, updateQuestionStatus } = useQuestionContext();
@@ -26,6 +22,7 @@ const NumberSection = ({ sectionLabel, buttonValues1, buttonValues2 }) => {
       updateQuestionStatus(2, true, arr2[index], arr2[3]);
     }
   };
+  console.log(questionStatus[1][0], questionStatus[1][1]);
   return (
     <>
     <div className="number_section">
