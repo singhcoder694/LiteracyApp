@@ -11,7 +11,7 @@ export default function TotalMarks({  setAllAnswersVisible  }) {
   const handleShowAvatars = () => {
     navigate('/showavatars');
 }
-  const [marks, setMarks]=useState(0);
+  const [marks, setMarks]=useState(null);
   const [avatar, setAvatar] = useState("");
   const { userName, rollNo, isGuest } = useUser();
   const { questionStatus } = useQuestionContext();
@@ -61,9 +61,22 @@ export default function TotalMarks({  setAllAnswersVisible  }) {
       console.log(err);
     }
   };
-  useEffect(() => {
+  if(marks!==null && rollNo){
     sendDataToBackend();
-  }, [marks, rollNo]);
+  }
+
+  useEffect(async() => {
+    try{
+    const response = await axios.get(`https://literacyapp-backend.onrender.com/data/${rollNo}`);
+    console.log(response.data);
+    setAvatar(response.data.avatar);
+    }catch(err){
+      console.log(err);
+    } 
+  }
+  , [rollNo]);
+  console.log(avatar,'hello');
+     
 
   useEffect(async() => {
     try{
