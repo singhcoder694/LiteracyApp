@@ -16,11 +16,9 @@ import SetAvatarGuest from "./pages/SetAvatarGuest";
 import SetAvatarRegister from "./pages/SetAvatarRegister";
 import MatchNumbers from "./pages/MatchNumbers";
 import Instructions from "./pages/Instructions";
-<<<<<<< HEAD
 import Dashboard from "./pages/Dashboard";
-=======
 import SmallestNumber from "./pages/SmallestNumber";
->>>>>>> 19dc1721132fce3242fbeff9b81e7cffadf06646
+import AllAnswers from "./Components/dashboard/AllAnswers";
 
 const App = () => {
   return (
@@ -39,6 +37,7 @@ const App = () => {
             <Route path="/background" element={<Background />} />
             <Route path ='/instructions' element={<Instructions />} />
             <Route path='/dashboard' element={<Dashboard />} />
+            <Route path='/allAnswers' element={<AllAnswers />} />
           </Routes>
         </NavigationProvider>
       </Router>
