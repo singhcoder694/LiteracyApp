@@ -5,6 +5,7 @@ import { useState } from "react";
 import axios from 'axios';
 import Spline from "@splinetool/react-spline";
 import { useUser } from "../context/UserContext";
+import FirstPageLoader from "./Loader/FirstPageLoader";
 
 function Login() {
   const navigate = useNavigate();
@@ -27,6 +28,7 @@ function Login() {
     color: "#FFB507",
   };
   const [name, setName] = useState("");
+  const [isLoading , setIsLoading] = useState(true);
   
   const [formError, setFormError] = useState(null);
   const [rollNo, setrollNo] = useState(""); // State to hold the input value
@@ -43,7 +45,7 @@ function Login() {
     updateRollNo(rollNo);
     try {
       console.log("Sending request");
-    const response = await axios.post("http://localhost:3001/login", { name, rollNo });
+    const response = await axios.post("https://literacyapp-backend.onrender.com/login", { name, rollNo });
       console.log(response);
       if (response.status === 200) {
         navigate("/instructions");
@@ -65,8 +67,15 @@ function Login() {
       setRollNoError("");
     }
   }; 
+
+  setTimeout(() => {
+    setIsLoading(false);
+  }, 5000);
+
+
   return (
     <div className="flex flex-row h-screen font-sf-pro-rounded">
+      {isLoading && <FirstPageLoader />}
       <div className="flex flex-col gap-y-8  mr-72 ml-40 justify-center">
       <h1 className="text-5xl text-custom-yellow" style={textcolor}>Welcome!</h1>
         <p className="text-2xl text-custom-yellow"style={textcolor}>Login</p>

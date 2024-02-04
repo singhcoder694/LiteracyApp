@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import { FaTimes, FaAngleDown } from "react-icons/fa";
 
-export default function WrongAnswer() {
+export default function WrongAnswer(props) {
   const [showCorrectAnswer, setShowCorrectAnswer] = useState(false);
 
   const handleShowCorrectAnswer = () => {
@@ -17,13 +17,14 @@ export default function WrongAnswer() {
 
       <div className="answer">
         <div className="ques-number">
-          <h5>1)</h5>
+          <h5>{props.index}</h5>
         </div>
 
         <div className="ques-ans">
-          <h3>Wrong Answer</h3>
-          <p>Wrong Answer</p>
-          {showCorrectAnswer ? <p>the correct ans is: 22</p> : ""}
+          <h3>{props.question}</h3>
+          <p>{props.option}</p>
+          {showCorrectAnswer ? <p>Correct Answer: {props.real_ans}</p> : ""}
+          {showCorrectAnswer ? <p>Your Answer: {props.user_ans}</p> : ""}
         </div>
       </div>
 

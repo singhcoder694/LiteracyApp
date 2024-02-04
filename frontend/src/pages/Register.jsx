@@ -6,12 +6,14 @@ import { useState } from "react";
 import axios from "axios";
 
 import { useUser } from "../context/UserContext";
+import FirstPageLoader from "./Loader/FirstPageLoader";
 function Register() {
   const navigate = useNavigate();
 
   const handleLogin = (path) => {
     navigate(path, { state: { currentPage: "register" } });
   };
+  const [isLoading, setIsLoading] = useState(true);
   const gradientStyle = {
     background: "linear-gradient(180deg, #F03 0%, #FA9596 100%)",
     height: "100vh", // Adjust the height as needed
@@ -41,7 +43,7 @@ function Register() {
       return;
     }
     try {
-      const response = await axios.post("http://localhost:3001/register", {
+      const response = await axios.post("https://literacyapp-backend.onrender.com/register", {
         name,
       });
       console.log(response);
@@ -84,8 +86,13 @@ function Register() {
     }
   };
 
+  setTimeout(() => {
+    setIsLoading(false);
+  }, 5000);
+
   return (
     <div className="flex flex-row h-screen font-sf-pro-rounded">
+      {isLoading && <FirstPageLoader />}
       <div className="flex flex-col gap-y-8  mr-72 ml-40 justify-center backdrop-blur-sm">
         <h1 className="text-5xl text-custom-red" style={textcolor}>
           Welcome!
