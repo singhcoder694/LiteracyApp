@@ -4,12 +4,7 @@ import dashboardSticker from '../../assets/dashboardSticker.png';
 import showMarks from '../../assets/showMarks.png';
 import { useNavigate } from 'react-router-dom';
 import { useUser } from '../../context/UserContext';
-import React from "react";
-import styled from "styled-components";
-import dashboardSticker from "../../assets/dashboardSticker.png";
-import showMarks from "../../assets/showMarks.png";
-import { useNavigate } from "react-router-dom";
-import { useUser } from "../../context/UserContext";
+
 
 export default function TotalMarks() {
   const navigate = useNavigate();

@@ -1,6 +1,7 @@
 const express = require('express');
 const supabase = require('./supabaseClient');
 const app = express();
+require('dotenv').config();
 
 
 app.use(express.json());
@@ -104,7 +105,9 @@ app.post('/result', async ( req, res) => {
     
 })
 
-app.listen(3001, () => {
-    console.log('Server running on port 3001');
+const PORT = process.env.PORT || 3001;
+
+app.listen(PORT, () => {
+    console.log('Server running on port');
 })
 
