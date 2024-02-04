@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { FaTimes, FaCheck } from "react-icons/fa";
 
-export default function CorrectAnswer() {
+export default function CorrectAnswer(props) {
   return (
     <Container>
       <div className="ans-icon">
@@ -11,12 +11,12 @@ export default function CorrectAnswer() {
 
       <div className="answer">
         <div className="ques-number">
-          <h5>2)</h5>
+          <h5>{props.index}</h5>
         </div>
 
         <div className="ques-ans">
-          <h3>Right Answer</h3>
-          <p>Right Answer</p>
+          <h3>{props.question}</h3>
+          <p>{props.option}</p>
         </div>
       </div>
     </Container>
