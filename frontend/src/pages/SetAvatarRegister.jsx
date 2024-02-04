@@ -48,7 +48,7 @@ export default function SetAvatar() {
 
   const sendAvatarToBackend = async () => {
     try{
-      const data = await axios.post("http://localhost:3001/avatar", {
+      const data = await axios.post("https://literacyapp-backend.onrender.com/avatar", {
         avatar: avatars[selectedAvatar],
         rollNo: rollNo
       });

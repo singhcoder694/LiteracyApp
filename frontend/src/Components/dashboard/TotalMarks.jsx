@@ -51,7 +51,7 @@ export default function TotalMarks({ setAllAnswersVisible }) {
 
   const sendDataToBackend = async () => {
     try {
-      const data = await axios.post("http://localhost:3001/result", {
+      const data = await axios.post("https://literacyapp-backend.onrender.com/result", {
         rollNo: rollNo,
         marks: marks,
       });

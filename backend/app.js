@@ -21,13 +21,13 @@ app.post('/login', async (req,res) => {
 
     if(error) {
         console.log(error);
-        res.status(500).json({error: 'Internal Server Error'})
+       return res.status(500).json({error: 'Internal Server Error'})
     }
     if(data.length === 0) {
-        res.status(404).json({error: 'User not found'})
+       return res.status(404).json({error: 'User not found'})
     }
     else {
-        res.status(200).json({message: 'User found'})
+       return res.status(200).json({message: 'User found'})
     }
 
 })
@@ -43,10 +43,10 @@ app.post('/register', async (req,res) => {
 
     if(error) {
         console.log(error);
-        res.status(500).json({error: 'Internal Server Error'})
+       return res.status(500).json({error: 'Internal Server Error'})
     }
     else {
-        res.status(200).json({message: 'User registered', rollNo: data[0].rollNo})
+       return res.status(200).json({message: 'User registered', rollNo: data[0].rollNo})
     }
 })
 
@@ -61,10 +61,10 @@ app.post('/avatar', async(req, res) => {
 
     if(error) {
         console.log(error);
-        res.status(500).json({error: 'Internal Server Error'})
+       return res.status(500).json({error: 'Internal Server Error'})
     }
     else {
-        res.status(200).json({message: 'Avatar updated'})
+       return res.status(200).json({message: 'Avatar updated'})
     }
 })
 
@@ -105,6 +105,23 @@ app.post('/result', async ( req, res) => {
 
 
     
+})
+
+app.get('/photos/:rollNo', async( req, res) => {
+
+    const rollNo = req.params.rollNo;
+    const {data, error} = await supabase 
+    .from('User')
+    .select('avatar,stickers')
+    .eq('rollNo', rollNo)
+
+    if(error) {
+        console.log(error);
+       return res.status(500).json({error: 'Internal Server Error'})
+    }
+    else {
+       return res.status(200).json({data: data[0]})
+    }
 })
 
 const PORT = process.env.PORT || 3001;
