@@ -109,7 +109,7 @@ export default function TotalMarks({setAllAnswersVisible, setShowAvatarsVisible}
           <h3>You unlocked a legendary sticker.</h3>
           <div className="unlocked-sticker">
             <img src={dashboardSticker} alt="sticker" />
-            <p>sticker name</p>
+            <p>Awesome Possum</p>
           </div>
           <h4 style={{ marginInline: "6%" }}>
             Score full marks to get a legendary sticker.
