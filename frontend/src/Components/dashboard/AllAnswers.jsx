@@ -3,13 +3,13 @@ import styled from "styled-components";
 import { FaArrowUp } from "react-icons/fa";
 import WrongAnswer from "../answers/WrongAnswer";
 import CorrectAnswer from "../answers/CorrectAnswer";
-
+import { useQuestionContext } from "../../context/QuestionContext";
 export default function AllAnswers({setAllAnswersVisible}) {
 
   const handleBackToDashboard = () => {
     setAllAnswersVisible(false);
   }
-
+  const {questionStatus} = useQuestionContext();
   return (
     <Container>
       <div className="all-ans-container">
@@ -28,16 +28,16 @@ export default function AllAnswers({setAllAnswersVisible}) {
           </div>
 
           <div className="all-ans">
-            <WrongAnswer />
-            <CorrectAnswer />
-            <WrongAnswer />
-            <CorrectAnswer />
-            <CorrectAnswer />
-            <CorrectAnswer />
-            <CorrectAnswer />
-            <CorrectAnswer />
-            <CorrectAnswer />
-            <CorrectAnswer />
+            {questionStatus[1][1] === questionStatus[1][2]?<CorrectAnswer question="Select the Smallest Number" option="39 24 78 90" />:<WrongAnswer  question="Select the Smallest Number" option="39 24 78 90" user_ans={questionStatus[1][1]}real_ans={questionStatus[1][2]} />}
+            {questionStatus[2][1] === questionStatus[2][2]?<CorrectAnswer question="Select the Smallest Number" option="13 56 87 44" />:<WrongAnswer  question="Select the Smallest Number" option="13 56 87 44" user_ans={questionStatus[2][1]}real_ans={questionStatus[2][2]} />}
+            {questionStatus[3][1] ===questionStatus[3][3]?<CorrectAnswer question="Match the following" option="23 + 34" />:<WrongAnswer  question="Match the following" option="23 + 34" user_ans={questionStatus[3][1]}real_ans={questionStatus[3][3]} />}
+            {questionStatus[4][1] === questionStatus[4][3]?<CorrectAnswer question="Match the following" option="2 + 54" />:<WrongAnswer  question="Match the following" option="2 + 34" user_ans={questionStatus[4][1]}real_ans={questionStatus[4][3]} />}
+            {questionStatus[5][1] === questionStatus[5][3]?<CorrectAnswer question="Match the following" option="9 + 89" />:<WrongAnswer  question="Match the following" option="9 + 89" user_ans={questionStatus[5][1]}real_ans={questionStatus[5][3]} />}
+            {questionStatus[6][1] === questionStatus[6][3]?<CorrectAnswer question="Match the following" option="34 + 94" />:<WrongAnswer  question="Match the following" option="34 + 94" user_ans={questionStatus[6][1]}real_ans={questionStatus[6][3]} />}
+            {Number.parseInt(questionStatus[7][1]) === questionStatus[7][2]?<CorrectAnswer question="Fill in the balnk" option="92 + 3" />:<WrongAnswer  question="Fill in the blank" option="92 + 3" user_ans={questionStatus[7][1]}real_ans={questionStatus[7][2]} />}
+            {Number.parseInt(questionStatus[8][1]) === questionStatus[8][2]?<CorrectAnswer question="Fill in the balnk" option="79 + 54" />:<WrongAnswer  question="Fill in the blank" option="79 + 54" user_ans={questionStatus[8][1]}real_ans={questionStatus[8][2]} />}
+            {Number.parseInt(questionStatus[9][1]) === questionStatus[9][2]?<CorrectAnswer question="Fill in the balnk" option="66 + 75" />:<WrongAnswer  question="Fill in the blank" option="66 + 75" user_ans={questionStatus[9][1]}real_ans={questionStatus[9][2]} />}
+            {Number.parseInt(questionStatus[10][1]) === questionStatus[10][2]?<CorrectAnswer question="Fill in the balnk" option="18 + 41" />:<WrongAnswer  question="Fill in the blank" option="18 + 41" user_ans={questionStatus[10][1]}real_ans={questionStatus[10][2]} />}
           </div>
         </div>
       </div>
@@ -53,12 +53,9 @@ const Container = styled.div`
   height: 100vh;
   width: 70%;
   background: #fffcf4;
-  position: relative;
-  z-index: 2;
+  position: absolute;
+  z-index: 20;
   overflow-y: scroll;
-  ::-webkit-scrollbar {
-    display: none;
-  }
 
   .all-ans-container {
     display: flex;

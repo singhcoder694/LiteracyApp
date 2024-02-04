@@ -6,15 +6,13 @@ import { useUser } from "../../context/UserContext";
 import { useQuestionContext } from "../../context/QuestionContext";
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-
 export default function TotalMarks({ setAllAnswersVisible }) {
   const navigate = useNavigate();
   const handleShowAvatars = () => {
-    navigate("/showavatars");
-  };
-  const [marks, setMarks] = useState(0);
+    navigate('/showavatars');
+}
+  const [marks, setMarks]=useState(0);
   const { userName, avatar, rollNo, isGuest } = useUser();
-
   const { questionStatus } = useQuestionContext();
   const handleRetry = () => {
     navigate("/questions");
@@ -49,7 +47,7 @@ export default function TotalMarks({ setAllAnswersVisible }) {
       }
     }
     setMarks(cnt);
-  }, [questionStatus]);
+  },  [questionStatus]);;
 
   const sendDataToBackend = async () => {
     try {
@@ -106,7 +104,7 @@ export default function TotalMarks({ setAllAnswersVisible }) {
             <img src={dashboardSticker} alt="sticker" />
             <p>sticker name</p>
           </div>
-          <h4 style={{ marginInline: "2px" }}>
+          <h4 style={{ marginInline: "6%" }}>
             Score full marks to get a legendary sticker.
           </h4>
           <div className="show-all-stickers">
@@ -129,7 +127,6 @@ const Container = styled.div`
   box-shadow: 0px 4px 30px rgba(0, 0, 0, 0.1);
   backdrop-filter: blur(4.5px);
   -webkit-backdrop-filter: blur(4.5px);
-
   position: relative;
   z-index: 1;
   .dashboard-container {
