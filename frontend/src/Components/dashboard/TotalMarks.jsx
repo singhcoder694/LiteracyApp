@@ -93,7 +93,11 @@ const Container = styled.div`
   align-items: center;
   height: 100vh;
   width: 70%;
-  background: #fffcf4;
+  background: rgba(255, 255, 255, 0.3);
+  box-shadow: 0px 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(4.5px);
+  -webkit-backdrop-filter: blur(4.5px);
+
   position: relative;
   z-index: 1;
   .dashboard-container {
@@ -283,6 +287,11 @@ const Container = styled.div`
           border-radius: 8px;
         }
       }
+    }
+  }
+  @media (min-width: 1250px) {
+    .marks-container img{
+      width: 100%;
     }
   }
 `;
