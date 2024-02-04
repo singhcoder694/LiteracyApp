@@ -1,9 +1,11 @@
-import React from 'react';
+
 import styled from 'styled-components';
 import dashboardSticker from '../../assets/dashboardSticker.png';
 import showMarks from '../../assets/showMarks.png';
 import { useNavigate } from 'react-router-dom';
 import { useUser } from '../../context/UserContext';
+
+import React from "react";
 
 
 export default function TotalMarks() {
@@ -54,9 +56,9 @@ export default function TotalMarks() {
             <img src={dashboardSticker} alt="sticker" />
             <p>sticker name</p>
           </div>
-          <h4>Score full marks to get a legendary sticker.</h4>
+          <h4 style={{marginInline:"2px"}}>Score full marks to get a legendary sticker.</h4>
           <div className="show-all-stickers">
-            <button onClick={() => handleShowAvatars()}>Show All Stickers</button>
+            <button onClick={() => handleShowAvatars()}>All Stickers</button>
           </div>
         </div>
       </div>
@@ -78,7 +80,7 @@ const Container = styled.div`
     display: flex;
     flex-direction: row;
     height: 70%;
-    width: 70%;
+    width: 80%;
     gap: 2%;
     .options-container {
       display: flex;
@@ -228,7 +230,7 @@ const Container = styled.div`
       border: 2px solid #e5e5e5;
       background: #fff;
       h3 {
-        font-size: 1.5rem;
+        font-size: clamp(1.2rem, 1.5vw, 4rem);
         font-weight: 600;
         line-height: 1;
       }
@@ -243,6 +245,9 @@ const Container = styled.div`
           padding: 0.4rem;
           border-radius: 50%;
           width: 70%;
+        }
+        h4{
+            font-size: clamp(1rem, 1.5vw, 2rem);
         }
       }
       .show-all-stickers {
