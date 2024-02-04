@@ -34,7 +34,9 @@ export default function SetAvatar() {
       toast.error("Please select a sticker.", toastOptions);
     }
     else{
+      updateAvatar(avatars[selectedAvatar]);
     navigate('/dashboard');
+
     }
   }
   // const setProfilePicture = async () => {

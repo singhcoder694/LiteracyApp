@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 import styled from 'styled-components';
 import dashboardSticker from '../../assets/dashboardSticker.png';
 import showMarks from '../../assets/showMarks.png';
@@ -6,61 +6,61 @@ import { useNavigate } from 'react-router-dom';
 import { useUser } from '../../context/UserContext';
 
 export default function TotalMarks() {
-    const navigate = useNavigate();
-    const handleShowAvatars = () => {
-        navigate('/showavatars');
-    }
-    const { updateAvatar } = useUser();
+  const navigate = useNavigate();
+  const handleShowAvatars = () => {
+    navigate('/showavatars');
+  }
+
+  const { userName, avatar } = useUser();
+
   return (
     <Container>
-        <div className='dashboard-container'>
-            <div className="options-container">
-                <div className="marks-container">
-                    <div className='details-marks-container'>
-                        <div className='profile-container'>
-                        <div>
-                        <img src={updateAvatar} alt="" />
-                        </div>
-                            
-                            <div className='student-credentials'>
-                            <h1>Hi Name</h1>
-                            <h3>Roll no. - 123456</h3>
-                            </div>
-                        </div>
-                    </div>
-                    <div className='total-marks'>
-                            <h3>Your Total Marks</h3>
-                            <h1>10/10</h1>
-                    </div>
-                    <img src={showMarks} alt="show marks" />
-
+      <div className='dashboard-container'>
+        <div className="options-container">
+          <div className="marks-container">
+            <div className='details-marks-container'>
+              <div className='profile-container'>
+                <div>
+                  <img src={avatar} alt="" />
                 </div>
-                <div className="options">
-                    <div className="retry">
-                        <button>Retry</button>
-                    </div>
-                    <div className="logout">
-                        <button>Logout</button>
-                    </div>
+                <div className='student-credentials'>
+                  <h1>Hi! {userName}</h1>
+                  <h3>Roll no. </h3>
                 </div>
-                <div className="show-all-ans">
-                    <button >Show All Answers</button>
-                </div>
+              </div>
             </div>
-            <div className="show-stickers-container">
-                <h3>You unlocked a legendary sticker.</h3>
-                <div className="unlocked-sticker">
-                        <img src={dashboardSticker} alt="sticker" />
-                    <p>sticker name</p>
-                </div>
-                <h4>Score full marks to get a legendary sticker.</h4>
-                <div className="show-all-stickers">
-                    <button onClick={()=>handleShowAvatars()}>Show All Stickers</button>
-                </div>
+            <div className='total-marks'>
+              <h3>Your Total Marks</h3>
+              <h1>10/10</h1>
             </div>
+            <img src={showMarks} alt="show marks" />
+          </div>
+          <div className="options">
+            <div className="retry">
+              <button>Retry</button>
+            </div>
+            <div className="logout">
+              <button>Logout</button>
+            </div>
+          </div>
+          <div className="show-all-ans">
+            <button>Show All Answers</button>
+          </div>
         </div>
+        <div className="show-stickers-container">
+          <h3>You unlocked a legendary sticker.</h3>
+          <div className="unlocked-sticker">
+            <img src={dashboardSticker} alt="sticker" />
+            <p>sticker name</p>
+          </div>
+          <h4>Score full marks to get a legendary sticker.</h4>
+          <div className="show-all-stickers">
+            <button onClick={() => handleShowAvatars()}>Show All Stickers</button>
+          </div>
+        </div>
+      </div>
     </Container>
-  )
+  );
 }
 
 const Container = styled.div`

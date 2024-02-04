@@ -6,6 +6,7 @@ const UserContext = createContext();
 export const UserProvider = ({ children }) => {
   const [userName, setUserName] = useState('');
   const [avatar, setAvatar] = useState('');
+  const [rollNo, setRollNo] = useState('');
 
   const updateUser = (name) => {
     setUserName(name);
@@ -13,9 +14,12 @@ export const UserProvider = ({ children }) => {
   const updateAvatar = (avatarSrc) => {
     setAvatar(avatarSrc);
   };
+  const updateRollNo = (rollNo) => {
+    setRollNo(rollNo);
+  }
 
   return (
-    <UserContext.Provider value={{userName, avatar, updateUser, updateAvatar }}>
+    <UserContext.Provider value={{userName, avatar, updateUser, updateAvatar, rollNo,updateRollNo}}>
       {children}
     </UserContext.Provider>
   );
