@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { useNavigate } from 'react-router-dom';
 import { toast, ToastContainer } from "react-toastify";
@@ -8,12 +8,13 @@ import { BiArrowBack } from 'react-icons/bi';
 import { useUser } from '../context/UserContext';
 import dashboardSticker from '../assets/dashboardSticker.png';
 import Spline from '@splinetool/react-spline';
+import axios from 'axios';
 
 export default function SetAvatar() {
 
  // const api = "https://api.multiavatar.com/45678945";
   const navigate = useNavigate();
-  const {updateAvatar} = useUser()
+  const {updateAvatar,rollNo} = useUser()
 
   // const [avatars, setAvatars] = useState([]);
   const [selectedAvatar, setSelectedAvatar] = useState(undefined);
@@ -37,6 +38,24 @@ export default function SetAvatar() {
 
     }
   }
+
+  const sendAvatarToBackend = async () => {
+    try{
+      const data = await axios.post("http://localhost:3001/avatar", {
+        avatar: avatars[selectedAvatar],
+        rollNo: rollNo
+      });
+      console.log(data);
+    }catch(error){
+      console.log(error);
+    }
+  }
+
+  useEffect(() => {
+    sendAvatarToBackend();
+  }, [selectedAvatar,rollNo]);
+
+  
   // const setProfilePicture = async () => {
   //   if (selectedAvatar === undefined) {
   //     toast.error("Please select an avatar.", toastOptions);

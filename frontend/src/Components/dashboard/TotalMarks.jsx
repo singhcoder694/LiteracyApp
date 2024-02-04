@@ -5,27 +5,26 @@ import { useNavigate } from "react-router-dom";
 import { useUser } from "../../context/UserContext";
 import { useQuestionContext } from "../../context/QuestionContext";
 import React, { useEffect, useState } from "react";
-
-export default function TotalMarks({setAllAnswersVisible}) {
+import axios from "axios";
+export default function TotalMarks({ setAllAnswersVisible }) {
   const navigate = useNavigate();
   const handleShowAvatars = () => {
-    navigate("/showavatars");
-
-  };
-  const [marks, setMarks] = useState(0);
+    navigate('/showavatars');
+}
+  const [marks, setMarks]=useState(0);
   const { userName, avatar, rollNo, isGuest } = useUser();
   const { questionStatus } = useQuestionContext();
   const handleRetry = () => {
-    navigate('/questions');
+    navigate("/questions");
     window.location.reload();
-  }
+  };
   const handleLogOut = () => {
-    navigate('/login');   
-  }
+    navigate("/login");
+  };
 
   const handleShowAllAns = () => {
     setAllAnswersVisible(true);
-  }
+  };
 
   useEffect(() => {
     let cnt = 0;
@@ -48,7 +47,23 @@ export default function TotalMarks({setAllAnswersVisible}) {
       }
     }
     setMarks(cnt);
-  }, [questionStatus]);
+  },  [questionStatus]);;
+
+  const sendDataToBackend = async () => {
+    try {
+      const data = await axios.post("http://localhost:3001/result", {
+        rollNo: rollNo,
+        marks: marks,
+      });
+      console.log(data);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+  useEffect(() => {
+    sendDataToBackend();
+  }, [marks, rollNo]);
+
   return (
     <Container>
       <div className="dashboard-container">
@@ -73,10 +88,10 @@ export default function TotalMarks({setAllAnswersVisible}) {
           </div>
           <div className="options">
             <div className="retry">
-              <button onClick={()=>handleRetry()}>Retry</button>
+              <button onClick={() => handleRetry()}>Retry</button>
             </div>
             <div className="logout">
-              <button onClick={()=> handleLogOut()}>Logout</button>
+              <button onClick={() => handleLogOut()}>Logout</button>
             </div>
           </div>
           <div className="show-all-ans">
