@@ -43,7 +43,7 @@ function Login() {
     updateRollNo(rollNo);
     try {
       console.log("Sending request");
-    const response = await axios.post("http://localhost:3001/login", { name, rollNo });
+    const response = await axios.post("https://literacyapp-backend.onrender.com/login", { name, rollNo });
       console.log(response);
       if (response.status === 200) {
         navigate("/instructions");
