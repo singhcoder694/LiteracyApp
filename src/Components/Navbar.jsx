@@ -24,7 +24,7 @@ export default function Navbar() {
         <img className='navbar-bar' src={bar} alt='bar' />
         <div className='bars'>
           {questionStatus[1][0]?<img src={p1} alt="p1" />:<img src={p1} alt="p1" style={{filter:"grayscale(100%)"}}/>}
-          {questionStatus[2][0]?<img src={p2} alt="p2" />:<img src={p3} alt="p2" style={{filter:"grayscale(100%)"}}/>}
+          {questionStatus[2][0]?<img src={p2} alt="p2" />:<img src={p2} alt="p2" style={{filter:"grayscale(100%)"}}/>}
           {questionStatus[3][0]?<img src={p3} alt="p3" />:<img src={p3} alt="p3" style={{filter:"grayscale(100%)"}}/>}
           {questionStatus[4][0]?<img src={p4} alt="p4" />:<img src={p4} alt="p4" style={{filter:"grayscale(100%)"}}/>}
           {questionStatus[5][0]?<img src={p5} alt="p5" />:<img src={p5} alt="p5" style={{filter:"grayscale(100%)"}}/>}

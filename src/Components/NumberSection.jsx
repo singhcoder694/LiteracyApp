@@ -8,6 +8,7 @@ const NumberSection = ({ sectionLabel, buttonValues1, buttonValues2 }) => {
   // const customFontStyle = {
   //   fontFamily: "Kranky, serif",
   // };
+
   const arr=buttonValues1.slice(1);
   const arr2=buttonValues2.slice(1);
   const { questionStatus, updateQuestionStatus } = useQuestionContext();
