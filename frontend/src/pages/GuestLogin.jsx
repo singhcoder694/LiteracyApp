@@ -2,30 +2,37 @@ import React, { useEffect, useState } from "react";
 import Spline from "@splinetool/react-spline";
 import { FaArrowRightLong } from "react-icons/fa6"; // Importing with react-icons
 import { useNavigate } from "react-router-dom";
+import { useUser } from "../context/UserContext";
+
 import FirstPageLoader from "./Loader/FirstPageLoader";
 
 function GuestLogin() {
+  const { updateUser ,setGuest  } = useUser();
+  const [name, setName] = useState("");
   const [isLoading , setIsLoading] = useState(true);
   const [currentPage, setCurrentPage] = useState("guest");
   const [classValue, setClassValue] = useState(""); // State to hold the input value
   const [classError, setClassError] = useState(""); // State to hold validation error message
   const [splineUrl, setSplineUrl] = useState(undefined);
 
-  useEffect(() => {
-    const fetchSpline = async () => {
-      const splineUrl = "https://prod.spline.design/qzSyKoTbtbS8nUnH/scene.splinecode";
-      setTimeout(() => {
-        setSplineUrl(splineUrl);
-        setIsLoading(false);
-      }, 5000); 
-    };
+  // useEffect(() => {
+  //   const fetchSpline = async () => {
+  //     const splineUrl = "https://prod.spline.design/qzSyKoTbtbS8nUnH/scene.splinecode";
+  //     setTimeout(() => {
+  //       setSplineUrl(splineUrl);
+  //       setIsLoading(false);
+  //     }, 5000); 
+  //   };
 
-    fetchSpline();
-  }, []);
+  //   fetchSpline();
+  // }, []);
+      const [formError, setFormError] = useState(null);
+
   const customGradientStyle = {
     backgroundImage: "linear-gradient(180deg, #6153CC 0%, #D0C6FF 100%)",
   };
   const navigate = useNavigate();
+  
 
   const backgroundcolor = {
     backgroundColor: "#F5F5F5",
@@ -34,15 +41,28 @@ function GuestLogin() {
     backgroundColor: "#6153CC",
   };
 
-  const handleGuest = (path) => {
-    navigate(path, { state: { currentPage: "guest" } });
-  };
+  const handleGuest = ()=>{
+    if (!name || !classValue) {
+      setFormError("Please fill in all fields");
+      return;
+    }
+
+     setFormError("");
+    
+    updateUser(name);
+    setGuest(); // Set the user as a guest
+    navigate("/guestAvatar");
+  }
+ 
+
 
   const handleRegister = (path) => {
     setCurrentPage("register"); // Set currentPage to "register" when navigating to the register page
     navigate(path);
   };
-
+  const handleLogin = () => {
+    navigate("/login");
+  }
   const handleClassChange = (e) => {
     if (e.target.value === "") {
       setClassError("Class is required"); 
@@ -60,8 +80,15 @@ function GuestLogin() {
     }
   };
 
+  setTimeout(() => {
+    setIsLoading(false);
+  }, 5000);
+
   return (
+    <>
+   
     <div className="flex flex-row h-screen font-sf-pro-rounded">
+    {isLoading && <FirstPageLoader />}
       <div className="flex flex-col gap-y-8  mr-72 ml-52   justify-center">
         <h1 className="text-5xl text-indigo-700">Welcome!</h1>
         <p className="text-2xl">Guest Login</p>
@@ -72,6 +99,8 @@ function GuestLogin() {
             placeholder="Enter Your Name"
             className="bg-custom-grey rounded-md p-2 text-center"
             style={backgroundcolor}
+            value={name}
+            onChange={(e) => setName(e.target.value)}
           />
           <h2>Class:</h2>
           <input
@@ -88,20 +117,21 @@ function GuestLogin() {
           <button
             className="bg-custom-purple py-2 rounded-md self-center w-full text-white"
             style={backgroundcolorbutton}
-            onClick={() => handleGuest("/guestAvatar")}
+            onClick={() => handleGuest()}
           >
             <div className="flex flex-row justify-center gap-2">
               <p>Let's Get Started!</p>
               <FaArrowRightLong className="text-2xl" />
             </div>
           </button>
+          {formError && <p className="text-red-500" > {formError}</p>}
           <div className="flex flex-row">
             <hr className="w-1/2 self-center"></hr>
             <p className="text-xs">or</p>
             <hr className="w-1/2 self-center"></hr>
           </div>
           <button
-            onClick={() => handleGuest("/login")}
+            onClick={() => handleLogin()}
             className="bg-custom-purple py-2 rounded-md self-center w-full text-white"
             style={backgroundcolorbutton}
           >
@@ -123,11 +153,12 @@ function GuestLogin() {
       </div>
       <div style={customGradientStyle} className="w-full">
         <div className="w-1/2 absolute left-0 ml-40% h-full">
-        {splineUrl && <Spline scene={splineUrl} />}
+         <Spline scene="https://prod.spline.design/qzSyKoTbtbS8nUnH/scene.splinecode" />
         </div>
       </div>
-      { isLoading ? <FirstPageLoader /> : null }
+    
     </div>
+    </>
   );
 }
 export default GuestLogin;

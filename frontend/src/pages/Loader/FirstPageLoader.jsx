@@ -1,18 +1,20 @@
 import React from "react";
 import styled from "styled-components";
 import Mascot from "../../assets/images/gudda.png";
+import gify from "../../assets/images/loading.gif"
 
 export default function FirstPageLoader() {
   return (
     <Container>
       <div className="loader-greeting">
         <h1>Welcome!</h1>
-        <h3>My name is Guddu. Nice to meet you!</h3>
+        <h3 className=" m-6 mb-12">My name is Guddu. Nice to meet you!</h3>
       </div>
 
       <div className="loader-mascot-container">
         <h4>What is your name?</h4>
         <img src={Mascot} alt="" />
+        <img src={gify} alt="" />
       </div>
     </Container>
   );
@@ -39,10 +41,12 @@ const Container = styled.div`
     h1 {
       font-size: 2.5rem;
       font-weight: 600;
+      margin-bottom: 0.5rem;
     }
     h3 {
       font-size: 1.5rem;
       font-weight: 500;
+      
     }
   }
   .loader-mascot-container {
