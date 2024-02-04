@@ -5,13 +5,13 @@ import { useNavigate } from "react-router-dom";
 import { useUser } from "../../context/UserContext";
 import { useQuestionContext } from "../../context/QuestionContext";
 import React, { useEffect, useState } from "react";
-
-export default function TotalMarks({ setAllAnswersVisible }) {
+import axios from "axios";
+export default function TotalMarks({  setAllAnswersVisible  }) {
   const navigate = useNavigate();
   const handleShowAvatars = () => {
-    navigate("/showavatars");
-  };
-  const [marks, setMarks] = useState(0);
+    navigate('/showavatars');
+}
+  const [marks, setMarks]=useState(0);
   const { userName, avatar, rollNo, isGuest } = useUser();
   const { questionStatus } = useQuestionContext();
   const handleRetry = () => {
@@ -47,7 +47,23 @@ export default function TotalMarks({ setAllAnswersVisible }) {
       }
     }
     setMarks(cnt);
-  }, [questionStatus]);
+  },  [questionStatus]);;
+
+  const sendDataToBackend = async () => {
+    try {
+      const data = await axios.post("https://literacyapp-backend.onrender.com/result", {
+        rollNo: rollNo,
+        marks: marks,
+      });
+      console.log(data);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+  useEffect(() => {
+    sendDataToBackend();
+  }, [marks, rollNo]);
+
   return (
     <Container>
       <div className="dashboard-container">
