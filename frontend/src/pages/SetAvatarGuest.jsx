@@ -6,11 +6,14 @@ import "react-toastify/dist/ReactToastify.css";
 import { AiOutlineArrowRight } from 'react-icons/ai';
 import { BiArrowBack } from 'react-icons/bi';
 import dashboardSticker from '../assets/dashboardSticker.png';
+import { useUser } from '../context/UserContext';
 
 export default function SetAvatar() {
 
  // const api = "https://api.multiavatar.com/45678945";
   const navigate = useNavigate();
+  const {updateAvatar} = useUser()
+
 
   // const [avatars, setAvatars] = useState([]);
   const [selectedAvatar, setSelectedAvatar] = useState(undefined);
@@ -29,7 +32,8 @@ export default function SetAvatar() {
         toast.error("Please select a sticker.", toastOptions);
       }
       else{
-      navigate('/dashboard');
+        updateAvatar(avatars[selectedAvatar]);
+        navigate('/instructions');
       }
     }
 

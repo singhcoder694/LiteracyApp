@@ -2,9 +2,13 @@ import React, { useEffect, useState } from "react";
 import Spline from "@splinetool/react-spline";
 import { FaArrowRightLong } from "react-icons/fa6"; // Importing with react-icons
 import { useNavigate } from "react-router-dom";
+import { useUser } from "../context/UserContext";
+
 import FirstPageLoader from "./Loader/FirstPageLoader";
 
 function GuestLogin() {
+  const { updateUser ,setGuest  } = useUser();
+  const [name, setName] = useState("");
   const [isLoading , setIsLoading] = useState(true);
   const [currentPage, setCurrentPage] = useState("guest");
   const [classValue, setClassValue] = useState(""); // State to hold the input value
@@ -22,10 +26,13 @@ function GuestLogin() {
 
   //   fetchSpline();
   // }, []);
+      const [formError, setFormError] = useState(null);
+
   const customGradientStyle = {
     backgroundImage: "linear-gradient(180deg, #6153CC 0%, #D0C6FF 100%)",
   };
   const navigate = useNavigate();
+  
 
   const backgroundcolor = {
     backgroundColor: "#F5F5F5",
@@ -34,15 +41,28 @@ function GuestLogin() {
     backgroundColor: "#6153CC",
   };
 
-  const handleGuest = (path) => {
-    navigate(path, { state: { currentPage: "guest" } });
-  };
+  const handleGuest = ()=>{
+    if (!name || !classValue) {
+      setFormError("Please fill in all fields");
+      return;
+    }
+
+     setFormError("");
+    
+    updateUser(name);
+    setGuest(); // Set the user as a guest
+    navigate("/guestAvatar");
+  }
+ 
+
 
   const handleRegister = (path) => {
     setCurrentPage("register"); // Set currentPage to "register" when navigating to the register page
     navigate(path);
   };
-
+  const handleLogin = () => {
+    navigate("/login");
+  }
   const handleClassChange = (e) => {
     if (e.target.value === "") {
       setClassError("Class is required"); 
@@ -79,6 +99,8 @@ function GuestLogin() {
             placeholder="Enter Your Name"
             className="bg-custom-grey rounded-md p-2 text-center"
             style={backgroundcolor}
+            value={name}
+            onChange={(e) => setName(e.target.value)}
           />
           <h2>Class:</h2>
           <input
@@ -95,20 +117,21 @@ function GuestLogin() {
           <button
             className="bg-custom-purple py-2 rounded-md self-center w-full text-white"
             style={backgroundcolorbutton}
-            onClick={() => handleGuest("/guestAvatar")}
+            onClick={() => handleGuest()}
           >
             <div className="flex flex-row justify-center gap-2">
               <p>Let's Get Started!</p>
               <FaArrowRightLong className="text-2xl" />
             </div>
           </button>
+          {formError && <p className="text-red-500" > {formError}</p>}
           <div className="flex flex-row">
             <hr className="w-1/2 self-center"></hr>
             <p className="text-xs">or</p>
             <hr className="w-1/2 self-center"></hr>
           </div>
           <button
-            onClick={() => handleGuest("/login")}
+            onClick={() => handleLogin()}
             className="bg-custom-purple py-2 rounded-md self-center w-full text-white"
             style={backgroundcolorbutton}
           >

@@ -9,8 +9,10 @@ import Navbar from "./Navbar";
 import MatchNumbers from "../pages/MatchNumbers";
 import FillInTheBlanks from "../pages/FillInTheBlanks";
 import Answer from "./popup/Answer";
+import { useNavigate } from "react-router-dom";
 
 export default function Background() {
+  const navigate = useNavigate();
   const [questions, setQuestions]=useState([true,false,false]);
   const [modal, setModal] = useState(false);
   const [count,setCount]=useState(0);
@@ -37,6 +39,9 @@ export default function Background() {
       arr[count-1]=true;
       setQuestions(arr);
     }
+  }
+  const handleSubmit = () => {
+    navigate('/dashboard');
   }
   useEffect(()=>{
     if (questions[0]){
@@ -99,7 +104,7 @@ export default function Background() {
         </div>
           <div className="next-button nav-button-icon" onClick={clicked_next}>
             <IoIosArrowForward className="back-icon" />
-            {count<2?<button >Next</button>:<button >Submit</button>}
+            {count<2?<button >Next</button>:<button onClick={()=>handleSubmit()}>Submit</button>}
           </div>
       </div>
       <div className="navigation_button">

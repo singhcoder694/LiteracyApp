@@ -33,7 +33,7 @@ export default function SetAvatar() {
     }
     else{
       updateAvatar(avatars[selectedAvatar]);
-    navigate('/dashboard');
+      navigate('/instructions');
 
     }
   }
