@@ -9,6 +9,12 @@ import { useUser } from '../context/UserContext';
 import dashboardSticker from '../assets/dashboardSticker.png';
 import Spline from '@splinetool/react-spline';
 import axios from 'axios';
+import avatar1 from '../assets/avatars/Multiavatar-aditya.png';
+import avatar2 from '../assets/avatars/Multiavatar-anuk.png';
+import avatar3 from '../assets/avatars/Multiavatar-anushka.png';
+import avatar4 from '../assets/avatars/Multiavatar-dave.png';
+
+
 
 export default function SetAvatar() {
 
@@ -18,7 +24,8 @@ export default function SetAvatar() {
 
   // const [avatars, setAvatars] = useState([]);
   const [selectedAvatar, setSelectedAvatar] = useState(undefined);
-  const avatars = [dashboardSticker,dashboardSticker,dashboardSticker,dashboardSticker]
+  const avatars = [avatar1, avatar2, avatar3, avatar4];
+
 
   const toastOptions = {
         position: "bottom-right",
@@ -139,9 +146,7 @@ export default function SetAvatar() {
 
       <ChildContainer>
         <div className="mascot-container">
-          <div className="mascot-dialog">
-            <h3>Hello Name <br /> Select a sticker for your profile picture.</h3>
-          </div>
+          
           <div className="mascot-img">
           <Spline scale="0.5" scene="https://prod.spline.design/91ewobYvTm8z5Ve9/scene.splinecode" />
           </div>
@@ -186,6 +191,9 @@ const ChildContainer = styled.div`
         text-align: center;
       }
     }
+    .mascot-img {
+      width:35vw;
+      height: 90vh;}
   }
 `;
 
