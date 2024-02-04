@@ -27,7 +27,7 @@
 <img width="960" alt="image" src="https://github.com/singhcoder694/LiteracyApp/assets/114601400/0924878d-b988-408d-bb94-f2a0457757f7"><br>
 
 
-
+# NOTE: The server might be slow due to inactivity as a Free Service is used to host the backend.
 
 
 
