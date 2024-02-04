@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { useUser } from "../../context/UserContext";
 import { useQuestionContext } from "../../context/QuestionContext";
 import React, { useEffect, useState } from "react";
+import av from '../../assets/avatars/Multiavatar-aditya.png';
 import axios from "axios";
 export default function TotalMarks({  setAllAnswersVisible  }) {
   const navigate = useNavigate();
@@ -12,8 +13,8 @@ export default function TotalMarks({  setAllAnswersVisible  }) {
     navigate('/showavatars');
 }
   const [marks, setMarks]=useState(null);
-  const [avatar, setAvatar] = useState("");
-  const { userName, rollNo, isGuest } = useUser();
+  const [avatars, setAvatars] = useState("");
+  const { userName,avatar ,rollNo, isGuest } = useUser();
   const { questionStatus } = useQuestionContext();
   const handleRetry = () => {
     navigate("/questions");
@@ -65,30 +66,31 @@ export default function TotalMarks({  setAllAnswersVisible  }) {
     sendDataToBackend();
   }
 
-  useEffect(async() => {
-    try{
-    const response = await axios.get(`https://literacyapp-backend.onrender.com/data/${rollNo}`);
-    console.log(response.data);
-    setAvatar(response.data.avatar);
-    }catch(err){
-      console.log(err);
-    } 
-  }
-  , [rollNo]);
-  console.log(avatar,'hello');
+  // useEffect(async() => {
+  //   try{
+  //   const response = await axios.get(`https://literacyapp-backend.onrender.com/data/${rollNo}`);
+  //   console.log(response.data);
+  //   setAvatars(response.data.avatar);
+  //   }catch(err){
+  //     console.log(err);
+  //   } 
+  // }
+  // , [rollNo]);
+  // console.log(avatar,'hello');
+// const getAvatars = async () => {
+//   try{
+//       const response = await axios.get(`https://literacyapp-backend.onrender.com/data/${rollNo}`);
+//       console.log(response.data);
+//       setAvatars(response.data.avatar);
+//       }catch(err){
+//         console.log(err);
+//       } 
+// }
+// getAvatars();
+// console.log(avatars);
      
 
-  useEffect(async() => {
-    try{
-    const response = await axios.get(`https://literacyapp-backend.onrender.com/data/${rollNo}`);
-    console.log(response.data);
-    setAvatar(response.data.avatar);
-    }catch(err){
-      console.log(err);
-    } 
-  }
-  , [rollNo]);
-  console.log(avatar,'hello');
+  
      
 
   return (
@@ -99,7 +101,7 @@ export default function TotalMarks({  setAllAnswersVisible  }) {
             <div className="details-marks-container">
               <div className="profile-container">
                 <div>
-                  <img src={avatar} alt="" />
+                  <img src={av} alt="" />
                 </div>
                 <div className="student-credentials">
                   <div style={{ display: "flex", flexDirection: "row" }}>
