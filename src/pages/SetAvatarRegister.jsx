@@ -10,6 +10,7 @@ import { AiOutlineArrowRight } from 'react-icons/ai';
 import { BiArrowBack } from 'react-icons/bi';
 import { useUser } from '../context/UserContext';
 import dashboardSticker from '../assets/dashboardSticker.png';
+import Spline from '@splinetool/react-spline';
 
 export default function SetAvatar() {
 
@@ -121,7 +122,14 @@ export default function SetAvatar() {
       </AvatarContainer>
 
       <ChildContainer>
-        {/* ... (content for ChildContainer) */}
+        <div className="mascot-container">
+          <div className="mascot-dialog">
+            <h3>Hello Name <br /> Select a sticker for your profile picture.</h3>
+          </div>
+          <div className="mascot-img">
+          <Spline scale="0.5" scene="https://prod.spline.design/91ewobYvTm8z5Ve9/scene.splinecode" />
+          </div>
+        </div>
       </ChildContainer>
 
       <ToastContainer />
@@ -144,6 +152,25 @@ const ChildContainer = styled.div`
   height: 100vh;
   width: 50%; 
   background: linear-gradient(to bottom, #FF0033, #FA9596);
+  .mascot-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10%;
+    width: 50%;
+    .mascot-dialog{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      h3 {
+        color: white;
+        font-size: 20px;
+        font-weight: 500;
+        text-align: center;
+      }
+    }
+  }
 `;
 
 const AvatarContainer = styled.div`
