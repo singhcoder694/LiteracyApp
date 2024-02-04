@@ -76,8 +76,14 @@ export default function TotalMarks({setAllAnswersVisible, setShowAvatarsVisible}
                   <img src={avatar} alt="" />
                 </div>
                 <div className="student-credentials">
-                  <h1>Hi! {userName}</h1>
-                  {!isGuest && <h3>Roll no.{rollNo} </h3>}
+                  <div style={{ display: "flex", flexDirection: "row" }}>
+                    <h1>Hi! {userName}</h1>
+                  </div>
+
+                  <div style={{ display: "flex", flexDirection: "row" }}>
+                    {" "}
+                    {!isGuest && <h3>Roll no.{rollNo} </h3>}
+                  </div>
                 </div>
               </div>
             </div>
@@ -323,5 +329,13 @@ const Container = styled.div`
     .marks-container img {
       width: 100%;
     }
+  }
+  .marks-container .details-marks-container {
+    width: 60px;
+    /* height: 250px; */
+    aspect-ratio: 1;
+  }
+  .student-credentials h1 {
+    font-size: 1rem !important;
   }
 `;
