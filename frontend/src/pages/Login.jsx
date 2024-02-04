@@ -35,7 +35,6 @@ function Login() {
   const [RollNoError, setRollNoError] = useState(""); // State to hold validation error message
 
   const handleSubmission = async (e) => {
-    console.log(name, rollNo);
     e.preventDefault();
     if (!name || !rollNo) {
       setFormError("Please fill out all the fields");
@@ -44,14 +43,11 @@ function Login() {
     updateUser(name);
     updateRollNo(rollNo);
     try {
-      console.log("Sending request");
     const response = await axios.post("https://literacyapp-backend.onrender.com/login", { name, rollNo });
-      console.log(response);
       if (response.status === 200) {
         navigate("/instructions");
       }
     } catch (error) {
-      console.log(error);
       setFormError("Invalid Credentials");
     }
 

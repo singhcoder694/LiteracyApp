@@ -52,7 +52,6 @@ export default function SetAvatar() {
         avatar: avatars[selectedAvatar],
         rollNo: rollNo
       });
-      console.log(data);
     }catch(error){
       console.log(error);
     }

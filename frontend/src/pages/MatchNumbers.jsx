@@ -123,7 +123,6 @@ function MatchNumbers() {
     });
   },[aboxArray]);
   useEffect(()=>{
-    console.log(questionStatus);
     if (questionStatus[3][0] === true || questionStatus[4][0] === true || questionStatus[5][0] === true || questionStatus[6][0] === true){
       setQuesSelected(true);
       setAnsSelected(true);
@@ -156,8 +155,6 @@ function MatchNumbers() {
 
   const [ansboxArray, setAnsboxArray] = useState([aboxArray[questionStatus[3][1]-1], aboxArray[questionStatus[4][1]-1], aboxArray[questionStatus[5][1]-1], aboxArray[questionStatus[6][1]-1]]);
   
-  console.log(ansboxArray)
-  console.log(questionStatus)
   useEffect(() => {
     for (let i = 0; i < 4; i++) {
       if (matched[0] == i + 1) {
@@ -231,7 +228,6 @@ function MatchNumbers() {
     }
   };
   const handleClick2 = (e) => {
-    console.log(quesSelected, ansSelected, matched);
     if (quesSelected == false) return;
     const temp = e.target.id;
     const ind = Number.parseInt(temp.slice(-1));
@@ -282,7 +278,6 @@ function MatchNumbers() {
         questionStatus[temp+2][2] = null;
         questionStatus[temp+2][3] = questionStatus[temp+2][3] ;
         updateQuestionStatus(temp+2, false, null, null);
-        console.log(questionStatus,temp)
         setAnsboxArray((prev) => {
           let newState = [...prev];
           newState[temp - 1] = null;
