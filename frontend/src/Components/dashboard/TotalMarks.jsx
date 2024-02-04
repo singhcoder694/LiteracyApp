@@ -11,7 +11,7 @@ export default function TotalMarks({ setAllAnswersVisible }) {
   const handleShowAvatars = () => {
     navigate('/showavatars');
 }
-  const [marks, setMarks]=useState(0);
+  const [marks, setMarks]=useState(null);
   const { userName, avatar, rollNo, isGuest } = useUser();
   const { questionStatus } = useQuestionContext();
   const handleRetry = () => {
@@ -60,9 +60,9 @@ export default function TotalMarks({ setAllAnswersVisible }) {
       console.log(err);
     }
   };
-  useEffect(() => {
+  if(marks!==null && rollNo){
     sendDataToBackend();
-  }, [marks, rollNo]);
+  }
 
   return (
     <Container>
