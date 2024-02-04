@@ -1,6 +1,6 @@
 import React from "react";
 import "./Instructions.css";
-import gudda from "../assets/images/Gudda.jpg";
+import gudda from "../assets/images/gudda.png";
 import { FaArrowRightLong } from "react-icons/fa6";
 import { useUser } from '../context/UserContext';
 import { useNavigate } from "react-router-dom";
