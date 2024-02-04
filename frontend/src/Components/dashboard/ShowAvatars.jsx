@@ -11,12 +11,13 @@ import rocket from '../../assets/rocket.svg';
 import { useNavigate } from "react-router-dom";
 
 
-export default function ShowAvatars() {
+export default function ShowAvatars({setShowAvatarsVisible}) {
   const [selectedButton, setSelectedButton] = useState(null);
   const navigate = useNavigate();
 
   const handleBack = () => {
-    navigate('/dashboard');
+    // navigate('/dashboard');
+    setShowAvatarsVisible(false);
   }
   
 
@@ -98,7 +99,7 @@ export default function ShowAvatars() {
   };
 
   return (
-    <div className="flex flex-row">
+    <div className="flex flex-row -z-10">
       <div className="flex flex-col w-1/5 gap-20 h-screen">
         <div className="flex flex-col items-center mt-5">
           <button className="rounded-full bg-yellow-500 w-12 h-12 " onClick={()=>handleBack()}>

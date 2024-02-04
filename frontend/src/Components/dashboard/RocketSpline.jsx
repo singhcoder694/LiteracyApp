@@ -19,7 +19,7 @@ const Container = styled.div`
   position: absolute;
   top: 0;
   right: 0;
-  z-index: -1;
+  z-index: -20;
   background: linear-gradient(180deg, #6153cc 0%, #ffe99e 100%);
   overflow: hidden;
   img {

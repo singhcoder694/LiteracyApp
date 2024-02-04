@@ -8,10 +8,11 @@ import { useQuestionContext } from '../../context/QuestionContext';
 import React, { useEffect, useState } from "react";
 
 
-export default function TotalMarks({setAllAnswersVisible}) {
+export default function TotalMarks({setAllAnswersVisible, setShowAvatarsVisible}) {
   const navigate = useNavigate();
   const handleShowAvatars = () => {
-    navigate('/showavatars');
+    // navigate('/showavatars');
+    setShowAvatarsVisible(true);
 
   }
   const [marks, setMarks]=useState(0);
