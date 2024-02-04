@@ -31,6 +31,7 @@ const Container = styled.div`
   padding: 1rem 2rem;
   border-radius: 5px;
   width: 70%;
+  height: 6rem;
   gap: 1rem;
   border: 2px solid #E5E5E5;
   background-color: #fff;

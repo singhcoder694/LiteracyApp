@@ -6,14 +6,27 @@ import { useUser } from "../../context/UserContext";
 import { useQuestionContext } from "../../context/QuestionContext";
 import React, { useEffect, useState } from "react";
 
-export default function TotalMarks() {
+export default function TotalMarks({setAllAnswersVisible}) {
   const navigate = useNavigate();
   const handleShowAvatars = () => {
     navigate("/showavatars");
+
   };
   const [marks, setMarks] = useState(0);
-  const { userName, avatar } = useUser();
+  const { userName, avatar, rollNo, isGuest } = useUser();
   const { questionStatus } = useQuestionContext();
+  const handleRetry = () => {
+    navigate('/questions');
+    window.location.reload();
+  }
+  const handleLogOut = () => {
+    navigate('/login');   
+  }
+
+  const handleShowAllAns = () => {
+    setAllAnswersVisible(true);
+  }
+
   useEffect(() => {
     let cnt = 0;
     console.log(questionStatus);
@@ -48,7 +61,7 @@ export default function TotalMarks() {
                 </div>
                 <div className="student-credentials">
                   <h1>Hi! {userName}</h1>
-                  <h3>Roll no. </h3>
+                  {!isGuest && <h3>Roll no.{rollNo} </h3>}
                 </div>
               </div>
             </div>
@@ -60,14 +73,14 @@ export default function TotalMarks() {
           </div>
           <div className="options">
             <div className="retry">
-              <button>Retry</button>
+              <button onClick={()=>handleRetry()}>Retry</button>
             </div>
             <div className="logout">
-              <button>Logout</button>
+              <button onClick={()=> handleLogOut()}>Logout</button>
             </div>
           </div>
           <div className="show-all-ans">
-            <button>Show All Answers</button>
+            <button onClick={handleShowAllAns}>Show All Answers</button>
           </div>
         </div>
         <div className="show-stickers-container">
@@ -99,7 +112,6 @@ const Container = styled.div`
   box-shadow: 0px 4px 30px rgba(0, 0, 0, 0.1);
   backdrop-filter: blur(4.5px);
   -webkit-backdrop-filter: blur(4.5px);
-
   position: relative;
   z-index: 1;
   .dashboard-container {

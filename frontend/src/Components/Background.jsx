@@ -1,5 +1,4 @@
-import react, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
 import "./Background.css";
 import "./NavigationButton.css";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
@@ -9,10 +8,13 @@ import SmallestNumber from "../pages/SmallestNumber";
 import Navbar from "./Navbar";
 import MatchNumbers from "../pages/MatchNumbers";
 import FillInTheBlanks from "../pages/FillInTheBlanks";
-import { QuestionProvider } from "../context/QuestionContext";
+import Answer from "./popup/Answer";
+import { useNavigate } from "react-router-dom";
 
 export default function Background() {
+  const navigate = useNavigate();
   const [questions, setQuestions]=useState([true,false,false]);
+  const [modal, setModal] = useState(false);
   const [count,setCount]=useState(0);
   const clicked_next = () => {
     setCount(count+1);
@@ -37,6 +39,9 @@ export default function Background() {
       arr[count-1]=true;
       setQuestions(arr);
     }
+  }
+  const handleSubmit = () => {
+    navigate('/dashboard');
   }
   useEffect(()=>{
     if (questions[0]){
@@ -67,7 +72,12 @@ export default function Background() {
     setCount(2);
     setQuestions([false,false,true]); 
   }
-  
+  const closeModal = () => {
+    setModal(false);
+  };
+  const handleClick = () => {
+    setModal(true);
+  }
   return (
     <>
         <Navbar />
@@ -94,7 +104,7 @@ export default function Background() {
         </div>
           <div className="next-button nav-button-icon" onClick={clicked_next}>
             <IoIosArrowForward className="back-icon" />
-            {count<2?<button >Next</button>:<button >Submit</button>}
+            {count<2?<button >Next</button>:<button onClick={()=>handleSubmit()}>Submit</button>}
           </div>
       </div>
       <div className="navigation_button">
@@ -104,8 +114,13 @@ export default function Background() {
         <button onClick={showSecond} id="second_que">Match the Column</button>
         <button onClick={showThird} id="third_que">Fill In the Blanks</button>
       </div>
+      {modal ? (
+        <Answer
+          closeModal={closeModal}
+        />
+      ) : null}
       <div className="submit-button-container">
-        <Link to="/dashboard"><button>Submit</button></Link>
+        <button onClick={handleClick}>Submit</button>
       </div>
       <div style={{width:"8%"}}></div>
     </div>

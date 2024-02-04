@@ -28,36 +28,31 @@ function Register() {
   const { updateUser, updateRollNo } = useUser();
   const [name, setName] = useState("");
 
-
   const [age, setAge] = useState("");
   const [ageError, setAgeError] = useState("");
   const [formError, setFormError] = useState(null);
   const [classValue, setClassValue] = useState("");
   const [classError, setClassError] = useState("");
 
-  const handleSubmission =async (e) => {
+  const handleSubmission = async (e) => {
     e.preventDefault();
     if (!name || !age || !classValue) {
       setFormError("Please fill out all the fields");
       return;
     }
-    try{
-    const response = await axios.post("http://localhost:3001/register", {name});
-    console.log(response);
-    updateRollNo(response.data.rollNo);
-    
-    }catch(error){
+    try {
+      const response = await axios.post("http://localhost:3001/register", {
+        name,
+      });
+      console.log(response);
+      updateRollNo(response.data.rollNo);
+      console.log(response.data.rollNo);
+      navigate("/registerAvatar");
+      updateUser(name);
+    } catch (error) {
       console.log(error);
       setFormError("Invalid Credentials");
     }
-
-
-
-    updateUser(name);
-    
-  
-    
-   navigate("/registerAvatar");
   };
 
   const handleClassChange = (e) => {
@@ -71,7 +66,7 @@ function Register() {
     } else {
       e.target.value = e.target.value.slice(0, 1);
       setClassError("Class should be between 1 and 10");
-      setClassValue("")
+      setClassValue("");
     }
   };
 
@@ -132,39 +127,39 @@ function Register() {
           <p className="text-red-600">{ageError}</p>
 
           <div className="flex flex-col gap-4">
-          <button
-            className="bg-custom-red py-2 rounded-md self-center w-full text-white"
-            style={backgroundcolorbutton}
-            onClick={handleSubmission}
-          >
-            <div className="flex flex-row justify-center gap-2">
-              <p>Let's Get Started!</p>
-              <FaArrowRightLong className="text-2xl" />
-            </div>
-          </button>
-          {formError && <p className="text-red-700">{formError}</p>}
+            <button
+              className="bg-custom-red py-2 rounded-md self-center w-full text-white"
+              style={backgroundcolorbutton}
+              onClick={handleSubmission}
+            >
+              <div className="flex flex-row justify-center gap-2">
+                <p>Let's Get Started!</p>
+                <FaArrowRightLong className="text-2xl" />
+              </div>
+            </button>
+            {formError && <p className="text-red-700">{formError}</p>}
 
-          <div className="flex flex-row gap-1">
-            <p>Already have an account?</p>
-            <a
-              onClick={() => handleLogin("/login")}
-              className="text-custom-red hover:text-red-400 cursor-pointer"
-              style={textcolor}
-            >
-              Login
-            </a>
+            <div className="flex flex-row gap-1">
+              <p>Already have an account?</p>
+              <a
+                onClick={() => handleLogin("/login")}
+                className="text-custom-red hover:text-red-400 cursor-pointer"
+                style={textcolor}
+              >
+                Login
+              </a>
+            </div>
+            <div className="flex flex-row gap-1">
+              <p>Give test without login?</p>
+              <a
+                onClick={() => handleLogin("/")}
+                className="text-custom-red hover:text-red-400 cursor-pointer"
+                style={textcolor}
+              >
+                Guest
+              </a>
+            </div>
           </div>
-          <div className="flex flex-row gap-1">
-            <p>Give test without login?</p>
-            <a
-              onClick={() => handleLogin("/guest")}
-              className="text-custom-red hover:text-red-400 cursor-pointer"
-              style={textcolor}
-            >
-              Guest
-            </a>
-          </div>
-        </div>
         </div>
       </div>
       <div style={gradientStyle} className="w-full">
