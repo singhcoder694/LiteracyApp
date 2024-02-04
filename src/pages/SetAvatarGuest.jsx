@@ -114,13 +114,14 @@ export default function SetAvatar() {
           Select Sticker <AiOutlineArrowRight />
           </button>
         </div>
+        <ToastContainer />
       </AvatarContainer>
 
       <ChildContainer>
         {/* ... (content for ChildContainer) */}
       </ChildContainer>
 
-      <ToastContainer />
+      
     </Container>
   );
 }
