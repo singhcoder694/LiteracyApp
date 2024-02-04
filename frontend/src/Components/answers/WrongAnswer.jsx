@@ -1,10 +1,16 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import { FaTimes, FaAngleDown } from "react-icons/fa";
 
 export default function WrongAnswer() {
+  const [showCorrectAnswer, setShowCorrectAnswer] = useState(false);
+
+  const handleShowCorrectAnswer = () => {
+    setShowCorrectAnswer(!showCorrectAnswer);
+  };
+
   return (
-    <Container>
+    <Container showCorrectAnswer={showCorrectAnswer}>
       <div className="ans-icon">
         <FaTimes size={60} color="#ff0033" />
       </div>
@@ -21,9 +27,11 @@ export default function WrongAnswer() {
       </div>
 
       <div className="show-correct-ans-btn">
-        <button>
-          Show Correct Answer 
-          <div className="ans-dropdown"><FaAngleDown /></div>
+        <button onClick={handleShowCorrectAnswer}>
+          Show Correct Answer
+          <div className="ans-dropdown">
+            <FaAngleDown />
+          </div>
         </button>
       </div>
     </Container>
@@ -38,9 +46,12 @@ const Container = styled.div`
   padding: 1rem 2rem;
   border-radius: 5px;
   width: 70%;
+  height: ${(props) => (props.showCorrectAnswer ? "10rem" : "6rem")};
   gap: 1rem;
-  background-color: #FFCEB7;
-    gap: 5%;
+  background-color: #ffceb7;
+  gap: 5%;
+  transition: all 0.3s ease-in-out;
+
   .answer {
     display: flex;
     flex-direction: row;
@@ -49,16 +60,16 @@ const Container = styled.div`
     width: 50%;
     gap: 2rem;
     .ques-number {
-        h5 {
-            font-size: 1.5rem;
-            font-weight: 500;
-        }
+      h5 {
+        font-size: 1.5rem;
+        font-weight: 500;
+      }
     }
     .ques-ans {
-        h3 {
-            font-size: 1.2rem;
-            font-weight: 500;
-        }
+      h3 {
+        font-size: 1.2rem;
+        font-weight: 500;
+      }
     }
   }
 
@@ -68,11 +79,11 @@ const Container = styled.div`
     justify-content: center;
     align-items: flex-end;
     button {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        gap: 0.5rem;
-        flex-direction: column;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 0.5rem;
+      flex-direction: column;
       color: black;
       padding: 0.5rem;
       gap: 0.5rem;

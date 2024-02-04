@@ -8,7 +8,7 @@ import { useQuestionContext } from '../../context/QuestionContext';
 import React, { useEffect, useState } from "react";
 
 
-export default function TotalMarks() {
+export default function TotalMarks({setAllAnswersVisible}) {
   const navigate = useNavigate();
   const handleShowAvatars = () => {
     navigate('/showavatars');
@@ -16,6 +16,11 @@ export default function TotalMarks() {
   const [marks, setMarks]=useState(0);
   const { userName, avatar } = useUser();
   const { questionStatus } = useQuestionContext();
+
+  const handleShowAllAns = () => {
+    setAllAnswersVisible(true);
+  }
+
   useEffect(()=>{
     let cnt=0;
     console.log(questionStatus);
@@ -67,7 +72,7 @@ export default function TotalMarks() {
             </div>
           </div>
           <div className="show-all-ans">
-            <button>Show All Answers</button>
+            <button onClick={handleShowAllAns}>Show All Answers</button>
           </div>
         </div>
         <div className="show-stickers-container">
