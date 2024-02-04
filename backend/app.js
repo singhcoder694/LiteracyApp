@@ -107,12 +107,12 @@ app.post('/result', async ( req, res) => {
     
 })
 
-app.get('/photos/:rollNo', async( req, res) => {
+app.get('/data/:rollNo', async( req, res) => {
 
     const rollNo = req.params.rollNo;
     const {data, error} = await supabase 
     .from('User')
-    .select('avatar,stickers')
+    .select('avatar,stickers,Marks')
     .eq('rollNo', rollNo)
 
     if(error) {
