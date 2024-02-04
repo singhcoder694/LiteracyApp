@@ -3,7 +3,7 @@ import { FaArrowRightLong } from "react-icons/fa6";
 import { useNavigate } from "react-router-dom";
 import Spline from "@splinetool/react-spline";
 import { useState } from "react";
-import supabase from "../config/supabseClient";
+
 import { useUser } from "../context/UserContext";
 function Register() {
   const navigate = useNavigate();
@@ -33,25 +33,9 @@ function Register() {
   const [classValue, setClassValue] = useState("");
   const [classError, setClassError] = useState("");
 
-  const handleSubmission = (e) => {
-    e.preventDefault();
+  const handleSubmission = () => {
 
-    if (!name || !classValue || !age) {
-      setFormError("Please fill out all the fields");
-      return;
-    }
-    const { data, error } = supabase.from("Register").insert([{ name }]);
-    if (error) {
-      console.log(error);
-      setFormError("An error occured while submitting the form");
-      return;
-    }
-    if (data) {
-      console.log(data);
-      setFormError(null);
-      // updateUser(name);
-      navigate("/registerAvatar");
-    }
+   navigate("/dashboard");
   };
 
   const handleClassChange = (e) => {

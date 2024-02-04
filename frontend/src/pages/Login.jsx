@@ -2,7 +2,7 @@ import React from "react";
 import { FaArrowRightLong } from "react-icons/fa6";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
-import supabase from "../config/supabseClient";
+import axios from 'axios';
 import Spline from "@splinetool/react-spline";
 import { useUser } from "../context/UserContext";
 
@@ -39,21 +39,20 @@ function Login() {
       setFormError("Please fill out all the fields");
       return;
     }
-
-    const { data, error } = await supabase
-      .from("Login")
-      .insert([{ name, rollNo }]);
-    if (error) {
+    updateUser(name);
+    updateRollNo(rollNo);
+    try {
+      const response = await axios.post('http://localhost:3001/login', {
+        name: name,
+        rollNo: rollNo,
+      });
+      console.log(response);
+      if (response.status === 200) {
+        navigate("/dashboard");
+      }
+    } catch (error) {
       console.log(error);
-      setFormError("An error occured while submitting the form");
-      return;
-    }
-    if (!error) {
-      console.log(data);
-      setFormError("");
-      updateUser(name);
-      updateRollNo(rollNo);
-      navigate("/instructions");
+      setFormError("Invalid Credentials");
     }
 
   }

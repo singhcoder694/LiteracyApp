@@ -7,7 +7,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 
-app.get('/login', async (req,res) => {
+app.post('/login', async (req,res) => {
     console.log(req.body);
     const { name , rollNo } = req.body;
 
