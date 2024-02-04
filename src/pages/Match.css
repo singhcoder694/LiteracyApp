@@ -6,20 +6,22 @@
 .ques_cols{
     display: flex;
     justify-content: center;
+    align-items: center;
     flex-direction: column;
-    border: 1px solid black;
-    padding:10px 30px;
+    padding:20px 10px;
     border-radius: 20px;
     background-color: #FFF;
+    box-shadow:0 0 20px 0 rgba(0,0,0,0.1);
 }
 .ans_cols{
     display: flex;
     justify-content: center;
+    align-items: center;
     flex-direction: column;
-    border: 1px solid black;
-    padding:10px 30px;
+    padding:20px 20px;
     border-radius: 20px;
     background-color: #FFF;
+    box-shadow:0 0 20px 0 rgba(0,0,0,0.1);
 }
 .questions{
     display: inline;
@@ -27,9 +29,11 @@
     box-shadow: inset;
     cursor: pointer;
     margin:10px;
-    border-radius: 20px;
+    border-radius: 10px;
     text-align: center;
     transition: all 0.5s ease-in-out;
+    width:90%;
+    z-index:100;
 }
 .answers{
     display: inline;
@@ -37,10 +41,11 @@
     box-shadow: inset;
     cursor: pointer;
     margin:10px;
-    border-radius: 20px;
+    border-radius: 10px;
     text-align: center;
+    width:90%;
+    z-index:100;
 }
 #Qmatch1{
     z-index: 1;
-    
 }

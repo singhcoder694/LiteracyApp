@@ -17,9 +17,11 @@ import SetAvatarRegister from "./pages/SetAvatarRegister";
 import MatchNumbers from "./pages/MatchNumbers";
 import Instructions from "./pages/Instructions";
 import Dashboard from "./pages/Dashboard";
+
 import ShowAvatars from "./Components/dashboard/ShowAvatars";
 
 import SmallestNumber from "./pages/SmallestNumber";
+import AllAnswers from "./Components/dashboard/AllAnswers";
 
 const App = () => {
   return (
@@ -39,6 +41,7 @@ const App = () => {
             <Route path ='/instructions' element={<Instructions />} />
             <Route path='/dashboard' element={<Dashboard />} />
             <Route path = '/showavatars' element={<ShowAvatars />} />
+            <Route path='/allAnswers' element={<AllAnswers />} />
           </Routes>
         </NavigationProvider>
       </Router>

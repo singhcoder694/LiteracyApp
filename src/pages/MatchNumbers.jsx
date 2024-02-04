@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect, useLayoutEffect } from "react";
 import "./Match.css";
-
+import { useQuestionContext } from "../context/QuestionContext";
 import { motion, spring } from "framer-motion";
 
 function MatchNumbers() {
@@ -10,6 +10,7 @@ function MatchNumbers() {
     "white",
     "white",
   ]);
+  const { questionStatus, updateQuestionStatus } = useQuestionContext();
   const numPairs = 4;
   const [color, setColor] = useState("");
 
@@ -105,10 +106,52 @@ function MatchNumbers() {
       );
     }
   }, [svgBox]); // Make sure to recalculate when svgBox changes
+  useEffect(() => {
+    setAnsboxArray((prevState) => {
+      let newState = [...prevState];
+      newState[questionStatus[3][2]-1] = aboxArray[questionStatus[3][1]-1];
+      newState[questionStatus[4][2]-1] = aboxArray[questionStatus[4][1]-1];
+      newState[questionStatus[5][2]-1] = aboxArray[questionStatus[5][1]-1];
+      newState[questionStatus[6][2]-1] = aboxArray[questionStatus[6][1]-1];
+      return newState;
+    });
+  },[aboxArray]);
+  useEffect(()=>{
+    console.log(questionStatus);
+    if (questionStatus[3][0] === true || questionStatus[4][0] === true || questionStatus[5][0] === true || questionStatus[6][0] === true){
+      setQuesSelected(true);
+      setAnsSelected(true);
+    }
+    if (questionStatus[3][0] === true){
+      pairs[0][1] = questionStatus[3][1];
+      document.getElementById(`${"Qmatch" + 1}`).style.backgroundColor = backColorArr[0];
+      document.getElementById(`${"Amatch" + questionStatus[3][1]}`).style.backgroundColor = backColorArr[0];
+      setPairs(pairs);
+    }
+    if (questionStatus[4][0] === true){
+      pairs[1][1] = questionStatus[4][1];
+      document.getElementById(`${"Qmatch" + 2}`).style.backgroundColor = backColorArr[1];
+      document.getElementById(`${"Amatch" + questionStatus[4][1]}`).style.backgroundColor = backColorArr[1];
+      setPairs(pairs);
+    }
+    if (questionStatus[5][0] === true){
+      pairs[2][1] = questionStatus[5][1];
+      document.getElementById(`${"Qmatch" + 3}`).style.backgroundColor = backColorArr[2];
+      document.getElementById(`${"Amatch" + questionStatus[5][1]}`).style.backgroundColor = backColorArr[2];
+      setPairs(pairs);
+    }
+    if (questionStatus[6][0] === true){
+      pairs[3][1] = questionStatus[6][1];
+      document.getElementById(`${"Qmatch" + 4}`).style.backgroundColor = backColorArr[3];
+      document.getElementById(`${"Amatch" + questionStatus[6][1]}`).style.backgroundColor = backColorArr[3];
+      setPairs(pairs);
+    }
+  },[questionStatus])
+
+  const [ansboxArray, setAnsboxArray] = useState([aboxArray[questionStatus[3][1]-1], aboxArray[questionStatus[4][1]-1], aboxArray[questionStatus[5][1]-1], aboxArray[questionStatus[6][1]-1]]);
   
-
-  const [ansboxArray, setAnsboxArray] = useState([null, null, null, null]);
-
+  console.log(ansboxArray)
+  console.log(questionStatus)
   useEffect(() => {
     for (let i = 0; i < 4; i++) {
       if (matched[0] == i + 1) {
@@ -207,6 +250,9 @@ function MatchNumbers() {
           newState[matched[0] - 1] = newState[matched[0] - 1] + 1;
           return newState;
         });
+        questionStatus[matched[0]+2][0] = true;
+        questionStatus[matched[0]+2][1] = ind;
+        questionStatus[matched[0]+2][2] = matched[0];
         return newState;
       });
     } else if (quesSelected == true && ansSelected == true) {
@@ -224,6 +270,10 @@ function MatchNumbers() {
         let newPairs = [...pairs];
         newPairs[temp - 1][1] = -1;
         setPairs(newPairs);
+        questionStatus[temp+2][0] = false;
+        questionStatus[temp+2][1] = null;
+        questionStatus[temp+2][2] = null;
+        console.log(questionStatus,temp)
         setAnsboxArray((prev) => {
           let newState = [...prev];
           newState[temp - 1] = null;
@@ -254,6 +304,9 @@ function MatchNumbers() {
           setMatched(newmatched);
           setQuesSelected(false);
           setAnsSelected(false);
+          questionStatus[temp+2][0] = false;
+          questionStatus[temp+2][1] = null;
+          questionStatus[temp+2][2] = null;
         }
 
         return;
@@ -280,6 +333,9 @@ function MatchNumbers() {
             newState[i] = null;
             return newState;
           });
+          questionStatus[i+3][0] = false;
+          questionStatus[i+3][1] = null;
+          questionStatus[i+3][2] = null;
           setAnimationKey((prev) => {
             let newState = [...prev];
             newState[i] = newState[i] + 1;
@@ -290,7 +346,8 @@ function MatchNumbers() {
           return;
         }
       }
-      document.getElementById(
+      if (matched[1]){
+        document.getElementById(
         `${"Amatch" + matched[1]}`
       ).style.backgroundColor = "";
       document.getElementById(`${"Amatch" + ind}`).style.backgroundColor =
@@ -303,6 +360,9 @@ function MatchNumbers() {
         newState[matched[0] - 1][1] = ind;
         return newState;
       });
+      questionStatus[matched[0]+2][0] = true;
+      questionStatus[matched[0]+2][1] = ind;
+      questionStatus[matched[0]+2][2] = matched[0];
       setAnsboxArray((prev) => {
         let newState = [...prev];
         newState[matched[0] - 1] = aboxArray[ind - 1];
@@ -312,11 +372,17 @@ function MatchNumbers() {
         let newState = [...prev];
         newState[matched[0] - 1] = newState[matched[0] - 1] + 1;
         return newState;
-      });
+      })
     }
+    }
+    // if (matched[0] !== null && matched[1]!== null){
+    //   console.log(questionStatus);
+    //   updateQuestionStatus(matched[0]+2, true, matched[1], matched[0]);
+    // }
   };
-
   
+
+
 
   return (
     <div className="smallest_number_container">
