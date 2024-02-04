@@ -12,6 +12,7 @@ import Dashboard from "./pages/Dashboard";
 import ShowAvatars from "./Components/dashboard/ShowAvatars";
 import AllAnswers from "./Components/dashboard/AllAnswers";
 import { QuestionProvider } from "./context/QuestionContext";
+import FirstPageLoader from "./pages/Loader/FirstPageLoader";
 
 const App = () => {
   return (
@@ -31,6 +32,7 @@ const App = () => {
             <Route path='/dashboard' element={<Dashboard />} />
             <Route path='/showavatars' element={<ShowAvatars />} />
             <Route path='/allAnswers' element={<AllAnswers />} />
+            <Route path='/loader' element={<FirstPageLoader />} />
           </Routes>
         </NavigationProvider>
       </Router>
