@@ -46,7 +46,7 @@ function Login() {
     const response = await axios.post("http://localhost:3001/login", { name, rollNo });
       console.log(response);
       if (response.status === 200) {
-        navigate("/dashboard");
+        navigate("/instructions");
       }
     } catch (error) {
       console.log(error);

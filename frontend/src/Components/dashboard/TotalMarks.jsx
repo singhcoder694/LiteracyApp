@@ -12,10 +12,18 @@ export default function TotalMarks() {
   const navigate = useNavigate();
   const handleShowAvatars = () => {
     navigate('/showavatars');
+
   }
   const [marks, setMarks]=useState(0);
-  const { userName, avatar } = useUser();
+  const { userName, avatar, rollNo, isGuest } = useUser();
   const { questionStatus } = useQuestionContext();
+  const handleRetry = () => {
+    navigate('/questions');
+    window.location.reload();
+  }
+  const handleLogOut = () => {
+    navigate('/login');   
+  }
   useEffect(()=>{
     let cnt=0;
     console.log(questionStatus);
@@ -48,7 +56,7 @@ export default function TotalMarks() {
                 </div>
                 <div className='student-credentials'>
                   <h1>Hi! {userName}</h1>
-                  <h3>Roll no. </h3>
+                  {!isGuest && <h3>Roll no.{rollNo} </h3>}
                 </div>
               </div>
             </div>
@@ -60,10 +68,10 @@ export default function TotalMarks() {
           </div>
           <div className="options">
             <div className="retry">
-              <button>Retry</button>
+              <button onClick={()=>handleRetry()}>Retry</button>
             </div>
             <div className="logout">
-              <button>Logout</button>
+              <button onClick={()=> handleLogOut()}>Logout</button>
             </div>
           </div>
           <div className="show-all-ans">
