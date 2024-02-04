@@ -9,6 +9,7 @@ import { Buffer } from "buffer";
 import { AiOutlineArrowRight } from 'react-icons/ai';
 import { BiArrowBack } from 'react-icons/bi';
 import { useUser } from '../context/UserContext';
+import dashboardSticker from '../assets/dashboardSticker.png';
 
 export default function SetAvatar() {
 
@@ -16,8 +17,9 @@ export default function SetAvatar() {
   const navigate = useNavigate();
   const {updateAvatar} = useUser()
 
-  const [avatars, setAvatars] = useState([]);
+  // const [avatars, setAvatars] = useState([]);
   const [selectedAvatar, setSelectedAvatar] = useState(undefined);
+  const avatars = [dashboardSticker,dashboardSticker,dashboardSticker,dashboardSticker]
 
   const toastOptions = {
         position: "bottom-right",
@@ -27,42 +29,50 @@ export default function SetAvatar() {
         theme: 'dark',
     }
 
-  const setProfilePicture = async () => {
-    if (selectedAvatar === undefined) {
-      toast.error("Please select an avatar.", toastOptions);
-    } else {
-      const user = await JSON.parse(localStorage.getItem("chat-app-user"));
-      const { data } = await axios.post(`${setAvatarRoute}/${user._id}`, {
-        image: avatars[selectedAvatar],
-      });
-
-      if (data.isSet) {
-        user.isAvatarImageSet = true;
-        user.avatarImage = data.image;
-        localStorage.setItem("chat-app-user", JSON.stringify(user));
-        updateAvatar(data.image);
-        navigate("/");
-      } else {
-        toast.error("Error setting avatar. Please try again.", toastOptions);
-      }
+  const handleSelectSticker = () => {
+    if(selectedAvatar === undefined){
+      toast.error("Please select a sticker.", toastOptions);
     }
-  };
+    else{
+    navigate('/dashboard');
+    }
+  }
+  // const setProfilePicture = async () => {
+  //   if (selectedAvatar === undefined) {
+  //     toast.error("Please select an avatar.", toastOptions);
+  //   } else {
+  //     const user = await JSON.parse(localStorage.getItem("chat-app-user"));
+  //     const { data } = await axios.post(`${setAvatarRoute}/${user._id}`, {
+  //       image: avatars[selectedAvatar],
+  //     });
 
-  useEffect(() => {
-    const fetchData = async () => {
-      const data = [];
-      for (let i = 0; i < 4; i++) {
-        const image = await axios.get(
-          `${api}/${Math.round(Math.random() * 1000)}`
-        );
-        const buffer = new Buffer(image.data);
-        data.push(buffer.toString("base64"));
-      }
-      setAvatars(data);
-    };
+  //     if (data.isSet) {
+  //       user.isAvatarImageSet = true;
+  //       user.avatarImage = data.image;
+  //       localStorage.setItem("chat-app-user", JSON.stringify(user));
+  //       updateAvatar(data.image);
+  //       navigate("/");
+  //     } else {
+  //       toast.error("Error setting avatar. Please try again.", toastOptions);
+  //     }
+  //   }
+  // };
 
-    fetchData();
-  }, []);
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     const data = [];
+  //     for (let i = 0; i < 4; i++) {
+  //       const image = await axios.get(
+  //         `${api}/${Math.round(Math.random() * 1000)}`
+  //       );
+  //       const buffer = new Buffer(image.data);
+  //       data.push(buffer.toString("base64"));
+  //     }
+  //     setAvatars(data);
+  //   };
+
+  //   fetchData();
+  // }, []);
 
   return (
     <Container>
@@ -91,7 +101,7 @@ export default function SetAvatar() {
                   className={`avatar ${selectedAvatar === index ? "selected" : ""}`}
                 >
                   <img
-                    src={`data:image/svg+xml;base64,${avatar}`}
+                    src={`${avatar}`}
                     alt="avatar"
                     onClick={() => setSelectedAvatar(index)}
                   />
@@ -100,7 +110,11 @@ export default function SetAvatar() {
             })}
           </div>
 
-          <button className="submit-btn">Select Sticker <AiOutlineArrowRight /></button>
+          <button 
+            className="submit-btn" 
+            onClick={handleSelectSticker}>
+          Select Sticker <AiOutlineArrowRight />
+          </button>
         </div>
       </AvatarContainer>
 

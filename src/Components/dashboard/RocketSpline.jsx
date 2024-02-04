@@ -13,7 +13,7 @@ export default function RocketSpline() {
 const Container = styled.div`
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: flex-end;
     height: 100vh;
     width: 70%;
     position: absolute;
