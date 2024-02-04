@@ -63,7 +63,12 @@
     cursor: pointer;
     transition: all 0.3s ease;
 }
-
+.instruction-button button:hover{
+    transform: scale(1.05);
+}
+.instruction-button button:active{
+    transform: scale(1);
+}
 .instructions-colored-half-part p {
     width: 50%;
     font-size: 18px;

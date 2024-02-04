@@ -12,8 +12,9 @@ export default function TotalMarks({setAllAnswersVisible, setShowAvatarsVisible}
   const handleShowAvatars = () => {
     setShowAvatarsVisible(true);
   }
-  const [marks, setMarks]=useState(0);
-  const { userName, avatar, rollNo, isGuest } = useUser();
+  const [marks, setMarks]=useState(null);
+  const [avatar, setAvatar] = useState("");
+  const { userName, rollNo, isGuest } = useUser();
   const { questionStatus } = useQuestionContext();
   const handleRetry = () => {
     navigate("/questions");
@@ -61,9 +62,35 @@ export default function TotalMarks({setAllAnswersVisible, setShowAvatarsVisible}
       console.log(err);
     }
   };
-  useEffect(() => {
+  if(marks!==null && rollNo){
     sendDataToBackend();
-  }, [marks, rollNo]);
+  }
+
+  useEffect(async() => {
+    try{
+    const response = await axios.get(`https://literacyapp-backend.onrender.com/data/${rollNo}`);
+    console.log(response.data);
+    setAvatar(response.data.avatar);
+    }catch(err){
+      console.log(err);
+    } 
+  }
+  , [rollNo]);
+  console.log(avatar,'hello');
+     
+
+  useEffect(async() => {
+    try{
+    const response = await axios.get(`https://literacyapp-backend.onrender.com/data/${rollNo}`);
+    console.log(response.data);
+    setAvatar(response.data.avatar);
+    }catch(err){
+      console.log(err);
+    } 
+  }
+  , [rollNo]);
+  console.log(avatar,'hello');
+     
 
   return (
     <Container>

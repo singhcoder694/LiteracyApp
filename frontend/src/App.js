@@ -13,6 +13,7 @@ import ShowAvatars from "./Components/dashboard/ShowAvatars";
 import AllAnswers from "./Components/dashboard/AllAnswers";
 import { QuestionProvider } from "./context/QuestionContext";
 import FirstPageLoader from "./pages/Loader/FirstPageLoader";
+import ReloadAlert from "./Components/ReloadAlert";
 
 const App = () => {
   return (
@@ -20,6 +21,7 @@ const App = () => {
       <QuestionProvider >
       <Router>
         <NavigationProvider>
+          <ReloadAlert/>
           <Routes>
             <Route path="/questions" element={<Background />} />
             <Route path='/' element={<StartingScreen />} />

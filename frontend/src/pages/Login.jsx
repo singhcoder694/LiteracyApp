@@ -120,7 +120,7 @@ function Login() {
           <div className="flex flex-row gap-1">
             <p>Give test without login?</p>
             <a
-              onClick={() => handleLogin("/guest")}
+              onClick={() => handleLogin("/")}
               className="text-yellow-500 hover:text-yellow-300 cursor-pointer"
             >
               Guest
