@@ -20,6 +20,7 @@ module.exports = {
         'custom-purple' : '#6153CC',
         'custom-red': '#FF0033',
         'custom-yellow' : '#FFB507'
+        
 
       },
       fontFamily: {
@@ -40,6 +41,10 @@ module.exports = {
         'smallest-ques-button-clr': '#FFC847',
         'smallest-ques-gradient-start': '#FFB507',
         'smallest-ques-gradient-end': '#FFE99E',
+        'question1': 'var(--Yellow-grad-up, #FFB507)',
+        'question2': "#A5D720",
+        'question3' : "#FF6969",
+        'question4' : "#62D0FF",
       },
       backgroundImage: theme => ({
         'smallest-ques-gradient': 'linear-gradient(180deg, ' + theme('colors.smallest-ques-gradient-start') + ' 0%, ' + theme('colors.smallest-ques-gradient-end') + ' 99.4%)',
