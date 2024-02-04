@@ -3,6 +3,7 @@ import { FaArrowRightLong } from "react-icons/fa6";
 import { useNavigate } from "react-router-dom";
 import Spline from "@splinetool/react-spline";
 import { useState } from "react";
+import axios from "axios";
 
 import { useUser } from "../context/UserContext";
 function Register() {
@@ -24,8 +25,9 @@ function Register() {
   const textcolor = {
     color: "#FF0033",
   };
-  const { updateUser } = useUser();
+  const { updateUser, updateRollNo } = useUser();
   const [name, setName] = useState("");
+
 
   const [age, setAge] = useState("");
   const [ageError, setAgeError] = useState("");
@@ -33,9 +35,29 @@ function Register() {
   const [classValue, setClassValue] = useState("");
   const [classError, setClassError] = useState("");
 
-  const handleSubmission = () => {
+  const handleSubmission =async (e) => {
+    e.preventDefault();
+    if (!name || !age || !classValue) {
+      setFormError("Please fill out all the fields");
+      return;
+    }
+    try{
+    const response = await axios.post("http://localhost:3001/register", {name});
+    console.log(response);
+    updateRollNo(response.data.rollNo);
+    
+    }catch(error){
+      console.log(error);
+      setFormError("Invalid Credentials");
+    }
 
-   navigate("/dashboard");
+
+
+    updateUser(name);
+    
+  
+    
+   navigate("/registerAvatar");
   };
 
   const handleClassChange = (e) => {
