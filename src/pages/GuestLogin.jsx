@@ -34,14 +34,14 @@ function GuestLogin() {
       setClassError("Class is required"); 
     }
     if (isNaN(e.target.value)) {
-      setClassValue("")
+      setClassValue("");
       setClassError("Class should be between 1 and 10"); 
     }
     if (e.target.value >= 1 && e.target.value <= 10) {
       setClassValue(e.target.value); 
       setClassError(""); 
     } else {
-      e.target.value = e.target.value.slice(0, 1); // Set the input value to the first character if the input value is greater than 10
+      setClassValue(""); // Set the input value to the first character if the input value is greater than 10
       setClassError("Class should be between 1 and 10"); // Set the classError state if the input value is empty
     }
   };
