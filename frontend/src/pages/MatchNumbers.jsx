@@ -405,7 +405,7 @@ function MatchNumbers() {
       <div className="columns">
         <div className="ques_cols">
           <p
-            className="questions"
+            className='questions hover:bg-question1 '
             id="Qmatch1"
             ref={getQBoxRef(0)}
             onClick={handleClick}
@@ -413,7 +413,7 @@ function MatchNumbers() {
             23 + 34
           </p>
           <p
-            className="questions"
+            className="questions hover:bg-question2"
             id="Qmatch2"
             ref={getQBoxRef(1)}
             onClick={handleClick}
@@ -421,7 +421,7 @@ function MatchNumbers() {
             2 + 54
           </p>
           <p
-            className="questions"
+            className="questions hover:bg-question3"
             id="Qmatch3"
             ref={getQBoxRef(2)}
             onClick={handleClick}
@@ -429,7 +429,7 @@ function MatchNumbers() {
             9 + 89
           </p>
           <p
-            className="questions"
+            className="questions hover:bg-question4"
             id="Qmatch4"
             ref={getQBoxRef(3)}
             onClick={handleClick}
