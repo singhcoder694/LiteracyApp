@@ -1,11 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
-import { useNavigate, useLocation } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import axios from "axios";
-import { setAvatarRoute } from "../utils/APIRoutes";
-import { Buffer } from "buffer";
 import { AiOutlineArrowRight } from 'react-icons/ai';
 import { BiArrowBack } from 'react-icons/bi';
 import { useUser } from '../context/UserContext';
@@ -14,7 +11,7 @@ import Spline from '@splinetool/react-spline';
 
 export default function SetAvatar() {
 
-  const api = "https://api.multiavatar.com/45678945";
+ // const api = "https://api.multiavatar.com/45678945";
   const navigate = useNavigate();
   const {updateAvatar} = useUser()
 
