@@ -1,4 +1,4 @@
-import react, { useState } from "react";
+import react, { useEffect, useState } from "react";
 import "./Background.css";
 import "./NavigationButton.css";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
@@ -9,7 +9,6 @@ import Navbar from "./Navbar";
 import MatchNumbers from "../pages/MatchNumbers";
 import FillInTheBlanks from "../pages/FillInTheBlanks";
 import { QuestionProvider } from "../context/QuestionContext";
-
 
 export default function Background() {
   const [questions, setQuestions]=useState([true,false,false]);
@@ -38,6 +37,23 @@ export default function Background() {
       setQuestions(arr);
     }
   }
+  useEffect(()=>{
+    if (questions[0]){
+      document.getElementById("first_que").style.backgroundColor="#FFC81B"; 
+      document.getElementById("second_que").style.backgroundColor="#fff"; 
+      document.getElementById("third_que").style.backgroundColor="#fff"; 
+    }
+  },[questions]);
+  if (questions[1]){
+    document.getElementById("second_que").style.backgroundColor="#FFC81B";
+    document.getElementById("first_que").style.backgroundColor="white";
+    document.getElementById("third_que").style.backgroundColor="white";
+  }
+  if (questions[2]){
+    document.getElementById("third_que").style.backgroundColor="#FFC81B";
+    document.getElementById("second_que").style.backgroundColor="white";
+    document.getElementById("first_que").style.backgroundColor="white";
+  }
   const showFirst = () => {
     setCount(0);
     setQuestions([true,false,false]);
@@ -48,7 +64,7 @@ export default function Background() {
   }
   const showThird = () => {
     setCount(2);
-    setQuestions([false,false,true]);
+    setQuestions([false,false,true]); 
   }
   
   return (
@@ -66,7 +82,7 @@ export default function Background() {
             {questions[2]?<FillInTheBlanks />:null}
         <div className="mascot-contaier">
           <p>
-          {questions[0]?"Click on the button having the smallest value.":null}
+            {questions[0]?"Click on the button having the smallest value.":null}
             {questions[1]?"Click on the boxes on left to select it then click the box on the right to match it with the selected box.":null}
             {questions[2]?"Enter the value on the right side fields after equals (=) sign.":null}
           </p>
@@ -80,9 +96,9 @@ export default function Background() {
       <div className="navigation_button">
       <div style={{width:"8%"}}></div>
       <div className="options-button-container">
-        <button onClick={showFirst}>Smallest Number</button>
-        <button onClick={showSecond}>Match the Column</button>
-        <button onClick={showThird}>Fill In the Blanks</button>
+        <button onClick={showFirst} id="first_que">Smallest Number</button>
+        <button onClick={showSecond} id="second_que">Match the Column</button>
+        <button onClick={showThird} id="third_que">Fill In the Blanks</button>
       </div>
       <div className="submit-button-container">
         <button>Submit</button>

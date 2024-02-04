@@ -2,7 +2,8 @@ import React, { useState, useRef, useEffect, useLayoutEffect } from "react";
 import "./Match.css";
 import { useQuestionContext } from "../context/QuestionContext";
 import { motion, spring } from "framer-motion";
-
+import AOS from "aos";
+import "aos/dist/aos.css";
 function MatchNumbers() {
   const [colorarr, setColorArr] = useState([
     "white",
@@ -10,6 +11,11 @@ function MatchNumbers() {
     "white",
     "white",
   ]);
+  useEffect(()=>{
+    AOS.init({
+        duration:500
+    });
+},[]);
   const { questionStatus, updateQuestionStatus } = useQuestionContext();
   const numPairs = 4;
   const [color, setColor] = useState("");
@@ -253,6 +259,7 @@ function MatchNumbers() {
         questionStatus[matched[0]+2][0] = true;
         questionStatus[matched[0]+2][1] = ind;
         questionStatus[matched[0]+2][2] = matched[0];
+        updateQuestionStatus(matched[0]+2, true, ind, matched[0]);
         return newState;
       });
     } else if (quesSelected == true && ansSelected == true) {
@@ -273,6 +280,7 @@ function MatchNumbers() {
         questionStatus[temp+2][0] = false;
         questionStatus[temp+2][1] = null;
         questionStatus[temp+2][2] = null;
+        updateQuestionStatus(temp+2, false, null, null);
         console.log(questionStatus,temp)
         setAnsboxArray((prev) => {
           let newState = [...prev];
@@ -307,6 +315,7 @@ function MatchNumbers() {
           questionStatus[temp+2][0] = false;
           questionStatus[temp+2][1] = null;
           questionStatus[temp+2][2] = null;
+          updateQuestionStatus(temp+2, false, null, null);
         }
 
         return;
@@ -336,6 +345,7 @@ function MatchNumbers() {
           questionStatus[i+3][0] = false;
           questionStatus[i+3][1] = null;
           questionStatus[i+3][2] = null;
+          updateQuestionStatus(i+3, false, null, null);
           setAnimationKey((prev) => {
             let newState = [...prev];
             newState[i] = newState[i] + 1;
@@ -363,6 +373,7 @@ function MatchNumbers() {
       questionStatus[matched[0]+2][0] = true;
       questionStatus[matched[0]+2][1] = ind;
       questionStatus[matched[0]+2][2] = matched[0];
+      updateQuestionStatus(matched[0]+2, true, ind, matched[0]);
       setAnsboxArray((prev) => {
         let newState = [...prev];
         newState[matched[0] - 1] = aboxArray[ind - 1];
@@ -385,7 +396,7 @@ function MatchNumbers() {
 
 
   return (
-    <div className="smallest_number_container">
+    <div className="smallest_number_container" data-aos="zoom-in">
       {/* <div className="bg-white w-7/12 h-5/6 p-12 z-10 ml-36 flex mt-16 rounded-md shadow-custom flex-col">
         <h3 className="text-xl font-mono mb-7">
           <span className="font-bold">Match</span> the following questions:
@@ -490,7 +501,7 @@ function MatchNumbers() {
             }`
             }
             stroke="black"
-            strokeWidth="3"
+            strokeWidth="2"
             initial={{ pathLength: 0 }}
             animate={{ pathLength: 1 }}
             transition={{ duration: 0.8, type: "tween" }}

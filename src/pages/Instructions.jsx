@@ -3,7 +3,7 @@ import "./Instructions.css";
 import gudda from "../assets/images/gudda.png";
 import { FaArrowRightLong } from "react-icons/fa6";
 import { useUser } from '../context/UserContext';
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 
 export default function Instructions() {
@@ -49,7 +49,7 @@ export default function Instructions() {
           <div className="instruction-button">
             <button onClick={()=>handleStart()}>
               <div className="flex flex-row gap-2">
-                <p>Start here</p>
+                <Link to="/questions"><p>Start here</p></Link>
                 <FaArrowRightLong className="self-center text-xl"/>
               </div>
             </button>
