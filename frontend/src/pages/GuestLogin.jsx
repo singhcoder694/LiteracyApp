@@ -11,17 +11,17 @@ function GuestLogin() {
   const [classError, setClassError] = useState(""); // State to hold validation error message
   const [splineUrl, setSplineUrl] = useState(undefined);
 
-  useEffect(() => {
-    const fetchSpline = async () => {
-      const splineUrl = "https://prod.spline.design/qzSyKoTbtbS8nUnH/scene.splinecode";
-      setTimeout(() => {
-        setSplineUrl(splineUrl);
-        setIsLoading(false);
-      }, 5000); 
-    };
+  // useEffect(() => {
+  //   const fetchSpline = async () => {
+  //     const splineUrl = "https://prod.spline.design/qzSyKoTbtbS8nUnH/scene.splinecode";
+  //     setTimeout(() => {
+  //       setSplineUrl(splineUrl);
+  //       setIsLoading(false);
+  //     }, 5000); 
+  //   };
 
-    fetchSpline();
-  }, []);
+  //   fetchSpline();
+  // }, []);
   const customGradientStyle = {
     backgroundImage: "linear-gradient(180deg, #6153CC 0%, #D0C6FF 100%)",
   };
@@ -60,8 +60,15 @@ function GuestLogin() {
     }
   };
 
+  setTimeout(() => {
+    setIsLoading(false);
+  }, 5000);
+
   return (
+    <>
+   
     <div className="flex flex-row h-screen font-sf-pro-rounded">
+    {isLoading && <FirstPageLoader />}
       <div className="flex flex-col gap-y-8  mr-72 ml-52   justify-center">
         <h1 className="text-5xl text-indigo-700">Welcome!</h1>
         <p className="text-2xl">Guest Login</p>
@@ -123,11 +130,12 @@ function GuestLogin() {
       </div>
       <div style={customGradientStyle} className="w-full">
         <div className="w-1/2 absolute left-0 ml-40% h-full">
-        {splineUrl && <Spline scene={splineUrl} />}
+         <Spline scene="https://prod.spline.design/qzSyKoTbtbS8nUnH/scene.splinecode" />
         </div>
       </div>
-      { isLoading ? <FirstPageLoader /> : null }
+    
     </div>
+    </>
   );
 }
 export default GuestLogin;
